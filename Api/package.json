@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "filereader": "^0.10.3",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "xlsx": "^0.18.5"
+  }
+}
