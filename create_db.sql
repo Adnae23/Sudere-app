@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS sudere;
 
 USE sudere;
 
-CREATE TABLE lines(
+CREATE TABLE `lines`(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(80) NOT NULL);
 
@@ -21,13 +21,21 @@ access VARCHAR(80) NOT NULL);
 
 CREATE TABLE trains(
 id INT NOT NULL PRIMARY KEY,
-id_line FOREIGN KEY REFERENCES lines(id),
-id_serie FOREIGN KEY REFERENCES series(id));
+id_line INT NOT NULL,
+id_serie INT NOT NULL,
+CONSTRAINT fk_trains_lines 
+    FOREIGN KEY (id_line) REFERENCES `lines`(id),
+CONSTRAINT fk_trains_series
+    FOREIGN KEY (id_serie) REFERENCES series(id));
 
 CREATE TABLE trailers(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 number INT NOT NULL,
 date DATE,
 `processing-time` INT,
-id_train FOREIGN KEY REFERENCES trains(id),
-id_user FOREIGN KEY REFERENCES users(id));
+id_train INT NOT NULL,
+id_user VARCHAR(8) NOT NULL,
+CONSTRAINT fk_trailers_trains
+    FOREIGN KEY (id_train) REFERENCES trains(id),
+CONSTRAINT fk_trailers_users
+    FOREIGN KEY (id_user) REFERENCES users(id));
