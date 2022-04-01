@@ -59,7 +59,6 @@ series.map(serie => {
     db.query(sqlSelect, [serie]).then((result) =>{
 	// *************************** ON VERIFIE SI ELLE EXISTE DEJA LA TABLE
 		existSerie = result[0][0].serieCount;
-		// console.log(result[0][0].serieCount);
 		// *********************** SI ELLE N'EXISTE PAS => ON L'INSERT
 		if(existSerie === 0) {
 			return db.query(sqlInsert, [serie])
