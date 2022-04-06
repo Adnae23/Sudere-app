@@ -62,9 +62,6 @@ const rename =(name) => {
         case 'BHM':
             return 'Bisheim'
             
-        case 'Réseau':
-            return 'Reseau'
-            
         case 'FALBALA':
             return 'FALBALA (Espagne)'
             
