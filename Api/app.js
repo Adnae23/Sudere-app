@@ -74,3 +74,27 @@ series.map(serie => {
 			console.log('Serie already exist');
 	})
 })
+
+trains.map(train => {
+	let existTrain = '';
+	const db = connection.promise();
+	const sqlSelect = 'SELECT COUNT(*) AS trainCount FROM trains WHERE id = ?'
+	const sqlInsert = 'INSERT INTO trains (id, id_line, id_serie) VALUES (? , (SELECT id FROM `lines` WHERE name = ?), (SELECT id FROM series WHERE name = ?))'
+    db.query(sqlSelect, [train.id]).then((result) =>{
+	// *************************** ON VERIFIE SI ELLE EXISTE DEJA LA TABLE
+		existTrain = result[0][0].trainCount;
+		// *********************** SI ELLE N'EXISTE PAS => ON L'INSERT
+		if(existTrain === 0) {
+			return db.query(sqlInsert, [train.id, train.line, train.serie])
+		}
+		else
+			return Promise.reject('ALREADY_EXIST')
+	})
+	.then(() => {
+		console.log('Insert successful');
+	})
+	.catch(err => {
+		if (err === 'ALREADY_EXIST') 
+			console.log('Train already exist');
+	})
+})
