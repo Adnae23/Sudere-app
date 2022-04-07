@@ -74,7 +74,5 @@ const rename =(name) => {
 }
 const rames = readExcel('../Test.xlsm');
 
-console.log(rames)
-
 module.exports= rames
 

@@ -41,4 +41,4 @@ class DbModel {
     
 }
 
-module.exports = new UserModel()
+module.exports = new DbModel()

@@ -1,24 +1,26 @@
-const { getLines } = require('../models/db.models')
-const compare = require('../../utils/compareLines')
+const { getLines, getSeries, getTrains } = require('../models/db.models')
+const compare = require('../../utils/compare')
 
 class DbMiddlewares{
     sheetName(req, res, next){
         const tab = req.xlsFile.SheetNames;
         if (tab.filter(element => element === 'Affectation_Parc')){
+            
             next()
         }
         else
             res.status(404).send('resource not found')
     }
 
-    async compareLines(req, res, next){
+    async compareData(req, res, next){
         try{
-            const linesFromDb = await getLines()
-            compare(req, linesFromDb)
+            const trainsFromDb = await getTrains()
         }
-        catch{
-
+        catch (error) {
+            res.status(500).send({ error: error.message })
         }
+        compare(req, trainsFromDb)
+        next()
     }
 }
 
