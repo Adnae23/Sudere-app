@@ -13,8 +13,9 @@ class DbMiddlewares{
     }
 
     async compareData(req, res, next){
+        const trainsFromDb = null
         try{
-            const trainsFromDb = await getTrains()
+            trainsFromDb = await getTrains()
         }
         catch (error) {
             res.status(500).send({ error: error.message })

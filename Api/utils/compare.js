@@ -63,20 +63,14 @@ const compare = (req, trainsFromDb) => {
     const data = createArray(req.xlsFile)
     req.lines = [...data[1]]
     req.series = [...data[2]]
-    req.trains.add = []
-    req.trains.update = []
+    req.trains.replace = []
     req.trains.delete = []
     data[0].map((train) => {
-        const temp = {
-            id : train.id,
-            serie : train.serie,
-            line : train.line}
-        for(trainFromDb of trainsFromDb){
-            if (trainFromDb.id === train.id)
-                req.trains.update.push(temp)
-            else
-                req.trains.add.push(temp)
-        }
+        if(train.serie === 'Atlantique')
+            train.trailers = 9
+        else
+            train.trailers = 7
+        req.trains.replace.push(train)
     })
     trainsFromDb.map((train) => {
         for(trainFromData of data[0]){

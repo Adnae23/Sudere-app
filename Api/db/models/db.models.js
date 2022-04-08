@@ -38,7 +38,61 @@ class DbModel {
             throw error
         }
     }
-    
+
+    async dropLine() {
+        try{
+            await this.connection.promise().query('TRUNCATE TABLE `lines`')
+        }
+        catch (error){
+            throw error
+        }
+    }
+
+    async insertLine(line) {
+        try{
+            const result = await this.connection.promise().query('INSERT INTO `lines` (name) VALUES (?)', [line])
+            return result[0]
+        }
+        catch (error){
+            throw error
+        }
+    }
+
+    async dropSerie() {
+        try{
+            await this.connection.promise().query('TRUNCATE TABLE series')
+        }
+        catch (error){
+            throw error
+        }
+    }
+
+    async insertSerie(serie) {
+        try{
+            const result = await this.connection.promise().query('INSERT INTO series (name) VALUES (?)', [serie])
+            return result[0]
+        }
+        catch (error){
+            throw error
+        }
+    }
+
+    async replaceTrain(train) {
+        try{
+            const sql = 'REPLACE INTO trains (id, id_line, id_serie) VALUES (? , (SELECT id FROM `lines` WHERE name = ?), (SELECT id FROM series WHERE name = ?))'
+            const result = await this.connection.promise().query(sql, [train.id, train.line, train.serie])
+            return result[0]
+        }
+        catch (error){
+            throw error
+        }
+    }
+
+    async insertTrailer(trailer) {
+        try {
+            const result = await this.connection.promise().query('INSERT INTO trailers (number, id_train) VALUES (?, (SELECT id FROM trains WHERE id = ?))')
+        }
+    }
 }
 
 module.exports = new DbModel()
