@@ -15,19 +15,18 @@ class DbController {
     async updateDatabase(req, res) {
         try {
             const dropLines = await DbModel.dropLine()
-            req.lines.map((line) =>{
+            req.lines.map(async(line) =>{
                 const updateLine = await DbModel.insertLine(line)
             })
             const dropSeries = await DbModel.dropSerie()
-            req.series.map((serie) =>{
+            req.series.map(async(serie) =>{
                 const updateSerie = await DbModel.insertSerie(serie)
             })
-            req.trains.map((train) => {
+            req.trains.map(async(train) => {
                 const replaceTrains = await DbModel.replaceTrain(train)
                 for(let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer ++) {
                     if(trainsTrailer !== 3){
-                        const addTrailer = await DbModel.insertTrailer(`R${trainsTrailer+1}`,train.id)
-                        //finir le model, voir si remorque existe déjà
+                        const addTrailer = await DbModel.replaceTrailer(`R${trainsTrailer+1}`,train.id)
                     }
                 }
             })

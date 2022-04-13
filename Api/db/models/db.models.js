@@ -88,11 +88,18 @@ class DbModel {
         }
     }
 
-    async insertTrailer(trailer) {
+    async replaceTrailer(trailer, id) {
         try {
-            const result = await this.connection.promise().query('INSERT INTO trailers (number, id_train) VALUES (?, (SELECT id FROM trains WHERE id = ?))')
+            const sql = 'REPLACE INTO trailers (number, id_train) VALUES (?, (SELECT id FROM trains WHERE id = ?))'
+            const result = await this.connection.promise().query(sql, [trailer, id])
+            return result[0]
+        }
+        catch(error){
+            throw error
         }
     }
+
+
 }
 
 module.exports = new DbModel()

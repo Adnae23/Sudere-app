@@ -3,6 +3,7 @@ const compare = require('../../utils/compare')
 
 class DbMiddlewares{
     sheetName(req, res, next){
+        console.log(req.body);
         const tab = req.xlsFile.SheetNames;
         if (tab.filter(element => element === 'Affectation_Parc')){
             
@@ -23,6 +24,7 @@ class DbMiddlewares{
         compare(req, trainsFromDb)
         next()
     }
+
 }
 
 module.exports = new DbMiddlewares()
