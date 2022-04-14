@@ -14,41 +14,39 @@ function App() {
 
   useEffect(() => {
     async function handleSubmit(event) {
-      console.log('handleSubmit');
       const formData = new FormData();
-      formData.append("selectedFile", selectedFile);
+      formData.append("excelFile", selectedFile);
       try {
-        const response = await axios({
-          method: "post",
-          url: "http://localhost:5000/db",
-          body: formData,
+        await axios.post("http://localhost:5000/db", formData,{
           headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((result) => {
+          console.log('Success:', result);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
         });
-        console.log(response);
       }
       catch (error) {
         console.log(error)
       }
     }
     if (submit === true) {
-      console.log('submit');
-      
       handleSubmit()
       setSubmit(false)
     }
   }, [submit])
-  const handleFileSelect = (event) => {
-    setSelectedFile(event.target.files[0])
+  const handleFileSelect = async(event) => {
+    await setSelectedFile(event.target.files[0])
   }
   const backUp = (event) => {
     event.preventDefault()
-    console.log("test");
     setSubmit(true)
   }
   return (
     <div>
       <form onSubmit={backUp}>
-        <input type="file" onChange={handleFileSelect} />
+        <input type="file" name='excelFile' onChange={handleFileSelect} />
         <input type="submit" value="Upload File" />
       </form>
     </div>

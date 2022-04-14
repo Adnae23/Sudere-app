@@ -1,21 +1,24 @@
-const connection = require("./db-config")
-const cors =require('cors')
+// const connection = require("./db-config")
+require("dotenv").config();
+const cors = require('cors')
 const express = require("express")
 const app = express()
+const fileUpload = require('express-fileupload')
 // const data = require("./majdb")
 const dbRouter = require('./db/db.route')
 
 app.use(cors())
 app.use(express.json())
+app.use(fileUpload())
 
 const port = process.env.PORT ?? 5000
 
-connection.connect((error) => {
-	if(error)
-		console.error("Error connecting : " + error.stack)
-	else 
-		console.log("Connected to database with threadId : " + connection.threadId)
-})
+// connection.connect((error) => {
+// 	if(error)
+// 		console.error("Error connecting : " + error.stack)
+// 	else 
+// 		console.log("Connected to database with threadId : " + connection.threadId)
+// })
 
 app.listen(port, () => {
 	console.log(`Server listening on port ${port}`)

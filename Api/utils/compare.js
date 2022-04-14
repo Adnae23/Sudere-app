@@ -5,7 +5,7 @@ const rename =(name) => {
 
         case 'SE_Tsee':
             return 'Sud-Est'
-            
+
         case 'SE_Tlg':
             return 'Sud-Est'
             
@@ -37,7 +37,7 @@ const jsonToTrain = (row) => {
 }
 
 const createArray = (excelFile) => {
-    const items = []
+    let items = []
     const data = []
     const lines = []
     const series = []
@@ -63,22 +63,22 @@ const compare = (req, trainsFromDb) => {
     const data = createArray(req.xlsFile)
     req.lines = [...data[1]]
     req.series = [...data[2]]
-    req.trains.replace = []
-    req.trains.delete = []
+    req.trainsReplace = []
+    req.trainsDelete = []
     data[0].map((train) => {
         if(train.serie === 'Atlantique')
             train.trailers = 9
         else
             train.trailers = 7
-        req.trains.replace.push(train)
+        req.trainsReplace.push(train)
     })
+   
     trainsFromDb.map((train) => {
-        for(trainFromData of data[0]){
+        for(let trainFromData of data[0]){
             if (train != trainFromData)
-                req.trains.delete.push(train.id)
+                req.trainsDelete.push(train.id)
         }
     })
-    return req
 }
 
-module.exports = compare
+module.exports = {compare,}
