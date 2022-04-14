@@ -4,8 +4,6 @@ const { storeFile, sheetName, compareData, test } = require('./middlewares/db.mi
 
 const router = express.Router()
 
-//  router.post('/', [storeFile, test])
 router.post('/', [storeFile, sheetName, compareData, updateDatabase])
-//router.get('/', list)
 
 module.exports = router

@@ -12,6 +12,8 @@ class DbModel {
     // })
 
     async getCenters() {
+
+        // ********************************** récupère la liste des centres depuis la db
         try {
             const result = await connection.promise().query('SELECT * FROM centers')
             return result[0]
@@ -22,6 +24,8 @@ class DbModel {
     }
 
     async getLines() {
+
+        // ********************************** récupère la liste des lines depuis la db
         try {
             const result = await connection.promise().query('SELECT * FROM `lines`')
             return result[0]
@@ -32,6 +36,8 @@ class DbModel {
     }
 
     async getSeries() {
+
+        // ********************************** récupère la liste des séries depuis la db
         try {
             const result = await connection.promise().query('SELECT * FROM series')
             return result[0]
@@ -42,6 +48,8 @@ class DbModel {
     }
 
     async getTrains() {
+
+        // ********************************** récupère la liste des rames, lines et séries depuis la db
         try {
             const result = await connection.promise().query('SELECT trains.id AS train, `lines`.name AS line, series.name AS serie FROM trains INNER JOIN `lines` ON `lines`.id = trains.id_line INNER JOIN series ON series.id = trains.id_serie')
             return result[0]
@@ -53,6 +61,8 @@ class DbModel {
     }
 
     async dropLine() {
+
+        // ********************************** Efface la liste des lines dans la db
         try {
             const result = await connection.promise().query('DELETE FROM `lines`')
             return result[0]
@@ -63,6 +73,8 @@ class DbModel {
     }
 
     async insertLine(line) {
+
+        // ********************************** Ajoute les nouvelles lines dans la db
         try {
             const result = await connection.promise().query('INSERT INTO `lines` (name) VALUES (?)', [line])
             return result[0]
@@ -73,6 +85,8 @@ class DbModel {
     }
 
     async dropSerie() {
+
+        // ********************************** Efface la liste des séries dans la db
         try {
             const result = await connection.promise().query('DELETE FROM series')
             return result[0]
@@ -83,6 +97,8 @@ class DbModel {
     }
 
     async insertSerie(serie) {
+
+        // ********************************** Ajoute les nouvelles séries dans la db
         try {
             const result = await connection.promise().query('INSERT INTO series (name) VALUES (?)', [serie])
             return result[0]
@@ -93,6 +109,8 @@ class DbModel {
     }
 
     async replaceTrain(train) {
+
+        // ********************************** Ajoute/màj les rames dans la db
         try {
             const sql = 'REPLACE INTO trains (id, id_line, id_serie) VALUES (? , (SELECT id FROM `lines` WHERE name = ?), (SELECT id FROM series WHERE name = ?))'
             const result = await connection.promise().query(sql, [train.id, train.line, train.serie])
@@ -104,6 +122,8 @@ class DbModel {
     }
 
     async replaceTrailer(trailer, id) {
+
+        // ********************************** Ajoute/màj les trailes dans la db
         try {
             const sql = 'REPLACE INTO trailers (number, id_train) VALUES (?, (SELECT id FROM trains WHERE id = ?))'
             const result = await connection.promise().query(sql, [trailer, id])
@@ -113,52 +133,6 @@ class DbModel {
             throw error
         }
     }
-
-    // async update(queries, queryValues) {
-    //     // const connection = await mysql.createConnection(databaseConfigs)
-    //     try {
-    //         await connection.beginTransaction()
-    //         const queryPromises = []
-
-    //         queries.forEach((query, index) => {
-    //             queryPromises.push(connection.query(query, queryValues[index]))
-    //         })
-    //         const results = await Promise.all(queryPromises)
-    //         await connection.commit()
-    //         await connection.end()
-    //         return results
-    //     } catch (err) {
-    //         await connection.rollback()
-    //         await connection.end()
-    //         return Promise.reject(err)
-    //     }
-    // }
-
-    // async transaction(queries, queryValues) {
-    //     if (queries.length !== queryValues.length) {
-    //         return Promise.reject(
-    //             'Number of provided queries did not match the number of provided query values arrays'
-    //         )
-    //     }
-    //     try {
-    //         await connection.beginTransaction()
-    //         const queryPromises = []
-    
-    //         queries.forEach((query, index) => {
-    //             queryPromises.push(connection.query(query, queryValues[index]))
-    //         })
-    //         const results = await Promise.all(queryPromises)
-    //         await connection.commit()
-    //         await connection.end()
-    //         return results
-    //     } catch (err) {
-    //         await connection.rollback()
-    //         await connection.end()
-    //         return Promise.reject(err)
-    //     }
-    // }
-
-
 }
 
 module.exports = new DbModel()

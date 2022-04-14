@@ -1,6 +1,8 @@
 const XLSX = require('xlsx');
 
 const rename =(name) => {
+
+    // ********************************** Renomme les lines 
     switch(name) {
 
         case 'SE_Tsee':
@@ -27,6 +29,8 @@ const rename =(name) => {
 }
 
 const jsonToTrain = (row) => {
+
+    // ********************************** Ajoute les trains (n° rame, serie et line) dans le Json
 	const train = {};
 	
 	train.id = row["N° Rame"] ?? 0

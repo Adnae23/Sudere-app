@@ -14,6 +14,7 @@ class DbController {
     }
     async updateDatabase(req, res) {
 
+        // ********************************** Ajoute les nouvelles séries dans la db
         try {
             const dropSeries = await DbModel.dropSerie()
             req.series.forEach(async (serie) => {
@@ -24,6 +25,7 @@ class DbController {
             res.status(500).send({ error: error.message })
         }
 
+        // ********************************** Ajoute les nouvelles lines dans la db
         try {
             const dropLines = await DbModel.dropLine()
             req.lines.forEach(async (line) => {
@@ -33,6 +35,8 @@ class DbController {
         catch (error) {
             res.status(500).send({ error: error.message })
         }
+
+        // ********************************** Ajoute/màj les nouvelles rames dans la db et créé les remorque s'il le faut
         try {
             req.trainsReplace.map(async (train) => {
                 await DbModel.replaceTrain(train)
