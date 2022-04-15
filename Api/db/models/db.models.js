@@ -1,6 +1,5 @@
 const connection = require("../../db-config")
 
-// const mysql = require('mysql2/promise')
 
 class DbModel {
     // connection = mysql.createConnection({
