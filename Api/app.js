@@ -5,6 +5,7 @@ const express = require("express")
 const app = express()
 const fileUpload = require('express-fileupload')
 const dbRouter = require('./db/db.route')
+const usersRouter = require('./users/users.route')
 
 app.use(cors())
 app.use(express.json())
@@ -17,3 +18,4 @@ app.listen(port, () => {
 })
 
 app.use('/db', dbRouter)
+app.use('/users', usersRouter)
