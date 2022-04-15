@@ -46,11 +46,23 @@ class DbController {
                     }
                 }
             })
+            // res.status(201).send('Insert successfully')
         }
         catch (error) {
             res.status(500).send({ error: error.message })
-        // res.status(201).send('Insert successfully')
         }
+
+        // ********************************** Supprime les rames dans la db
+        try {
+            req.trainsDelete.map(async (train) => {
+                await DbModel.deleteTrailers(train)
+                await DbModel.deleteTrain(train)
+            })
+        }
+        catch (error){
+            res.status(500).send({error: error.message})
+        }
+        
     }
 }
 

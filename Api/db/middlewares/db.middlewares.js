@@ -12,7 +12,6 @@ class DbMiddlewares {
         await file.mv(uploadPath, (error) => {
             return res.status(500).send(error)
         })
-        res.status(200).send('File uploaded !')
     // **********************************  Effacement de la copie du fichier Excel après son intégration dans req   
         setTimeout(() => {
             req.xlsFile = XLSX.readFile('./uploadedFiles/Test.xlsm')

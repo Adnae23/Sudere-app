@@ -133,6 +133,27 @@ class DbModel {
             throw error
         }
     }
+    async deleteTrain(id) {
+        try {
+            const sql = 'DELETE FROM trains WHERE id = ?'
+            const result = await connection.promise().query(sql, [id])
+            return result[0]
+        }
+        catch (error) {
+            throw error
+        }
+    }
+
+    async deleteTrailers(id) {
+        try {
+            const sql = 'DELETE FROM trailers WHERE id_train = ?'
+            const result = await connection.promise().query(sql, [id])
+            return result[0]
+        }
+        catch (error){
+            throw error
+        }
+    }
 }
 
 module.exports = new DbModel()
