@@ -6,7 +6,8 @@ class UserModel {
 
         // ********************************** récupère la liste des users depuis la db
         try {
-            const result = await connection.promise().query('SELECT * FROM users')
+            const sql = 'SELECT users.id AS cp, firstname, lastname, email, centers.name AS center , access FROM users INNER JOIN centers ON centers.id = users.id_center'
+            const result = await connection.promise().query(sql)
             return result[0]
         }
         catch (error) {
@@ -15,7 +16,7 @@ class UserModel {
 
     }
 
-    async getUsersId(id) {
+    async getUserById(id) {
 
         // ********************************** récupère un utilisateur spécifique avec son numéro de CP depuis la db
         try {
@@ -28,12 +29,12 @@ class UserModel {
         }
     }
 
-    async createUser(id, firstName, lastName, center, password, access) {
+    async createUser(id, firstName, lastName, center, password, email, access) {
 
         // ********************************** Crée un utilisateur dans la db
         try {
-            const sql = 'INSERT INTO users (id, firstname, lastname, access, password, id_center) VALUES (?, ?, ?, ?, ?, (SELECT id FROM centers WHERE name = ?))'
-            const result = await connection.promise().query(sql, [id, firstName, lastName, access, password, center])
+            const sql = 'INSERT INTO users (id, firstname, lastname, access, password, email, id_center) VALUES (?, ?, ?, ?, ?, ?, (SELECT id FROM centers WHERE name = ?))'
+            const result = await connection.promise().query(sql, [id, firstName, lastName, access, password, email, center])
             return result[0]
         }
         catch (error) {
@@ -85,3 +86,4 @@ class UserModel {
     }
 
 }
+module.exports = new UserModel();
