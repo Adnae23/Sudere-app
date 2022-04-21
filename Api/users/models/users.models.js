@@ -38,7 +38,7 @@ class UserModel {
   async updateUserPassword(id, hashedPassword) {
     // ********************************** Met à jour le MDP dans la db
     try {
-      const sql = 'UPDATE INTO users (password) VALUES (?) WHERE id = ?';
+      const sql = 'UPDATE users SET password = ? WHERE id = ?';
       const result = await connection.promise().query(sql, [hashedPassword, id]);
       return result[0];
     } catch (error) {
@@ -49,7 +49,7 @@ class UserModel {
   async updateUser(id, firstName, lastName, center, access) {
     // ********************************** Met à jour la fiche d'un user dans la db
     try {
-      const sql = 'UPDATE users SET (firstname, lastname, access, id_center) VALUES (?, ?, ?, (SELECT id FROM centers WHERE name = ?)) WHERE id = ?';
+      const sql = 'UPDATE users SET firstname = ?, lastname = ?, access = ?, id_center = (SELECT id FROM centers WHERE name = ?) WHERE id = ?';
       const result = await connection.promise().query(sql, [firstName, lastName, access, center, id]);
       return result[0];
     } catch (error) {
