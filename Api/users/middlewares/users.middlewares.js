@@ -30,7 +30,7 @@ class UsersMiddlewares {
       firstname: Joi.string().max(255).required(),
       lastname: Joi.string().max(255).required(),
       email: Joi.string().email().max(255).required(),
-      password: Joi.string().max(255).required(),
+      password: Joi.string().min(8).max(255).required(),
       center: Joi.string().max(255).required(),
       access: Joi.string().max(255).required(), // user - superUser - admin
     }).validate({
@@ -43,6 +43,28 @@ class UsersMiddlewares {
       next();
     }
   }
+
+  
+  // ********************************** vérifie les critères du password
+  checkShapingForPassword(req, res, next) {
+    const {
+      password
+    } = req.body;
+
+    const { error } = Joi.object({
+      password: Joi.string().min(8).max(255).required(),
+    }).validate({
+      password,
+    }, { abortEarly: false });
+
+    if (error) {
+      res.status(422).json({ validationErrors: error.details });
+    } else {
+      next();
+    }
+  }
+
+
 
   // ********************************** vérifie les critères des validation pour la mise à jour d'un utilisateur
   checkShapingForUpdate(req, res, next) {

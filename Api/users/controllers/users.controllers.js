@@ -23,6 +23,7 @@ class UserController {
     }
   }
 
+  // ********************************** Récupère la liste des utilisateurs la db
   async listUsers(req, res) {
     try {
       const result = await UserModel.getUsers();
@@ -34,6 +35,7 @@ class UserController {
     }
   }
 
+  // ********************************** efface un utilisateur de la db
   async deleteUser(req, res) {
     try {
       const { id } = req.body;
@@ -46,12 +48,26 @@ class UserController {
     }
   }
 
+  // ********************************** met a jour un utilisateur dans la db
   async updateUser(req, res) {
     try {
       const {
         id, firstName, lastName, center, access,
       } = req.body;
       await UserModel.updateUser(id, firstName, lastName, center, access);
+      res.status(200).send('');
+    } catch (error) {
+      res.status(500).send({ error: error.message });
+    }
+  }
+
+  // ********************************** met a jour le password d'un utilisateur
+  async updateUserPassword(req, res) {
+    try {
+      const {
+        id,hashedPassword,
+      } = req.body;
+      await UserModel.updateUserPassword(id, hashedPassword);
       res.status(200).send('');
     } catch (error) {
       res.status(500).send({ error: error.message });
