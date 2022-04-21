@@ -1,3 +1,4 @@
+DROP DATABASE sudere;
 CREATE DATABASE IF NOT EXISTS sudere;
 
 USE sudere;
@@ -50,13 +51,15 @@ CREATE TABLE trailers(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 number VARCHAR(3) NOT NULL,
 date DATE,
-`processing-time` INT,
+processingTime INT,
 id_train INT NOT NULL,
-id_user VARCHAR(8),
+id_user VARCHAR(8) DEFAULT '8709168M',
 CONSTRAINT fk_trailers_trains
     FOREIGN KEY (id_train) REFERENCES trains(id) ON UPDATE CASCADE ON DELETE CASCADE,
 CONSTRAINT fk_trailers_users
     FOREIGN KEY (id_user) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-
+INSERT INTO users (id, firstname, lastname, email, password, access, id_center)
+    VALUES
+    ('8709168M', 'Anais', 'Roussy Renard', 'anais.renard@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$ghwLB4UR+t/RVJg9oIecZw$AqkL4hZ/N7J3iNQZyWBBdbiXzLtU40Q4QE1Et756a5M', 'admin', 1);
 
