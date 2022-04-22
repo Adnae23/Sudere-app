@@ -12,8 +12,8 @@ class TrainsControllers {
         }
     }
 
-    async infoTrainById(req, res){
-        const  id = req.params.id
+    async infoTrainById(req, res) {
+        const id = req.params.id
         try {
             const trailer = await TrainsModel.getTrainById(id)
             res.status(200).send(trailer)
@@ -23,11 +23,17 @@ class TrainsControllers {
         }
     }
 
-    modifyTrailers = (req,res)=> {
-        const { date, processing_time, id_user} = req.body
+    updateTrailer = (req, res) => {
+        const { date, processingTime, userId } = req.body
 
-        TrainsModels.updateTrailers(date, processing_time, id_user)
+        try {
+            TrainsModels.updateTrailers(date, processingTime, userId)
+            res.status(201).send('trailer successfuly updated')
         }
+        catch (error) {
+            res.status(500).send({ error: error.message })
+        }
+    }
 }
 
 module.exports = new TrainsControllers()

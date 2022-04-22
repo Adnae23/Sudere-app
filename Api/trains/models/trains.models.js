@@ -28,11 +28,11 @@ class TrainsModel {
         }
     }
 
-    async updateTrailers(date, processing_time, id_user) {
+    async updateTrailer(date, processingTime, userId) {
 
         try {
             const sql = 'UPDATE trailers SET date, processingTime, id_user VALUES = ?, ?, ?'  
-            const result = await connection.promise().query(sql, [date, processing_time, id_user])
+            const result = await connection.promise().query(sql, [date, processingTime, userId])
             return result[0]
 
         }

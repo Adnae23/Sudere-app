@@ -1,20 +1,30 @@
-const{updateTrailers} = require('../models/trains.models')
+const {getUserById} = require('../../users/models/users.models')
 
 class trainsMiddlewares{
-    verifyTrailers(req, res) {
-        const {trailer} = Joi.object({
+    checkShapingForTrailers(req, res, next) {
+        const { date, processingTime, userId } = req.body
+        const {error} = Joi.object({
             date: Joi.string().required(),
-            processing_time: Joi.string().required(),
-        }).validate({date, processing_time},{abortEarly: false});
-        if (trailer) {
+            processingTime: Joi.string().required(),
+            userId: Joi.string().min(8).max(8).required()
+        }).validate({date, processingTime, userId},{abortEarly: false});
+        if (error) {
             res.status(422).json({ValidationErrors: error});
         }
         else{
-            res.status(201).json(updateTrailers)
+            next()
         }
-            
     }
 
+    async checkExistingUser(req, res, next) {
+        const {userId} = req.body
+        const existingUser = await getUserById(userId);
+        if (existingUser.length === 0) {
+          res.status(404).send('User not found');
+        } else {
+          next();
+        }
+      }
 }
 
 module.exports = new trainsMiddlewares() 
