@@ -43,6 +43,7 @@ class DbController {
         await DbModel.deleteTrailers(train);
         await DbModel.deleteTrain(train);
       });
+      res.sendStatus(200);
     } catch (error) {
       res.status(500).send({ error: error.message });
     }

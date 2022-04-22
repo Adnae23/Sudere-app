@@ -52,9 +52,9 @@ class UserController {
   async updateUser(req, res) {
     try {
       const {
-        id, firstName, lastName, center, access,
+        id, firstname, lastname, center, access,
       } = req.body;
-      await UserModel.updateUser(id, firstName, lastName, center, access);
+      await UserModel.updateUser(id, firstname, lastname, center, access);
       res.status(200).send('');
     } catch (error) {
       res.status(500).send({ error: error.message });
