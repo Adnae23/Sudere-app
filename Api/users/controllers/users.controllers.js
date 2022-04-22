@@ -65,7 +65,7 @@ class UserController {
   async updateUserPassword(req, res) {
     try {
       const {
-        id,hashedPassword,
+        id, hashedPassword,
       } = req.body;
       await UserModel.updateUserPassword(id, hashedPassword);
       res.status(200).send('');

@@ -44,11 +44,10 @@ class UsersMiddlewares {
     }
   }
 
-  
   // ********************************** vérifie les critères du password
   checkShapingForPassword(req, res, next) {
     const {
-      password
+      password,
     } = req.body;
 
     const { error } = Joi.object({
@@ -63,8 +62,6 @@ class UsersMiddlewares {
       next();
     }
   }
-
-
 
   // ********************************** vérifie les critères des validation pour la mise à jour d'un utilisateur
   checkShapingForUpdate(req, res, next) {
