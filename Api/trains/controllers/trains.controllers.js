@@ -1,10 +1,10 @@
-const TrainsModel = require('../models/trains.models')
+const TrainsModels = require('../models/trains.models')
 
 class TrainsControllers {
 
     async infoTrailers(req, res) {
         try {
-            const trailers = await TrainsModel.getTrailers()
+            const trailers = await TrainsModels.getTrailers()
             res.status(200).send(trailers)
         }
         catch (error) {
@@ -15,7 +15,7 @@ class TrainsControllers {
     async infoTrainById(req, res) {
         const id = req.params.id
         try {
-            const trailer = await TrainsModel.getTrainById(id)
+            const trailer = await TrainsModels.getTrainById(id)
             res.status(200).send(trailer)
         }
         catch (error) {
@@ -24,10 +24,10 @@ class TrainsControllers {
     }
 
     updateTrailer = (req, res) => {
-        const { date, processingTime, userId } = req.body
+        const { date, processingTime, userId, trailerId } = req.body
 
         try {
-            TrainsModels.updateTrailers(date, processingTime, userId)
+            TrainsModels.updateTrailer(date, processingTime, userId, trailerId)
             res.status(201).send('trailer successfuly updated')
         }
         catch (error) {

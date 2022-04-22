@@ -7,6 +7,7 @@ const app = express()
 const fileUpload = require('express-fileupload')
 const dbRouter = require('./db/db.route')
 const trainsRouter = require('./trains/trains.routes')
+const usersRouter = require('./users/users.route')
 
 app.use(cors());
 app.use(express.json());

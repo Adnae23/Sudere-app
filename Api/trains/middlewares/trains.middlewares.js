@@ -1,11 +1,12 @@
 const {getUserById} = require('../../users/models/users.models')
+const Joi = require('Joi')
 
 class trainsMiddlewares{
     checkShapingForTrailers(req, res, next) {
         const { date, processingTime, userId } = req.body
         const {error} = Joi.object({
             date: Joi.string().required(),
-            processingTime: Joi.string().required(),
+            processingTime: Joi.number().required(),
             userId: Joi.string().min(8).max(8).required()
         }).validate({date, processingTime, userId},{abortEarly: false});
         if (error) {
