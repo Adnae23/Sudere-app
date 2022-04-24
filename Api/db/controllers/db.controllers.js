@@ -1,7 +1,15 @@
+const { date } = require('joi');
 const DbModel = require('../models/db.models');
 
 class DbController {
   async updateDatabase(req, res) {
+
+    try {
+      const time = await new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
+      await DbModel.dbUpdateTimeLog(time);
+    } catch (error) {
+      res.status(500).send({ error: error.message });
+    }
     // ********************************** Ajoute les nouvelles séries dans la db
     try {
       const dropSeries = await DbModel.dropSerie();
@@ -26,13 +34,13 @@ class DbController {
     try {
       req.trainsReplace.map(async (train) => {
         await DbModel.replaceTrain(train);
-        for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer++) {
+        for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer + 1) {
           if (trainsTrailer !== 3) {
-            await DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
+            DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
           }
         }
       });
-      // res.status(201).send('Insert successfully')
+      // res.status(201).send('database updated');
     } catch (error) {
       res.status(500).send({ error: error.message });
     }
@@ -43,7 +51,6 @@ class DbController {
         await DbModel.deleteTrailers(train);
         await DbModel.deleteTrain(train);
       });
-      res.sendStatus(200);
     } catch (error) {
       res.status(500).send({ error: error.message });
     }

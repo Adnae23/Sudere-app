@@ -1,3 +1,4 @@
+const { connect } = require('../../db-config');
 const connection = require('../../db-config');
 
 class DbModel {
@@ -128,6 +129,15 @@ class DbModel {
       return result[0];
     } catch (error) {
       throw error;
+    }
+  }
+
+  async dbUpdateTimeLog(time) {
+    try {
+      const sql = 'INSERT INTO db_update (updateTime) VALUES (?)';
+      await connection.promise().query(sql, [time]);
+    } catch (error) {
+      throw (error);
     }
   }
 }

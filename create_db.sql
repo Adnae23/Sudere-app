@@ -4,6 +4,11 @@ CREATE DATABASE IF NOT EXISTS sudere;
 
 USE sudere;
 
+CREATE TABLE db_update (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+updateTime VARCHAR(255));
+
+
 CREATE TABLE `lines`(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(80) NOT NULL);
@@ -54,7 +59,7 @@ number VARCHAR(3) NOT NULL,
 date DATE,
 processingTime INT,
 id_train INT NOT NULL,
-id_user VARCHAR(8) DEFAULT '8709168M',
+id_user VARCHAR(8) DEFAULT '8902809S',
 CONSTRAINT fk_trailers_trains
     FOREIGN KEY (id_train) REFERENCES trains(id) ON UPDATE CASCADE ON DELETE CASCADE,
 CONSTRAINT fk_trailers_users
@@ -62,5 +67,9 @@ CONSTRAINT fk_trailers_users
 
 INSERT INTO users (id, firstname, lastname, email, password, access, id_center)
     VALUES
-    ('8709168M', 'Anais', 'Roussy Renard', 'anais.renard@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$ghwLB4UR+t/RVJg9oIecZw$AqkL4hZ/N7J3iNQZyWBBdbiXzLtU40Q4QE1Et756a5M', 'admin', 1);
+    ('8902809S', 'Gael', 'Douence', 'gael.douence@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$ghwLB4UR+t/RVJg9oIecZw$AqkL4hZ/N7J3iNQZyWBBdbiXzLtU40Q4QE1Et756a5M', 'admin', 1);
 
+-- CREATE TABLE db_logs(
+-- id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+
+-- );
