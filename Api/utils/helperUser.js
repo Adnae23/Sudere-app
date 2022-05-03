@@ -1,6 +1,7 @@
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
-const maxAge = 60000
+
+const maxAge = 60000;
 
 const hashingOptions = {
   type: argon2.argon2id,
@@ -13,9 +14,8 @@ const hashPassword = (plainPassword) => argon2.hash(plainPassword, hashingOption
 
 const verifyPassword = (plainPassword, hashedPassword) => argon2.verify(hashedPassword, plainPassword, hashingOptions);
 
-const calculateToken = (userId, userAccess)=>{
-  return jwt.sign({cp:userId, access:userAccess}, process.env.PRIVATE_KEY,{expiresIn:maxAge});
-}
+const calculateToken = (userId, userAccess) => jwt.sign({ cp: userId, access: userAccess }, process.env.PRIVATE_KEY, { expiresIn: maxAge });
+
 module.exports = {
 
   hashPassword,

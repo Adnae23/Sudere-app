@@ -1,6 +1,6 @@
 const express = require('express');
-const {signIn} = require('./controllers/auth.controllers');
-const {checkExistingUser} = require('./middlewares/auth.middlewares');
+const { signIn } = require('./controllers/auth.controllers');
+const { checkExistingUser } = require('./middlewares/auth.middlewares');
 
 const router = express.Router();
 
