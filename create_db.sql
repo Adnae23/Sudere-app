@@ -69,7 +69,37 @@ INSERT INTO users (id, firstname, lastname, email, password, access, id_center)
     VALUES
     ('8902809S', 'Gael', 'Douence', 'gael.douence@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$ghwLB4UR+t/RVJg9oIecZw$AqkL4hZ/N7J3iNQZyWBBdbiXzLtU40Q4QE1Et756a5M', 'admin', 1);
 
--- CREATE TABLE db_logs(
--- id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE trains_log (
+   action VARCHAR(255),
+   action_time   TIMESTAMP,
+   id_train INT NOT NULL,
+   id_line INT NOT NULL,
+   id_serie INT NOT NULL 
+);
 
--- );
+DELIMITER $$
+CREATE TRIGGER ai_trains AFTER INSERT ON trains
+FOR EACH ROW
+BEGIN
+  INSERT INTO trains_log (action, action_time, id_train, id_line, id_serie)
+  VALUES('insert', NOW(), NEW.id, NEW.id_line, NEW.id_serie);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER au_trains AFTER UPDATE ON trains
+FOR EACH ROW
+BEGIN
+  INSERT INTO trains_log (action, action_time, id_train, id_line, id_serie)
+  VALUES('update', NOW(), NEW.id, NEW.id_line, NEW.id_serie);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ad_trains AFTER DELETE ON trains
+FOR EACH ROW
+BEGIN
+  INSERT INTO trains_log (action, action_time, id_train, id_line, id_serie)
+  VALUES('delete', NOW(), OLD.id, OLD.id_line, OLD.id_serie);
+END$$
+DELIMITER ;
