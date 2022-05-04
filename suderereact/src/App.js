@@ -1,6 +1,7 @@
-import './App.css';
+import './styles/index.scss';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Header from './components/Header';
 
 
 
@@ -44,11 +45,12 @@ function App() {
     setSubmit(true)
   }
   return (
-    <div>
-      <form onSubmit={backUp}>
+    <div className='app'>
+      <Header />
+      {/* <form onSubmit={backUp}>
         <input type="file" name='excelFile' onChange={handleFileSelect} />
         <input type="submit" value="Upload File" />
-      </form>
+      </form> */}
     </div>
   );
 }
