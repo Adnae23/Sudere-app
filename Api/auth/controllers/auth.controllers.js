@@ -1,5 +1,6 @@
+/* eslint-disable class-methods-use-this */
 const { getUserById } = require('../models/auth.models');
-const { calculateToken } = require('../../utils/helperUser');
+const { calculateToken, expireToken } = require('../../utils/helperUser');
 
 class UserController {
   async signIn(req, res) {
@@ -8,6 +9,12 @@ class UserController {
     const token = await calculateToken(cp, user[0].access);
     res.cookie('user_token', token, { httpOnly: true });
     res.status(200).send('connected');
+  }
+
+  async logout(req, res) {
+    const token = await expireToken();
+    res.cookie('user_token', token, { httpOnly: true });
+    res.status(200).send('deconnected');
   }
 }
 
