@@ -1,0 +1,16 @@
+.global_header {
+    .header {
+        display: flex;
+        .hearder_logo {
+            .header_logo_sncf {
+                height: auto;
+                width: 10vw;
+            }
+            
+        }
+        
+        .header_title{
+            color: white;
+        }
+    }
+}
