@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-useless-catch */
 const connection = require('../../db-config');
 

@@ -1,3 +1,6 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-param-reassign */
 const XLSX = require('xlsx');
 
 const rename = (name) => {
@@ -71,7 +74,7 @@ const compare = (req, trainsFromDb) => {
 
   trainsFromDb.map((train) => {
     for (const trainFromData of data[0]) {
-      if (train != trainFromData) { req.trainsDelete.push(train.id); }
+      if (train !== trainFromData) { req.trainsDelete.push(train.id); }
     }
   });
 };
