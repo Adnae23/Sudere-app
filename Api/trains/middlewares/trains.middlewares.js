@@ -1,7 +1,16 @@
+/* eslint-disable class-methods-use-this */
 const Joi = require('Joi');
 const { getUserById } = require('../../users/models/users.models');
 
-class trainsMiddlewares {
+class TrainsMiddlewares {
+  checkBody(req, res, next) {
+    if (!req.body.date || !req.body.processingTime || !req.body.userId) {
+      res.status(400).send('bad request');
+    } else {
+      next();
+    }
+  }
+
   checkShapingForTrailers(req, res, next) {
     const { date, processingTime, userId } = req.body;
     const { error } = Joi.object({
@@ -27,4 +36,4 @@ class trainsMiddlewares {
   }
 }
 
-module.exports = new trainsMiddlewares();
+module.exports = new TrainsMiddlewares();

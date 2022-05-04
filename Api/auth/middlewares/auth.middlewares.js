@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
 const { getUserById } = require('../models/auth.models');
 const { verifyPassword } = require('../../utils/helperUser');

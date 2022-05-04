@@ -1,11 +1,11 @@
 const express = require('express');
 const { updateDatabase } = require('./controllers/db.controllers');
 const {
-  storeFile, sheetName, compareData, test,
+  checkFile, storeFile, sheetName, compareData,
 } = require('./middlewares/db.middlewares');
 
 const router = express.Router();
 
-router.post('/', [storeFile, sheetName, compareData, updateDatabase]);
+router.post('/', [checkFile, storeFile, sheetName, compareData, updateDatabase]);
 
 module.exports = router;

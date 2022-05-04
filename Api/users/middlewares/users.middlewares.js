@@ -1,8 +1,42 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable max-len */
 const Joi = require('joi');
 const { getUserById } = require('../models/users.models');
 const { hashPassword } = require('../../utils/helperUser');
 
 class UsersMiddlewares {
+  checkBodyId(req, res, next) {
+    if (!req.body.id) {
+      res.status(400).send('bad request');
+    } else {
+      next();
+    }
+  }
+
+  checkBody(req, res, next) {
+    if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.center || !req.body.access) {
+      res.status(400).send('bad request');
+    } else {
+      next();
+    }
+  }
+
+  checkBodyForUpdate(req, res, next) {
+    if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.access) {
+      res.status(400).send('bad request');
+    } else {
+      next();
+    }
+  }
+
+  checkBodyForPassword(req, res, next) {
+    if (!req.body.password) {
+      res.status(400).send('bad request');
+    } else {
+      next();
+    }
+  }
+
   // ********************************** vérifie si user déjà présent dans la db
   async checkNotExistingUser(req, res, next) {
     const existingUser = await getUserById(req.body.id);
