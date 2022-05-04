@@ -1,9 +1,16 @@
 .content{
     display: flex;
     background-color: $warm_gray_3;
+    text-align: center;
+    align-items: center;
+    height: 80%;
+
     &_train{
         &_img{
-
+            width: 200px;
+            &_1{
+                max-width: 100%;
+            }
         }
         &_title{
             color: $carbone;
@@ -11,7 +18,10 @@
     }
     &_team{
         &_img{
-
+            width: 200px;
+            &_2{
+                max-width: 100%;
+            }
         }
         &_title{
             color: $carbone;
