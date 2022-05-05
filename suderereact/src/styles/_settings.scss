@@ -1,9 +1,18 @@
+@font-face {
+    font-family: Avenir;
+    src: url(./fonts/AvenirLTStd-Black.otf);
+}
+
 $carbone: #333333;
+$warm_gray_1: #E0DED8;
 $warm_gray_3: #C3BEB4;
 $orange: #E05206;
 
 
+
 body{
     background-color: $carbone;
-    margin: 0;
+    margin: auto;
+    font-family: 'Avenir';
+    width: 100%;
 }

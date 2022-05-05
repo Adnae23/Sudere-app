@@ -2,10 +2,11 @@
     background-color: $carbone;
     display: flex;
     flex-direction: row;
-    &_left{
-        width: 34%;
+    &__left{
+        width: 25%;
     }
-    &_right{
-        width: 66%;
+    &__right{
+        margin: 20px;
+        width: 75%;
     }
 }
