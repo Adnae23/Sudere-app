@@ -6,7 +6,8 @@
         width: 25%;
     }
     &__right{
-        margin: 20px;
         width: 75%;
+        margin: 20px;
+        background-color: $warm_gray_1;
     }
 }

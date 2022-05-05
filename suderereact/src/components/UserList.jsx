@@ -19,7 +19,7 @@ function UserList() {
   }, [list]);
   return (
     <div className="listUsers">
-      {list.map((user) => <p key={user.id}>{`${user.lastname} ${user.firstname}`}</p>)}
+      {list.map((user) => <p className="listUsers__user" key={user.id}>{`${user.lastname} ${user.firstname}`}</p>)}
     </div>
   );
 }

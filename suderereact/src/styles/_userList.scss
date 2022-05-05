@@ -1,5 +1,9 @@
 .listUsers{
-    width: 40%;
-    background-color: white;
+    width: 90%;
     margin-top: 0;
+    padding: 5%;
+    &__user{
+        margin: 20px 0px;
+        font-size: 1.2em;
+    }
 }

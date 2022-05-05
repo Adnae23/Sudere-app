@@ -4,7 +4,9 @@ import UserList from './UserList';
 function UpdateUser() {
   return (
     <div className="updateUser">
-      <UserList />
+      <div className="updateUser__userList">
+        <UserList />
+      </div>
     </div>
   );
 }
