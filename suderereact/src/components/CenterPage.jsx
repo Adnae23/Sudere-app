@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 
 function CenterPage() {
+  // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
+  const serie = 'Reseau';
   // const serie = 'OUIGO';
-//   const serie = 'Duplex';
-  const serie = 'Atlantique';
+  // const serie = 'Duplex';
+  // const serie = 'Atlantique';
+  const rame = 820;
+  const mat = '2N2';
+  const axe = 'SUD-EST';
+  // ************************ FIN DES VARIABLES A RECUPERER DANS USECONTEXT ************************
   const [remorque, setRemorque] = useState(1);
+
   const nbrTrailer = serie === 'Atlantique' ? 10 : 8;
   const remorqueR1 = serie === 'Atlantique' ? 5 : 4;
   const remorqueR2 = serie === 'Atlantique' ? 4 : 3;
@@ -31,21 +38,43 @@ function CenterPage() {
   }
 
   function result(rem) {
-    const resultat = rem;
+    let resultat = rem;
     if (rem >= nbrTrailer) {
-      rem = rem === nbrTrailer ? 1 : rem;
-      rem = rem === nbrTrailer + 1 ? 2 : rem;
-      rem = rem === nbrTrailer + 2 ? 3 : rem;
-      rem = rem === nbrTrailer + 3 ? 4 : rem;
-      rem = rem === nbrTrailer + 4 ? 5 : rem;
-      rem = rem === nbrTrailer + 5 ? 6 : rem;
-      rem = rem === nbrTrailer + 6 ? 7 : rem;
+      switch (rem) {
+        case nbrTrailer:
+          resultat = 1;
+          break;
+        case nbrTrailer + 1:
+          resultat = 2;
+          break;
+        case nbrTrailer + 2:
+          resultat = 3;
+          break;
+        case nbrTrailer + 3:
+          resultat = 4;
+          break;
+        case nbrTrailer + 4:
+          resultat = 5;
+          break;
+        case nbrTrailer + 5:
+          resultat = 6;
+          break;
+        case nbrTrailer + 6:
+          resultat = 7;
+          break;
+        default:
+          resultat = rem;
+          break;
+      }
       if (nbrTrailer === 10) {
-        rem = rem === nbrTrailer + 7 ? 8 : rem;
-        rem = rem === nbrTrailer + 8 ? 9 : rem;
+        if (rem === nbrTrailer + 7) {
+          resultat = 8;
+        } else if (rem === nbrTrailer + 8) {
+          resultat = 9;
+        }
       }
     }
-    return rem;
+    return resultat;
   }
 
   function ColorSelect(date) {
@@ -55,9 +84,9 @@ function CenterPage() {
   return (
     <div className="centerPage">
       <div className="centerPage__infoRame">
-        <h4>Rame: </h4>
-        <h4>Matériel: </h4>
-        <h4>Axe: </h4>
+        <h4>{`Rame: ${rame}`}</h4>
+        <h4>{`Matériel: ${mat}`}</h4>
+        <h4>{`Axe: ${axe}`}</h4>
       </div>
 
       <div className="centerPage__carrousel">
@@ -65,27 +94,21 @@ function CenterPage() {
         <div className="centerPage__carrousel_trailersPic">
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque)}`}>
             <img src={`../pictures/${serie}/R1.gif`} alt="R1" />
-            {result(remorque)}
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 1)}`}>
             <img src={`../pictures/${serie}/R2.gif`} alt="R2" />
-            {result(remorque + 1)}
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 2)}`}>
             <img src={`../pictures/${serie}/R2.gif`} alt="R3" />
-            {result(remorque + 2)}
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 3)}`}>
             <img src={`../pictures/${serie}/R5.gif`} alt="R5" />
-            {result(remorque + 3)}
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 4)}`}>
             <img src={`../pictures/${serie}/R5.gif`} alt="R6" />
-            {result(remorque + 4)}
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 5)}`}>
             <img src={`../pictures/${serie}/R5.gif`} alt="R7" />
-            {result(remorque + 5)}
           </div>
           {
             serie === 'Atlantique'
@@ -93,20 +116,15 @@ function CenterPage() {
             <>
               <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
                 <img src={`../pictures/${serie}/R5.gif`} alt="R8" />
-                {result(remorque + 6)}
               </div>
               <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 7)}`}>
                 <img src={`../pictures/${serie}/R5.gif`} alt="R9" />
-                {result(remorque + 7)}
               </div>
             </>
             )
           }
           <div className={serie === 'Atlantique' ? `centerPage__carrousel_trailersPic_R${result(remorque + 8)}` : `centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-            {remorque}
-            {' '}
             <img src={`../pictures/${serie}/R8.gif`} alt={serie === 'Atlantique' ? 'R10' : 'R8'} />
-            {result(remorque + 8)}
           </div>
         </div>
 
