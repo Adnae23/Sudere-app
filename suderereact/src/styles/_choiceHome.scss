@@ -1,30 +1,65 @@
-.content{
+.content {
     display: flex;
-    background-color: $warm_gray_3;
+    background-color: $warm_gray_1;
     text-align: center;
     align-items: center;
-    height: 80%;
+    height: 68vh;
+    justify-content: center;
+    @media screen and (max-width: 520px) {
+        flex-direction: column-reverse;
+    }
 
-    &_train{
-        &_img{
-            width: 200px;
-            &_1{
-                max-width: 100%;
+    &_train {
+        margin-right: 12%;
+        @media screen and (max-width: 520px) {
+            margin-right: 0;
+        }
+        &_img {
+            height: 12rem;
+            @media screen and (max-width: 520px) {
+                height: 7rem;
+                margin: 2rem;
+            }
+            &_1 {
+                max-height: 100%;
             }
         }
-        &_title{
+        &_title {
             color: $carbone;
+            @media screen and (max-width: 520px) {
+                margin: 8px;
+            }
         }
     }
-    &_team{
-        &_img{
-            width: 200px;
-            &_2{
-                max-width: 100%;
+    &_team {
+        &_img {
+            height: 12rem;
+            @media screen and (max-width: 520px) {
+                height: 7rem;
+            }
+            &_2 {
+                max-height: 100%;
+                @media screen and (max-width: 520px) {
+                    opacity: 0.5;
+                }
             }
         }
-        &_title{
+        &_title-1 {
             color: $carbone;
+            @media screen and (max-width: 520px) {
+                margin: 8px;
+                margin-bottom: 1px;
+            }
+        }
+        &_title-2 {
+            display: none;
+            color: $framboise;
+            @media screen and (max-width: 520px) {
+                margin: 8px;
+                display: block;
+                font-size: 2vh;
+                margin: 1px;
+            }
         }
     }
 }
