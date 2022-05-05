@@ -1,0 +1,264 @@
+:root {
+    --scale-a: 1;
+    --scale-b: 1;
+    --scale-c: 1;
+    --scale-d: 1;
+    --font-pic-a: 1em;
+    --font-pic-b: 1em;
+    --font-pic-c: 1em;
+    --font-pic-d: 1em;
+    --marge-a: 160px;
+    --marge-b: 235px;
+    --marge-c: 310px;
+    --marge-d: 370px;
+}
+
+div[class^="carrousel_trailersPic_R"]:first-child:nth-last-child(9),
+div[class^="carrousel_trailersPic_R"]:first-child:nth-last-child(9) ~ div[class^="carrousel_trailersPic_R"] {
+    --scale-a: 1;
+    --scale-b: 1.3;
+    --scale-c: 1.6;
+    --scale-d: 1.3;
+    --font-pic-a: 1em;
+    --font-pic-b: 1.5em;
+    --font-pic-c: 2em;
+    --font-pic-d: 1.5em;
+    --marge-a: 150px;
+    --marge-b: 210px;
+    --marge-c: 285px;
+    --marge-d: 365px;
+}
+
+div[class^="carrousel_trailersPic_R"]:first-child:nth-last-child(7),
+div[class^="carrousel_trailersPic_R"]:first-child:nth-last-child(7) ~ div[class^="carrousel_trailersPic_R"] {
+    --scale-a: 1.3;
+    --scale-b: 1.6;
+    --scale-c: 1.3;
+    --scale-d: 1;
+    --font-pic-a: 1.5em;
+    --font-pic-b: 2em;
+    --font-pic-c: 1.5em;
+    --font-pic-d: 1em;
+    --marge-a: 160px;
+    --marge-b: 235px;
+    --marge-c: 310px;
+    --marge-d: 370px;
+}
+
+[class^="carrousel_trailersPic_R"] {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 195px;
+    text-align: center;
+}
+
+[class^="carrousel_trailersPic_R"] img {
+    height: auto;
+    width: 100%;
+}
+
+[class^="carrousel_trailersNum_color_R"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+}
+
+[class^="carrousel_trailersNum_color_R_big_"] {
+    width: 80px;
+    height: 80px;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+[class^="carrousel_trailersNum_color_R_small_"] {
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+}
+
+.carrousel {
+    width: 100vw;
+    height: 700px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #E0DED8;
+
+    &_trailersPic {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        height: 100%;
+        position: relative;
+
+        &_R1 {
+            transition-delay: 1ms;
+            margin: 50px auto 0;
+            color: blue;
+            font-size: 1em;
+            transform: scale(1);
+            transition: all 0.5s;
+            z-index: 1;
+        }
+
+        &_R2 {
+            transition-delay: 2ms;
+            margin: 100px auto 0;
+            color: rgb(119, 70, 82);
+            font-size: 1em;
+            transform: scale(1);
+            transition: all 0.9s;
+            z-index: 2;
+        }
+
+        &_R3 {
+            transition-delay: 3ms;
+            margin: var(--marge-a) auto 0;
+            color: rgb(0, 255, 110);
+            font-size: var(--font-pic-a);
+            transform: scale(var(--scale-a)); /* variable 1.3 ou 1.0 suivant serie */
+            transition: all 0.9s;
+            z-index: 2;
+        }
+
+        &_R4 {
+            transition-delay: 4ms;
+            margin: var(--marge-b) auto 0;
+            color: rgb(145, 255, 0);
+            font-size: var(--font-pic-b);
+            transform: scale(var(--scale-b)); /* variable 1.6 ou 1.3 suivant serie */
+            transition: all 1s;
+            z-index: 2;
+        }
+
+        &_R5 {
+            transition-delay: 5ms;
+            margin: var(--marge-c) auto 0;
+            color: rgb(255, 0, 153);
+            font-size: var(--font-pic-c);
+            transform: scale(var(--scale-c)); /* variable 1.6 ou 1.3 suivant serie */
+            transition: all 0.9s;
+            z-index: 2;
+        }
+
+        &_R6 {
+            transition-delay: 6ms;
+            margin: var(--marge-d) auto 0;
+            color: rgb(6, 6, 34);
+            font-size: var(--font-pic-d);
+            transform: scale(var(--scale-d)); /* variable 1.3 ou 1.0 suivant serie */
+            transition: all 0.9s;
+            z-index: 2;
+        }
+
+        &_R7 {
+            transition: all 0.5s;
+            transition-delay: 7ms;
+            margin: 420px auto 0;
+            color: rgb(255, 0, 0);
+            font-size: 1em;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        &_R8 {
+            transition: all 0.5s;
+            transition-delay: 8ms;
+            margin: 470px auto 0;
+            color: rgb(255, 0, 0);
+            font-size: 1em;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        &_R9 {
+            transition: all 0.5s;
+            transition-delay: 9ms;
+            margin: 520px auto 0;
+            color: rgb(255, 0, 0);
+            font-size: 1em;
+            transform: scale(1);
+            z-index: 1;
+        }
+    }
+
+    &_trailersNum {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &_bar {
+            display: flex;
+            width: 5px;
+            height: 100%;
+            position: absolute;
+            background-color: white;
+        }
+
+        &_Up {
+            position: relative;
+            width: 50px;
+            height: 100px;
+            font-size: 3em;
+            color: white;
+            background-color: orange;
+            margin-bottom: 10px;
+            z-index: 2;
+        }
+
+        &_Down {
+            position: relative;
+            width: 50px;
+            height: 100px;
+            font-size: 3em;
+            color: white;
+            background-color: orange;
+            margin-top: 25px;
+            z-index: 2;
+        }
+
+        &_color {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            height: 80px;
+            width: 80px;
+            color: white;
+
+            &_R_small_red {
+                background-color: red;
+            }
+
+            &_R_small_orange {
+                background-color: orange;
+            }
+
+            &_R_small_green {
+                background-color: yellowgreen;
+            }
+
+            &_R_big_red {
+                background-color: red;
+            }
+
+            &_R_big_orange {
+                background-color: orange;
+            }
+
+            &_R_big_green {
+                background-color: yellowgreen;
+            }
+        }
+    }
+}

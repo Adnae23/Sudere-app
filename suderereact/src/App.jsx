@@ -3,7 +3,8 @@ import './styles/index.scss';
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 // import Header from './components/Header';
-import Admin from './components/Admin';
+// import Admin from './components/Admin';
+import CommonPage from './components/CommonPage';
 
 function App() {
   // const [selectedFile, setSelectedFile] = useState(null);
@@ -42,7 +43,7 @@ function App() {
   return (
     <div className="app">
       {/* <Header /> */}
-      <Admin />
+      <CommonPage />
       {/* <form onSubmit={backUp}>
         <input type="file" name='excelFile' onChange={handleFileSelect} />
         <input type="submit" value="Upload File" />
