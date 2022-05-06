@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Avenir;
+    src: url(./fonts/AvenirLTStd-Black.otf);
+}
+$Avenir: Avenir;
+
 $carbone: #333333;
 $warm_gray_1: #e0ded8;
 $orange: #e05206;
@@ -8,4 +14,5 @@ body {
     margin: 0;
     height: 100%;
     width: 100%;
+    font-family: $Avenir;
 }

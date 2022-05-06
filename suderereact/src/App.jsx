@@ -1,8 +1,11 @@
 import './styles/index.scss';
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import Header from './components/Header';
+import Connexion from './components/Connexion';
+import ChoiceHome from './components/ChoiceHome';
 
 function App() {
 //   const [selectedFile, setSelectedFile] = useState(null);
@@ -40,7 +43,15 @@ function App() {
   // };
   return (
     <div className="app">
-      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route path="/" element={<ChoiceHome />} />
+            <Route path="/connexion" element={<Connexion />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+
       {/* <form onSubmit={backUp}>
         <input type="file" name="excelFile" onChange={handleFileSelect} />
         <input type="submit" value="Upload File" />

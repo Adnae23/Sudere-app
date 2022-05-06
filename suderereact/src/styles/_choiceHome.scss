@@ -11,11 +11,15 @@
 
     &_train {
         margin-right: 12%;
+        background-color: $warm_gray_1;
+        border: none;
         @media screen and (max-width: 520px) {
             margin-right: 0;
         }
         &_img {
             height: 12rem;
+            background-color: $warm_gray_1;
+            border: none;
             @media screen and (max-width: 520px) {
                 height: 7rem;
                 margin: 2rem;
@@ -31,7 +35,12 @@
             }
         }
     }
+    &_train:hover {
+        transform: scale(1.02);
+    }
     &_team {
+        background-color: $warm_gray_1;
+        border: none;
         &_img {
             height: 12rem;
             @media screen and (max-width: 520px) {
@@ -60,6 +69,12 @@
                 font-size: 2vh;
                 margin: 1px;
             }
+        }
+    }
+    &_team:hover {
+        transform: scale(1.02);
+        @media screen and (max-width: 520px) {
+            transform: none;
         }
     }
 }

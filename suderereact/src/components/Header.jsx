@@ -1,6 +1,6 @@
 import React from 'react';
-// import ChoiceHome from './ChoiceHome';
-import Connexion from './Connexion';
+import { Outlet } from 'react-router-dom';
+// import Connexion from './Connexion';
 
 function Header() {
   return (
@@ -17,8 +17,8 @@ function Header() {
           <img className="global_header_logo_sncf" src="./pictures/logo/LOGO_SNCF_GROUPE_WEB.jpg" alt="sncf" />
         </div>
       </div>
-      <Connexion />
-      {/* <ChoiceHome /> */}
+      {/* <Connexion /> */}
+      <Outlet />
       <div className="global_footer">
         <div className="global_footer_logo-3">
           <img className="global_footer_logo-3_sncf" src="./pictures/logo/LOGO_SNCF_GROUPE_WEB.jpg" alt="sncf" />

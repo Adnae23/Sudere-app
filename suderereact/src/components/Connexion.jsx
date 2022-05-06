@@ -1,9 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Connexion() {
   return (
     <form className="form">
+      <div className="form__home">
+        <NavLink to="/">
+          <button type="button" className="form__home__btn" label="retour" />
+        </NavLink>
+      </div>
       <div className="form__content">
         <div className="form__content__login">
           <div className="form__content__login__id">
