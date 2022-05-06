@@ -9,14 +9,14 @@
         flex-direction: column-reverse;
     }
 
-    &_train {
+    &__train {
         margin-right: 12%;
         background-color: $warm_gray_1;
         border: none;
         @media screen and (max-width: 520px) {
             margin-right: 0;
         }
-        &_img {
+        &__img {
             height: 12rem;
             background-color: $warm_gray_1;
             border: none;
@@ -24,43 +24,46 @@
                 height: 7rem;
                 margin: 2rem;
             }
-            &_1 {
+            &__1 {
                 max-height: 100%;
             }
         }
-        &_title {
+        &__title {
             color: $carbone;
             @media screen and (max-width: 520px) {
                 margin: 8px;
             }
         }
     }
-    &_train:hover {
+    &__train:hover {
         transform: scale(1.02);
+        h3 {
+            color: $orange;
+        }
     }
-    &_team {
+    &__team {
         background-color: $warm_gray_1;
         border: none;
-        &_img {
+        &__img {
             height: 12rem;
             @media screen and (max-width: 520px) {
                 height: 7rem;
             }
-            &_2 {
+            &__2 {
                 max-height: 100%;
                 @media screen and (max-width: 520px) {
                     opacity: 0.5;
                 }
             }
         }
-        &_title-1 {
+        &__title-1 {
             color: $carbone;
             @media screen and (max-width: 520px) {
                 margin: 8px;
                 margin-bottom: 1px;
             }
         }
-        &_title-2 {
+        &__title-2 {
             display: none;
             color: $framboise;
             @media screen and (max-width: 520px) {
@@ -71,8 +74,12 @@
             }
         }
     }
-    &_team:hover {
+    &__team:hover {
         transform: scale(1.02);
+        color: $orange;
+        h3 {
+            color: $orange;
+        }
         @media screen and (max-width: 520px) {
             transform: none;
         }
