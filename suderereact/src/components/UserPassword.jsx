@@ -4,23 +4,23 @@ import React from 'react';
 function UserPassword() {
   return (
     <div className="userPassword">
-      <h5>Changer mot de passe:</h5>
-      <form>
-        <div>
-          <div>
-            <label htmlFor="previous">Ancien</label>
-            <input id="previous" type="text" />
+      <h5 className="userPassword__title">Changer mot de passe:</h5>
+      <form className="userPassword__form">
+        <div className="userPassword__form__inputs">
+          <div className="userPassword__form__inputs__line">
+            <label htmlFor="previous">Ancien:</label>
+            <input className="userPassword__form__inputs__line__input" id="previous" type="text" />
           </div>
-          <div>
-            <label htmlFor="new">Nouveau</label>
-            <input id="new" type="text" />
+          <div className="userPassword__form__inputs__line">
+            <label htmlFor="new">Nouveau:</label>
+            <input className="userPassword__form__inputs__line__input" id="new" type="text" />
           </div>
-          <div>
-            <label htmlFor="confirm">Nouveau</label>
-            <input id="confirm" type="text" />
+          <div className="userPassword__form__inputs__line">
+            <label htmlFor="confirm">Confirmer:</label>
+            <input className="userPassword__form__inputs__line__input" id="confirm" type="text" />
           </div>
         </div>
-        <button type="submit">Valider</button>
+        <button className="userPassword__form__button" type="submit">Valider</button>
       </form>
 
     </div>

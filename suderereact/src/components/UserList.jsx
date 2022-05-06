@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import UserFromList from './UserFromList';
 
 function UserList() {
   const [list, setList] = useState([]);
@@ -9,17 +10,16 @@ function UserList() {
       try {
         const response = await axios.get('http://localhost:5000/users');
         setList([...response.data]);
-        // console.log(list);
       } catch (error) {
         console.error('Error:', error);
       }
     }
 
     fetchListUsers();
-  }, [list]);
+  }, []);
   return (
     <div className="listUsers">
-      {list.map((user) => <p className="listUsers__user" key={user.id}>{`${user.lastname} ${user.firstname}`}</p>)}
+      {list.length !== 0 && list.map((user) => <UserFromList className="listUsers__user" key={user.cp} user={user} />)}
     </div>
   );
 }

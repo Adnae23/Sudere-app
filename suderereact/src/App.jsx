@@ -48,7 +48,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Admin />}>
-            <Route path="/updateUser" element={<UpdateUser />} />
+            <Route index element={<UpdateUser />} />
             <Route path="/addUser" element={<CreateUser />} />
             <Route path="/updateDb" element={<UpdateDatabase />} />
           </Route>

@@ -1,13 +1,23 @@
-import React from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { useState } from 'react';
+import SelectedUserContext from '../contexts/SelectedUserContext';
+import UserInformations from './UserInformations';
 import UserList from './UserList';
 
 function UpdateUser() {
+  const [selectedUser, setSelectedUser] = useState({});
+
   return (
-    <div className="updateUser">
-      <div className="updateUser__userList">
-        <UserList />
+    <SelectedUserContext.Provider value={{ selectedUser, setSelectedUser }}>
+      <div className="updateUser">
+        <div className="updateUser__userList">
+          <UserList />
+        </div>
+        <div className="updateUser__userInformations">
+          <UserInformations />
+        </div>
       </div>
-    </div>
+    </SelectedUserContext.Provider>
   );
 }
 

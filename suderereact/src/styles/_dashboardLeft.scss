@@ -2,23 +2,40 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 100%;
     &__title{
+        width: 20%;
         color: white;
-        margin-top: 200px;
-        line-height: 40px;
-        white-space: nowrap;
-        position: absolute;
-        right: 100%;
-        transform-origin: top right 0;
-        transform: rotate( 270deg );
+        display: flex;
+        align-items: center;
+        &--vertical{
+            @include vertical-title;
+        }
     }
     &__user{
-        width: 100%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         &__separator{
-            border-top: 8px solid #bbb
+            border-top: 8px solid #bbb;
+            width: 90%;
         }
-        
+        &__button{
+            &--back{
+                height: 7vh;
+                width: 7vh;
+                background-image: url("../../public/pictures/flecheBlanche.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: transparent;
+                border: none;
+            }
+            &--back:hover {
+                background-image: url("../../public/pictures/flecheOrange.jpg");
+            }
+            &--logout{
+                text-decoration: none;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UserInfos() {
+function ConnectedUser() {
   return (
     <div className="userInfos">
       <ul className="userInfos__list">
@@ -12,4 +12,4 @@ function UserInfos() {
   );
 }
 
-export default UserInfos;
+export default ConnectedUser;
