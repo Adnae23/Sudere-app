@@ -7,7 +7,7 @@ const { hashPassword } = require('../../utils/helperUser');
 class UsersMiddlewares {
   checkBodyId(req, res, next) {
     if (!req.body.id) {
-      res.status(400).send('bad request');
+      res.status(400).send('bad request1');
     } else {
       next();
     }
@@ -15,7 +15,7 @@ class UsersMiddlewares {
 
   checkBody(req, res, next) {
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.center || !req.body.access) {
-      res.status(400).send('bad request');
+      res.status(400).send('bad request2');
     } else {
       next();
     }
@@ -23,7 +23,7 @@ class UsersMiddlewares {
 
   checkBodyForUpdate(req, res, next) {
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.access) {
-      res.status(400).send('bad request');
+      res.status(400).send('bad request3');
     } else {
       next();
     }
@@ -31,7 +31,7 @@ class UsersMiddlewares {
 
   checkBodyForPassword(req, res, next) {
     if (!req.body.password) {
-      res.status(400).send('bad request');
+      res.status(400).send('bad request4');
     } else {
       next();
     }

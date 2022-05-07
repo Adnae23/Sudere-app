@@ -36,6 +36,17 @@ class UserController {
     }
   }
 
+  async listCenters(req, res) {
+    try {
+      const result = await UserModel.getCenters();
+      res.status(200).send(result);
+    } catch (error) {
+      res.status(500).send({
+        error: error.message,
+      });
+    }
+  }
+
   // ********************************** efface un utilisateur de la db
   async deleteUser(req, res) {
     try {

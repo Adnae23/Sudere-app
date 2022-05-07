@@ -15,6 +15,17 @@ class UserModel {
     }
   }
 
+    // ********************************** récupère la liste des technicentres depuis la db
+  async getCenters() {
+    try {
+      const sql = 'SELECT id, name FROM centers';
+      const result = await connection.promise().query(sql);
+      return result[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async getUserById(id) {
     // ********************************** récupère un utilisateur spécifique avec son numéro de CP depuis la db
     try {

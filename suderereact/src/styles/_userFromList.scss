@@ -1,0 +1,12 @@
+.userFromList{
+    &__user{
+        text-decoration: none;
+        border: none;
+        background: none;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+    &__user:hover{
+        color: $orange;
+    }
+}

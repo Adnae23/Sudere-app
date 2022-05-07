@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
@@ -14,12 +15,12 @@ function UserFromList(props) {
   };
 
   return (
-    <div>
-      <p onClick={handleClick}>
+    <div className="userFromList">
+      <button className="userFromList__user" type="button" onKeyPress={handleClick} onClick={handleClick}>
         {props.user.lastname}
         {' '}
         {props.user.firstname}
-      </p>
+      </button>
     </div>
   );
 }
