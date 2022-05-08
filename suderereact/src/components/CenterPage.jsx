@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 function CenterPage() {
   // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
-  const serie = 'Reseau';
+  // const serie = 'Reseau';
   // const serie = 'OUIGO';
-  // const serie = 'Duplex';
+  const serie = 'Duplex';
   // const serie = 'Atlantique';
   const rame = 820;
   const mat = '2N2';
@@ -93,16 +93,16 @@ function CenterPage() {
 
         <div className="centerPage__carrousel_trailersPic">
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque)}`}>
-            <img src={`../pictures/${serie}/R1.gif`} alt="R1" />
+            <img src={`../pictures/${serie}/R8.gif`} alt="R1" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 1)}`}>
-            <img src={`../pictures/${serie}/R2.gif`} alt="R2" />
+            <img src={`../pictures/${serie}/R1.gif`} alt="R2" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 2)}`}>
             <img src={`../pictures/${serie}/R2.gif`} alt="R3" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 3)}`}>
-            <img src={`../pictures/${serie}/R5.gif`} alt="R5" />
+            <img src={`../pictures/${serie}/R2.gif`} alt="R5" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 4)}`}>
             <img src={`../pictures/${serie}/R5.gif`} alt="R6" />
