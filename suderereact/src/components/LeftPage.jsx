@@ -25,7 +25,7 @@ function LeftPage() {
         </div>
       </div>
       <div className="leftPage__bottomBloc">
-        <img src="" alt="connexion" className="leftPage__bottomBloc__img" />
+        <img src="../pictures/groupe.png" alt="connexion" className="leftPage__bottomBloc__img" />
         <button className="leftPage__bottomBloc__button" type="submit">Connexion</button>
       </div>
     </div>
