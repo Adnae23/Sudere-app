@@ -62,11 +62,16 @@
         height: 65%;
         width: 100%;
 
-        &__title {
-            color: $orange;
-         
-           
-        } 
+
+        &__title{
+            width: 20%;
+            color: white;
+            display: flex;
+            align-items: center;
+            &--vertical{
+                @include vertical-title;
+            }
+        }
         
         &__filters {
             display: flex;
