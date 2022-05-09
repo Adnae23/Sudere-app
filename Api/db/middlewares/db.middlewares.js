@@ -1,8 +1,20 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable global-require */
+/* eslint-disable max-len */
 const XLSX = require('xlsx');
 const { getTrains } = require('../models/db.models');
 const { compare } = require('../../utils/compare');
 
 class DbMiddlewares {
+  checkFile(req, res, next) {
+    if (req.files === null) {
+      res.status(404).send('file not found');
+    } else {
+      next();
+    }
+  }
+
   // ********************************** Récupération et copie du fichier Excel
   async storeFile(req, res, next) {
     const file = req.files.excelFile;

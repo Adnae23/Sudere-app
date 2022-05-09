@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const TrainsModels = require('../models/trains.models');
 
 class TrainsControllers {

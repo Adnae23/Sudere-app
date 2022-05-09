@@ -1,14 +1,8 @@
+/* eslint-disable no-useless-catch */
+/* eslint-disable class-methods-use-this */
 const connection = require('../../db-config');
 
 class DbModel {
-  // connection = mysql.createConnection({
-  //     host: process.env.DB_HOST,
-  //     port: process.env.DB_PORT,
-  //     user: process.env.DB_USER,
-  //     password: process.env.DB_PASSWORD,
-  //     database: process.env.DB_NAME,
-  // })
-
   async getCenters() {
     // ********************************** récupère la liste des centres depuis la db
     try {

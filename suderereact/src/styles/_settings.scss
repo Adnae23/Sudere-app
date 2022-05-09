@@ -9,6 +9,15 @@ $warm_gray_1: #e0ded8;
 $orange: #e05206;
 $framboise: #cd0037;
 
+@mixin vertical-title {
+    margin: 0;
+    width: 100%;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 3em;
+}
+
 body {
     background-color: $carbone;
     margin: 0;
