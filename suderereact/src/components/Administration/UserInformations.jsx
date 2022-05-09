@@ -1,10 +1,12 @@
 /* eslint-disable max-len */
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import SelectedUserContext from '../contexts/SelectedUserContext';
+import SelectedUserContext from '../../contexts/SelectedUserContext';
+import UpdateUserModifyButtonContext from '../../contexts/UpdateUserModifyButtonContext';
 
 function UserInformations() {
   const { selectedUser } = useContext(SelectedUserContext);
+  const { unlockUpdate } = useContext(UpdateUserModifyButtonContext);
   const [centers, setCenters] = useState([]);
 
   useEffect(() => {
@@ -37,23 +39,31 @@ function UserInformations() {
           </li>
           <li className="userInformations__list__item">
             <p className="userInformations__list__item--left">{'Email: '}</p>
-            <p className="userInformations__list__item--right">{selectedUser.user.email}</p>
+            <p className="userInformations__list__item--right">
+              {unlockUpdate ? (
+                <input className="userInformations__list__item--right--input" type="text" defaultValue={selectedUser.user.email} />
+              ) : selectedUser.user.email}
+            </p>
           </li>
           <li className="userInformations__list__item">
             <p className="userInformations__list__item--left">{'Établissement: '}</p>
             <p className="userInformations__list__item--right">
-              <select>
-                <option selected="selected">{selectedUser.user.center}</option>
-                {centers.length !== 0 && centers.map((center) => selectedUser.user.center !== center.name && <option key={center.id}>{center.name}</option>)}
-              </select>
+              {unlockUpdate ? (
+                <select className="userInformations__list__item--right--option">
+                  <option className="userInformations__list__item--right--option" selected="selected">{selectedUser.user.center}</option>
+                  {centers.length !== 0 && centers.map((center) => selectedUser.user.center !== center.name && <option className="userInformations__list__item--right--option" key={center.id}>{center.name}</option>)}
+                </select>
+              ) : selectedUser.user.center}
             </p>
           </li>
           <li className="userInformations__list__item">
             <p className="userInformations__list__item--left">{'Profile: '}</p>
             <p className="userInformations__list__item--right">
-              <select>
-                <option selected="selected">{selectedUser.user.access}</option>
-              </select>
+              {unlockUpdate ? (
+                <select className="userInformations__list__item--right--option">
+                  <option className="userInformations__list__item--right--option" selected="selected">{selectedUser.user.access}</option>
+                </select>
+              ) : selectedUser.user.access}
             </p>
           </li>
         </ul>

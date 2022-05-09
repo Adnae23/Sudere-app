@@ -24,17 +24,26 @@
             &--back{
                 height: 7vh;
                 width: 7vh;
-                background-image: url("../../public/pictures/flecheBlanche.jpg");
+                background-image: url("../../../public/pictures/flecheBlanche.jpg");
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-color: transparent;
                 border: none;
             }
             &--back:hover {
-                background-image: url("../../public/pictures/flecheOrange.jpg");
+                background-image: url("../../../public/pictures/flecheOrange.jpg");
             }
             &--logout{
-                text-decoration: none;
+                width: 60%;
+                margin: 20px auto;
+                border: none;
+                font-size: 1.5vw;
+                background-color: $warm_gray_1;
+                color: $carbone;
+                padding: 5px;
+            }
+            &--logout:hover{
+                color: $orange;
             }
         }
     }

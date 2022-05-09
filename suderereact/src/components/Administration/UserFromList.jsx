@@ -4,13 +4,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useContext } from 'react';
-import SelectedUserContext from '../contexts/SelectedUserContext';
+import SelectedUserContext from '../../contexts/SelectedUserContext';
+import UpdateUserModifyButtonContext from '../../contexts/UpdateUserModifyButtonContext';
 
 function UserFromList(props) {
   const { setSelectedUser } = useContext(SelectedUserContext);
+  const { setUnlockUpdate } = useContext(UpdateUserModifyButtonContext);
 
   const handleClick = () => {
     setSelectedUser(props);
+    setUnlockUpdate(false);
     // console.log(props);
   };
 

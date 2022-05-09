@@ -4,10 +4,10 @@ import './styles/index.scss';
 // import axios from 'axios';
 // import Header from './components/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Admin from './components/Admin';
-import CreateUser from './components/CreateUser';
-import UpdateUser from './components/UpdateUser';
-import UpdateDatabase from './components/UpdateDatabase';
+import Admin from './components/Administration/Admin';
+import CreateUser from './components/Administration/CreateUser';
+import UpdateUser from './components/Administration/UpdateUser';
+import UpdateDatabase from './components/Administration/UpdateDatabase';
 
 function App() {
   // const [selectedFile, setSelectedFile] = useState(null);

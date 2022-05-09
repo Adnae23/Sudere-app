@@ -7,6 +7,7 @@ $carbone: #333333;
 $warm_gray_1: #E0DED8;
 $warm_gray_3: #C3BEB4;
 $orange: #E05206;
+$raspberry: #CD0037;
 
 @mixin vertical-title {
     margin: 0;
@@ -14,7 +15,7 @@ $orange: #E05206;
     transform: rotate( 180deg );
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 3em;
+    font-size: 3vw;
 }
 
 body{

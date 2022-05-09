@@ -15,7 +15,7 @@ class UserController {
   async logout(req, res) {
     const token = await expireToken();
     res.cookie('user_token', token, { httpOnly: true });
-    res.status(200).send('deconnected');
+    res.status(200).send('disconnected');
   }
 }
 
