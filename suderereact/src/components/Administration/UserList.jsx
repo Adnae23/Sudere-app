@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserFromList from './UserFromList';
@@ -14,12 +15,11 @@ function UserList() {
         console.error('Error:', error);
       }
     }
-
     fetchListUsers();
   }, []);
   return (
     <div className="listUsers">
-      {list.length !== 0 && list.map((user) => <UserFromList className="listUsers__user" key={user.cp} user={user} />)}
+      {list.length !== 0 && list.map((user) => <UserFromList className="listUsers__user" key={user.id} user={user} />)}
     </div>
   );
 }

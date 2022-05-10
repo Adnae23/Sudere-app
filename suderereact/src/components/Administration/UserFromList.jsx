@@ -12,7 +12,7 @@ function UserFromList(props) {
   const { setUnlockUpdate } = useContext(UpdateUserModifyButtonContext);
 
   const handleClick = () => {
-    setSelectedUser(props);
+    setSelectedUser(props.user);
     setUnlockUpdate(false);
     // console.log(props);
   };

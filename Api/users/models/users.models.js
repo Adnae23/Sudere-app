@@ -7,7 +7,7 @@ class UserModel {
   async getUsers() {
     // ********************************** récupère la liste des users depuis la db
     try {
-      const sql = 'SELECT users.id AS cp, firstname, lastname, email, centers.name AS center , access FROM users INNER JOIN centers ON centers.id = users.id_center';
+      const sql = 'SELECT users.id AS id, firstname, lastname, email, centers.name AS center , access FROM users INNER JOIN centers ON centers.id = users.id_center';
       const result = await connection.promise().query(sql);
       return result[0];
     } catch (error) {

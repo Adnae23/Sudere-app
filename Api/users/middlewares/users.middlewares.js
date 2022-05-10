@@ -23,6 +23,7 @@ class UsersMiddlewares {
 
   checkBodyForUpdate(req, res, next) {
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.access) {
+      console.log(req.body);
       res.status(400).send('bad request3');
     } else {
       next();
