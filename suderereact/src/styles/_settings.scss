@@ -1,13 +1,17 @@
 @font-face {
     font-family: Avenir;
-    src: url(./fonts/AvenirLTStd-Black.otf);
+    src: url(../../public/fonts/AvenirLTStd_Black.otf);
 }
+
 $Avenir: Avenir;
 
 $carbone: #333333;
+$warm_gray_3: #c3beb4;
 $warm_gray_1: #e0ded8;
 $orange: #e05206;
 $raspberry: #cd0037;
+$safran: #ffb612;
+$vert_pomme: #82be00;
 
 @mixin vertical-title {
     margin: 0;
@@ -21,7 +25,5 @@ $raspberry: #cd0037;
 body {
     background-color: $carbone;
     margin: 0;
-    height: 100%;
-    width: 100%;
     font-family: $Avenir;
 }

@@ -17,7 +17,8 @@
 }
 
 div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9),
-div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9) ~ div[class^="centerPage__carrousel_trailersPic_R"] {
+div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9)
+    ~ div[class^="centerPage__carrousel_trailersPic_R"] {
     --scale-a: 1;
     --scale-b: 1.3;
     --scale-c: 1.6;
@@ -26,17 +27,20 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9) 
     --font-pic-b: 1.5em;
     --font-pic-c: 2em;
     --font-pic-d: 1.5em;
-    --marge-a: 30px;
-    --marge-b: 90px;
-    --marge-c: 150px;
-    --marge-d: 225px;
-    --marge-e: 310px;
-    --marge-f: 400px;
-    --marge-g: 470px;
+    --index_z-r3: -5;
+    --index_z-r8: 2;
+    // --marge-a: 10%;
+    --marge-b: 10%;
+    --marge-c: 25%;
+    --marge-d: 43%;
+    --marge-e: 62%;
+    --marge-f: 77%;
+    // --marge-g: 470px;
 }
 
 div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7),
-div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) ~ div[class^="centerPage__carrousel_trailersPic_R"] {
+div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)
+    ~ div[class^="centerPage__carrousel_trailersPic_R"] {
     --scale-a: 1.3;
     --scale-b: 1.6;
     --scale-c: 1.3;
@@ -45,20 +49,22 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
     --font-pic-b: 2em;
     --font-pic-c: 1.5em;
     --font-pic-d: 1em;
-    --marge-a: 50px;
-    --marge-b: 120px;
-    --marge-c: 200px;
-    --marge-d: 300px;
-    --marge-e: 410px;
-    --marge-f: 500px;
-    --marge-g: 580px;
+    --index_z-r3: 2;
+    --index_z-r8: -5;
+    --marge-a: 5vh;
+    --marge-b: 19vh;
+    --marge-c: 35vh;
+    --marge-d: 52vh;
+    --marge-e: 67vh;
+    // --marge-f: 62%;
+    // --marge-g: 77%;
 }
 
 [class^="centerPage__carrousel_trailersPic_R"] {
     display: flex;
     align-items: center;
     position: absolute;
-    width: 195px;
+    width: 12vw;
 }
 
 [class^="centerPage__carrousel_trailersPic_R"] img {
@@ -75,15 +81,15 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
 }
 
 [class^="centerPage__carrousel_trailersNum_color_R_big_"] {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     font-size: 2em;
     font-weight: bolder;
 }
 
 [class^="centerPage__carrousel_trailersNum_color_R_small_"] {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     font-size: 1em;
 }
 
@@ -99,7 +105,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
         height: 13%;
         display: flex;
         justify-content: space-evenly;
-        background-color: #E0DED8;
+        background-color: #e0ded8;
         color: $orange;
         text-align: center;
         font-size: 1.5em;
@@ -108,25 +114,27 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
             margin: auto 0;
         }
     }
+
     &__carrousel {
         width: 100%;
         height: 85%;
         display: flex;
         justify-content: center;
-        background-color: #E0DED8;
+        align-items: center;
+        background-color: #e0ded8;
 
         &_trailersPic {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            // justify-content: space-between;
             width: 80%;
-            height: 100%;
+            height: 80vh;
             position: relative;
 
             &_R1 {
                 transition-delay: 1ms;
-                margin: var(--marge-a) auto 0;
+                // margin: var(--marge-a) auto 0;
                 transform: scale(1);
                 transition: all 0.5s;
                 z-index: -5;
@@ -134,7 +142,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
 
             &_R2 {
                 transition-delay: 3ms;
-                margin: var(--marge-b) auto 0;
+                // margin: var(--marge-b) auto 0;
                 transform: scale(1);
                 transition: all 0.9s;
                 z-index: -5;
@@ -142,32 +150,36 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
 
             &_R3 {
                 transition-delay: 3ms;
-                margin: var(--marge-c) auto 0;
-                transform: scale(1); /* variable 1.3 ou 1.0 suivant serie */
+                margin: var(--marge-a) auto 0;
+                transform: scale(1);
+                /* variable 1.3 ou 1.0 suivant serie */
                 transition: all 0.9s;
-                z-index: 2;
+                z-index: var(--index_z-r3);
             }
 
             &_R4 {
                 transition-delay: 4ms;
-                margin: var(--marge-d) auto 0;
-                transform: scale(var(--scale-a)); /* variable 1.6 ou 1.3 suivant serie */
+                margin: var(--marge-b) auto 0;
+                transform: scale(var(--scale-a));
+                /* variable 1.6 ou 1.3 suivant serie */
                 transition: all 1s;
                 z-index: 2;
             }
 
             &_R5 {
                 transition-delay: 5ms;
-                margin: var(--marge-e) auto 0;
-                transform: scale(var(--scale-b)); /* variable 1.6 ou 1.3 suivant serie */
+                margin: var(--marge-c) auto 0;
+                transform: scale(var(--scale-b));
+                /* variable 1.6 ou 1.3 suivant serie */
                 transition: all 0.9s;
                 z-index: 2;
             }
 
             &_R6 {
                 transition-delay: 6ms;
-                margin: var(--marge-f) auto 0;
-                transform: scale(var(--scale-c)); /* variable 1.3 ou 1.0 suivant serie */
+                margin: var(--marge-d) auto 0;
+                transform: scale(var(--scale-c));
+                /* variable 1.3 ou 1.0 suivant serie */
                 transition: all 0.9s;
                 z-index: 2;
             }
@@ -175,26 +187,25 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
             &_R7 {
                 transition: all 0.5s;
                 transition-delay: 7ms;
-                margin: 580px auto 0;
-                transform: scale(var(--scale-d)); /* variable 1.3 ou 1.0 suivant serie */
+                margin: var(--marge-e) auto 0;
+                transform: scale(var(--scale-d));
                 font-size: 1em;
-                transform: scale(1);
                 z-index: 2;
             }
 
             &_R8 {
                 transition: all 0.5s;
                 transition-delay: 8ms;
-                margin: 530px auto 0;
+                margin: var(--marge-f) auto 0;
                 transform: scale(1);
-                z-index: -5;
+                z-index: var(--index_z-r8);
             }
 
             &_R9 {
                 display: none;
                 transition: all 0.5s;
                 transition-delay: 9ms;
-                margin: 590px auto 0;
+                // margin: 590px auto 0;
                 transform: scale(1);
                 z-index: -51;
             }
@@ -205,7 +216,9 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
             position: relative;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
+            height: 100%;
+            width: 20%;
 
             &_bar {
                 display: flex;
@@ -216,26 +229,31 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
             }
 
             &_Up {
-                position: relative;
-                width: 50px;
-                height: 100px;
-                font-size: 3em;
-                color: white;
+                // position: relative;
+                width: 47px;
+                height: 47px;
+                // font-size: 3em;
+                background-image: url(../../public/pictures/logo/flecheUpBlanche.png);
+                background-repeat: no-repeat;
+                background-size: cover;
                 background-color: $orange;
-                margin: 10px 0;
+                margin-top: 2px;
                 z-index: 2;
                 border-radius: 10px;
                 border: none;
             }
 
             &_Down {
-                position: relative;
-                width: 50px;
-                height: 100px;
-                font-size: 3em;
-                color: white;
+                // position: relative;
+                width: 47px;
+                height: 47px;
+                // font-size: 3em;
+                // color: white;
+                background-image: url(../../public/pictures/logo/flecheDownBlanche.png);
+                background-repeat: no-repeat;
+                background-size: cover;
                 background-color: $orange;
-                margin: 25px 0 10px;
+                margin-bottom: 2px;
                 z-index: 2;
                 border-radius: 10px;
                 border: none;
@@ -246,34 +264,34 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7) 
                 flex-direction: column;
                 position: relative;
                 align-items: center;
-                justify-content: center;
-                margin-top: 10px;
-                height: 80px;
-                width: 80px;
+                justify-content: space-evenly;
+                // margin-top: 5px;
+                height: 60px;
+                width: 60px;
                 color: white;
 
                 &_R_small_red {
-                    background-color: red;
+                    background-color: $raspberry;
                 }
 
                 &_R_small_orange {
-                    background-color: orange;
+                    background-color: $safran;
                 }
 
                 &_R_small_green {
-                    background-color: yellowgreen;
+                    background-color: $vert_pomme;
                 }
 
                 &_R_big_red {
-                    background-color: red;
+                    background-color: $raspberry;
                 }
 
                 &_R_big_orange {
-                    background-color: orange;
+                    background-color: $safran;
                 }
 
                 &_R_big_green {
-                    background-color: yellowgreen;
+                    background-color: $vert_pomme;
                 }
             }
         }

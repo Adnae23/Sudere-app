@@ -1,5 +1,6 @@
 .commonPage {
     display: flex;
+    width: 100vw;
     height: 100vh;
     background-color: $carbone;
 
@@ -17,7 +18,7 @@
 
     &__right {
         width: 38%;
-        margin: 20px 20px 20px 20px;
+        margin: 20px 20px 20px 0;
         // background-color: white;
     }
 }
