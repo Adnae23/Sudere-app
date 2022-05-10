@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 
 function CenterPage() {
@@ -129,7 +130,7 @@ function CenterPage() {
         </div>
 
         <div className="centerPage__carrousel_trailersNum">
-          <button className="centerPage__carrousel_trailersNum_Up" type="button" onKeyPress={moveUp} onClick={moveUp}>&#8657;</button>
+          <button className="centerPage__carrousel_trailersNum_Up" type="button" onKeyPress={moveUp} onClick={moveUp} />
           <div className="centerPage__carrousel_trailersNum_bar" />
           <div className="centerPage__carrousel_trailersNum_color">
             <div className={remorque === remorqueR1 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('green')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('green')}`}>
@@ -188,7 +189,7 @@ function CenterPage() {
                 </div>
               </div>
             )}
-          <button className="centerPage__carrousel_trailersNum_Down" type="button" onKeyPress={moveDown} onClick={moveDown}>&#8659;</button>
+          <button className="centerPage__carrousel_trailersNum_Down" type="button" onKeyPress={moveDown} onClick={moveDown} />
         </div>
       </div>
     </div>
