@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Connexion from './components/Connexion';
 import ChoiceHome from './components/ChoiceHome';
+import CommonPage from './components/CommonPage';
 
 function App() {
 //   const [selectedFile, setSelectedFile] = useState(null);
@@ -49,6 +50,7 @@ function App() {
             <Route path="/" element={<ChoiceHome />} />
             <Route path="/connexion" element={<Connexion />} />
           </Route>
+          <Route path="/commonPage" element={<CommonPage />} />
         </Routes>
       </BrowserRouter>
 
