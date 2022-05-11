@@ -2,49 +2,36 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable max-len */
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import SelectedUserContext from '../../contexts/SelectedUserContext';
 import UpdateUserModifyButtonContext from '../../contexts/UpdateUserModifyButtonContext';
 import UsertoUpdateContext from '../../contexts/UsertoUpdateContext';
+import CentersListContext from '../../contexts/CentersListContext';
+import ProfilesListContext from '../../contexts/ProfilesListContext';
 
 function UserInformations() {
-  const { selectedUser } = useContext(SelectedUserContext);
+  const { selectedUser, setSelectedUser } = useContext(SelectedUserContext);
   const { unlockUpdate } = useContext(UpdateUserModifyButtonContext);
   const { setUserToUpdate } = useContext(UsertoUpdateContext);
-  const [centers, setCenters] = useState([]);
-  const access = ['admin', 'référent', 'utilisateur'];
-  useEffect(() => {
-    async function fetchCenters() {
-      try {
-        const result = await axios.get('http://localhost:5000/users/centers-list');
-        setCenters([...result.data]);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-    fetchCenters();
-  }, []);
-  // const handleChangeEmail = (event) => {
-  //   const user = {};
-  //   user.email = event.target.value;
-  //   props.setUserToUpdate(user);
-  // };
+  const { centers } = useContext(CentersListContext);
+  const { profiles } = useContext(ProfilesListContext);
 
   const handleChangeCenter = (event) => {
     const user = {};
     user.center = event.target.value;
     setUserToUpdate({ ...user });
+    setSelectedUser({ ...selectedUser, ...user });
   };
 
   const handleChangeProfile = (event) => {
     const user = {};
-    user.access = event.target.value;
+    user.profile = event.target.value;
     setUserToUpdate({ ...user });
+    setSelectedUser({ ...selectedUser, ...user });
   };
   return (
     <div className="userInformations">
-      {selectedUser && (
+      {selectedUser ? (
         <ul className="userInformations__list">
           <li className="userInformations__list__item">
             <p className="userInformations__list__item--left">{'Nom: '}</p>
@@ -78,18 +65,18 @@ function UserInformations() {
             </p>
           </li>
           <li className="userInformations__list__item">
-            <p className="userInformations__list__item--left">{'Profile: '}</p>
+            <p className="userInformations__list__item--left">{'Profil: '}</p>
             <p className="userInformations__list__item--right">
               {unlockUpdate ? (
                 <select onChange={handleChangeProfile} className="userInformations__list__item--right--option">
-                  <option className="userInformations__list__item--right--option" defaultValue={selectedUser.access}>{selectedUser.access}</option>
-                  {access.map((profile) => selectedUser.access !== profile && <option key={profile}>{profile}</option>)}
+                  <option className="userInformations__list__item--right--option" defaultValue={selectedUser.profile}>{selectedUser.profile}</option>
+                  {profiles.length !== 0 && profiles.map((profile) => selectedUser.profile !== profile.name && <option key={profile.id}>{profile.name}</option>)}
                 </select>
-              ) : selectedUser.access}
+              ) : selectedUser.profile}
             </p>
           </li>
         </ul>
-      )}
+      ) : <p>Sélectionnez un utilisateur</p>}
     </div>
   );
 }

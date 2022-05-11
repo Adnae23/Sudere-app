@@ -6,45 +6,72 @@
     width: 97%;
     display: flex;
     flex-direction: row;
-    &__userList{
-        margin-right: 1.5%;
-        background-color: white;
+    &__left{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         width: 38.5%;
+        margin-right: 1.5%;
+        &__title{
+            font-size: 1vw;
+            padding: 10px;
+            background-color: white;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        &__userList{
+            background-color: white;
+        }
     }
     &__userInformations{
         width: 60%;
-        &__top{
-            background-color: $warm_gray_1;
-            &__buttons{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 20px;
-                &__validate{
-                    border: none;
-                    background-color: $orange;
-                    color: white;
-                    font-size: 1vw;
-                    padding: 10px;
-                }
-                &__delete{
-                    border: none;
-                    background-color: $raspberry;
-                    color: white;
-                    font-size: 1vw;
-                    padding: 10px;
+        &__right{
+            &__title{
+                font-size: 1vw;
+                padding: 10px;
+                background-color: $warm_gray_1;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+            &__top{
+                background-color: $warm_gray_1;
+                &__buttons{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    padding: 20px;
+                    &__validate{
+                        border: none;
+                        background-color: $orange;
+                        color: white;
+                        font-size: 1vw;
+                        padding: 10px;
+                    }
+                    &__delete{
+                        border: none;
+                        background-color: $raspberry;
+                        color: white;
+                        font-size: 1vw;
+                        padding: 10px;
+                    }
                 }
             }
+            &__bottom{
+                margin: 50px auto;
+            }
         }
+        
     }
-    @media screen and (max-width: 1200px) {
-        flex-direction: column;
-        &__userList{
-            width: 100%;
-            margin-bottom: 1.5%;
-        }
-        &__userInformations{
-            width: 100%;
-        }
-    }
+    // @media screen and (max-width: 1200px) {
+    //     flex-direction: column;
+    //     &__userList{
+    //         width: 100%;
+    //         margin-bottom: 1.5%;
+    //     }
+    //     &__userInformations{
+    //         width: 100%;
+    //     }
+    // }
 }

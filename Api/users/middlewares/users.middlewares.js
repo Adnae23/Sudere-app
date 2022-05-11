@@ -14,6 +14,7 @@ class UsersMiddlewares {
   }
 
   checkBody(req, res, next) {
+    req.body.password = 'defaultpassword';
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.center || !req.body.profile) {
       res.status(400).send('bad request2');
     } else {
