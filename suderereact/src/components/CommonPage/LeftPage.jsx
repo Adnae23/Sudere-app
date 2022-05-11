@@ -13,16 +13,13 @@ function LeftPage() {
   return (
     <div className="leftPage">
       <div className="leftPage__title">
-        <h1>SUDERE: CONSULTATION</h1>
+        <h4>SUDERE: CONSULTATION</h4>
       </div>
       <div className="leftPage__right">
         <div className="leftPage__right__topBloc">
-          <div className="leftPage__right__topBloc__return">
-            <button className="leftPage__right__topBloc__return__button" type="button" />
-          </div>
+          <button className="leftPage__right__topBloc__returnButton" type="button" />
           <p>saisir un numéro de rame:</p>
           <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} />
-          <button className="leftPage__right__topBloc__searchButton" type="button">Rechercher</button>
         </div>
         <div className="leftPage__right__centerBloc">
           <div className="leftPage__right__centerBloc__filters">
@@ -33,13 +30,8 @@ function LeftPage() {
           </div>
         </div>
         <div className="leftPage__right__bottomBloc">
-          <div className="leftPage__right__bottomBloc__button1">
-            <button className="leftPage__right__bottomBloc__button1__button" type="button">Paramètres</button>
-          </div>
-          <div className="leftPage__right__bottomBloc__button2">
-            <img src="../pictures/logo/groupeOrange.png" alt="connexion" className="leftPage__right__bottomBloc__button2__img" />
-            <button className="leftPage__right__bottomBloc__button2__button" type="submit">Connexion</button>
-          </div>
+          <img src="../pictures/logo/groupeOrange.png" alt="connexion" className="leftPage__right__bottomBloc__img" />
+          <button className="leftPage__right__bottomBloc__button" type="submit">Connexion</button>
         </div>
       </div>
     </div>

@@ -2,26 +2,42 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    &__date, 
-    &__delai {
+    &__date {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin: 20px;
         align-items: center;
         &__label {
-            font-size: 2vh;
+            font-size: 13px;
             color: white;
         }
         &__valeur {
             width: 30%;
             border: none;
             color: $carbone;
-            font-size: 2vh;
+            font-size: 13px;
             padding: 10px;
         }
     }
-
+    &__delai {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+        &__label {
+            font-size: 13px;
+            color: white;
+        }
+        &__valeur {
+            width: 30%;
+            border: none;
+            color: $carbone;
+            font-size: 13px;
+            padding: 10px;
+        }
+    }
     &__valid {
         display: flex;
         justify-content: center;
@@ -29,7 +45,7 @@
             background-color: $orange;
             border: none;
             color: white;
-            font-size: 2vh;
+            font-size: 13px;
             padding: 10px;
         }
     }
