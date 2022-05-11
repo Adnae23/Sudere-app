@@ -5,8 +5,8 @@ function CenterPage() {
   // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
   // const serie = 'Reseau';
   // const serie = 'OUIGO';
-  const serie = 'Duplex';
-  // const serie = 'Atlantique';
+  // const serie = 'Duplex';
+  const serie = 'Atlantique';
   const rame = 820;
   const mat = '2N2';
   const axe = 'SUD-EST';
