@@ -1,9 +1,9 @@
 import React from 'react';
 
-function UserPassword() {
+function UpdateDatabase() {
   return (
     <div />
   );
 }
 
-export default UserPassword;
+export default UpdateDatabase;
