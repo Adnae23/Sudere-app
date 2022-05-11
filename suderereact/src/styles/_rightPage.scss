@@ -2,9 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 97%;
     height: 100%;
-    background-color: rgb(255, 37, 73);
+    background-color:$raspberry;
+    margin-left: 20px;
     &__connect {
         width: 97%;
         height: 97%;
