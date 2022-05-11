@@ -14,7 +14,7 @@ class UsersMiddlewares {
   }
 
   checkBody(req, res, next) {
-    if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.center || !req.body.access) {
+    if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.center || !req.body.profile) {
       res.status(400).send('bad request2');
     } else {
       next();
@@ -22,8 +22,7 @@ class UsersMiddlewares {
   }
 
   checkBodyForUpdate(req, res, next) {
-    if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.access) {
-      console.log(req.body);
+    if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.profile) {
       res.status(400).send('bad request3');
     } else {
       next();
@@ -57,7 +56,7 @@ class UsersMiddlewares {
   // ********************************** vérifie les critères de validation
   checkShaping(req, res, next) {
     const {
-      id, firstname, lastname, email, password, center, access,
+      id, firstname, lastname, email, password, center, profile,
     } = req.body;
 
     const { error } = Joi.object({
@@ -67,9 +66,9 @@ class UsersMiddlewares {
       email: Joi.string().email().max(255).required(),
       password: Joi.string().min(8).max(255).required(),
       center: Joi.string().max(255).required(),
-      access: Joi.string().max(255).required(), // user - superUser - admin
+      profile: Joi.string().max(255).required(), // user - superUser - admin
     }).validate({
-      id, firstname, lastname, email, password, center, access,
+      id, firstname, lastname, email, password, center, profile,
     }, { abortEarly: false });
 
     if (error) {
@@ -101,7 +100,7 @@ class UsersMiddlewares {
   // ********************************** vérifie les critères des validation pour la mise à jour d'un utilisateur
   checkShapingForUpdate(req, res, next) {
     const {
-      id, firstname, lastname, center, access,
+      id, firstname, lastname, center, profile,
     } = req.body;
 
     const { error } = Joi.object({
@@ -109,9 +108,9 @@ class UsersMiddlewares {
       firstname: Joi.string().max(255).required(),
       lastname: Joi.string().max(255).required(),
       center: Joi.string().max(255).required(),
-      access: Joi.string().max(255).required(), // user - superUser - admin
+      profile: Joi.string().max(255).required(), // user - superUser - admin
     }).validate({
-      id, firstname, lastname, center, access,
+      id, firstname, lastname, center, profile,
     }, { abortEarly: false });
 
     if (error) {

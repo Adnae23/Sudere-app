@@ -47,6 +47,17 @@ class UserController {
     }
   }
 
+  async listProfiles(req, res) {
+    try {
+      const result = await UserModel.getProfiles();
+      res.status(200).send(result);
+    } catch (error) {
+      res.status(500).send({
+        error: error.message,
+      });
+    }
+  }
+
   // ********************************** efface un utilisateur de la db
   async deleteUser(req, res) {
     try {

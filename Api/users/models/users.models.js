@@ -7,7 +7,7 @@ class UserModel {
   async getUsers() {
     // ********************************** récupère la liste des users depuis la db
     try {
-      const sql = 'SELECT users.id AS id, firstname, lastname, email, centers.name AS center , access FROM users INNER JOIN centers ON centers.id = users.id_center';
+      const sql = 'SELECT users.id AS id, firstname, lastname, email, centers.name AS center , profiles.name AS profile FROM users INNER JOIN centers ON centers.id = users.id_center INNER JOIN profiles ON profiles.id = users.id_profile';
       const result = await connection.promise().query(sql);
       return result[0];
     } catch (error) {
@@ -15,10 +15,21 @@ class UserModel {
     }
   }
 
-    // ********************************** récupère la liste des technicentres depuis la db
+  // ********************************** récupère la liste des technicentres depuis la db
   async getCenters() {
     try {
       const sql = 'SELECT id, name FROM centers';
+      const result = await connection.promise().query(sql);
+      return result[0];
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // ********************************** récupère la liste des technicentres depuis la db
+  async getProfiles() {
+    try {
+      const sql = 'SELECT id, name FROM profiles';
       const result = await connection.promise().query(sql);
       return result[0];
     } catch (error) {
@@ -37,11 +48,11 @@ class UserModel {
     }
   }
 
-  async createUser(id, firstName, lastName, center, password, email, access) {
+  async createUser(id, firstName, lastName, center, password, email, profile) {
     // ********************************** Crée un utilisateur dans la db
     try {
-      const sql = 'INSERT INTO users (id, firstname, lastname, access, password, email, id_center) VALUES (?, ?, ?, ?, ?, ?, (SELECT id FROM centers WHERE name = ?))';
-      const result = await connection.promise().query(sql, [id, firstName, lastName, access, password, email, center]);
+      const sql = 'INSERT INTO users (id, firstname, lastname, profile, password, email, id_center) VALUES (?, ?, ?, ?, ?, ?, (SELECT id FROM centers WHERE name = ?))';
+      const result = await connection.promise().query(sql, [id, firstName, lastName, profile, password, email, center]);
       return result[0];
     } catch (error) {
       throw error;
@@ -59,11 +70,11 @@ class UserModel {
     }
   }
 
-  async updateUser(id, firstName, lastName, center, access) {
+  async updateUser(id, firstName, lastName, center, profile) {
     // ********************************** Met à jour la fiche d'un user dans la db
     try {
-      const sql = 'UPDATE users SET firstname = ?, lastname = ?, access = ?, id_center = (SELECT id FROM centers WHERE name = ?) WHERE id = ?';
-      const result = await connection.promise().query(sql, [firstName, lastName, access, center, id]);
+      const sql = 'UPDATE users SET firstname = ?, lastname = ?, profile = (SELECT id FROM profiles WHERE name = ?), id_center = (SELECT id FROM centers WHERE name = ?) WHERE id = ?';
+      const result = await connection.promise().query(sql, [firstName, lastName, profile, center, id]);
       return result[0];
     } catch (error) {
       throw error;
