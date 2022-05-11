@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Connexion from './components/Connexion';
 import ChoiceHome from './components/ChoiceHome';
-import CommonPage from './components/CommonPage';
+import CommonPage from './components/CommonPage/CommonPage';
 // import Header from './components/Header';
 import Admin from './components/Administration/Admin';
 import CreateUser from './components/Administration/CreateUser';
