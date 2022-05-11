@@ -19,11 +19,13 @@ $vert_pomme: #82be00;
     transform: rotate(180deg);
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 3em;
+    font-size: 3vw;
 }
 
 body {
     background-color: $carbone;
-    margin: 0;
-    font-family: $Avenir;
+    margin: auto;
+    font-family: 'Avenir';
+    width: 100%;
+    height: 100%;
 }

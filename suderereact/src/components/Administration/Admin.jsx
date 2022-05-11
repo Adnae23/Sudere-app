@@ -5,8 +5,12 @@ import DashboardRight from './DashboardRight';
 function Admin() {
   return (
     <div className="dashboard">
-      <DashboardLeft className="dashboard_left" />
-      <DashboardRight className="dashboard_right" />
+      <div className="dashboard__left">
+        <DashboardLeft />
+      </div>
+      <div className="dashboard__right">
+        <DashboardRight />
+      </div>
     </div>
   );
 }

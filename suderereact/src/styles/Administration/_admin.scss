@@ -1,0 +1,15 @@
+.dashboard{
+    background-color: $carbone;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    &__left{
+        width: 24%;
+        margin: 20px 0 20px 20px;
+    }
+    &__right{
+        width: 76%;
+        margin: 20px;
+        background-color: $warm_gray_1;
+    }
+}
