@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function LeftPage() {
   const [trainNumber, setTrainNumber] = useState('');
@@ -17,7 +18,9 @@ function LeftPage() {
       </div>
       <div className="leftPage__right">
         <div className="leftPage__right__topBloc">
-          <button className="leftPage__right__topBloc__returnButton" type="button" />
+          <NavLink to="/">
+            <button className="leftPage__right__topBloc__returnButton" type="button" />
+          </NavLink>
           <p>saisir un numéro de rame:</p>
           <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} />
         </div>
