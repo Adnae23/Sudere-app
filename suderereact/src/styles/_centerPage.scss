@@ -226,35 +226,37 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)
                 background-color: white;
             }
 
-            &_Up {
-                // position: relative;
-                width: 47px;
-                height: 47px;
-                // font-size: 3em;
-                background-image: url(../../public/pictures/logo/flecheUpBlanche.png);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-color: $orange;
-                margin-top: 2px;
-                z-index: 2;
-                border-radius: 10px;
-                border: none;
-            }
-
-            &_Down {
-                // position: relative;
-                width: 47px;
-                height: 47px;
-                // font-size: 3em;
-                // color: white;
-                background-image: url(../../public/pictures/logo/flecheDownBlanche.png);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-color: $orange;
-                margin-bottom: 2px;
-                z-index: 2;
-                border-radius: 10px;
-                border: none;
+            &__buttom {
+                z-index: 1;
+                &_Up {
+                    // position: relative;
+                    width: 47px;
+                    height: 47px;
+                    // font-size: 3em;
+                    background-image: url(../../public/pictures/logo/flecheUpBlanche.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: $orange;
+                    margin-top: 2px;
+                    z-index: 2;
+                    border-radius: 10px;
+                    border: none;
+                }
+                &_Down {
+                    // position: relative;
+                    width: 47px;
+                    height: 47px;
+                    // font-size: 3em;
+                    // color: white;
+                    background-image: url(../../public/pictures/logo/flecheDownBlanche.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: $orange;
+                    margin-bottom: 2px;
+                    z-index: 2;
+                    border-radius: 10px;
+                    border: none;
+                }
             }
 
             &_color {
