@@ -43,14 +43,14 @@
                     margin-bottom: 20px;
                     height: 6vh;
                     width: 6vh;
-                    background-image: url("../../public/pictures/logo/flecheBlanche.jpg");
+                    background-image: url("../../../public/pictures/logo/flecheBlanche.jpg");
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-color: transparent;
                     border: none;
 
                     &:hover {
-                        background-image: url("../../public/pictures/logo/flecheOrange.jpg");
+                        background-image: url("../../../public/pictures/logo/flecheOrange.jpg");
                     }
                 }
             }

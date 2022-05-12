@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Connexion from './components/Connexion';
 import ChoiceHome from './components/ChoiceHome';
-import CommonPage from './components/CommonPage';
+import CommonPage from './components/CommonPage/CommonPage';
 import Admin from './components/Administration/Admin';
 import CreateUser from './components/Administration/CreateUser';
 import UpdateUser from './components/Administration/UpdateUser';
@@ -55,7 +55,6 @@ function App() {
             <Route path="/connexion" element={<Connexion />} />
           </Route>
           <Route path="/commonPage" element={<CommonPage />} />
-
           <Route path="/admin" element={<Admin />}>
             <Route index element={<UpdateUser />} />
             <Route path="/admin/addUser" element={<CreateUser />} />
