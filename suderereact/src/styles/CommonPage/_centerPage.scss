@@ -30,11 +30,11 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9)
     --index_z-r3: -5;
     --index_z-r8: 2;
     // --marge-a: 10%;
-    --marge-b: 10%;
-    --marge-c: 25%;
-    --marge-d: 43%;
-    --marge-e: 62%;
-    --marge-f: 77%;
+    --marge-b: 16vh;
+    --marge-c: 26vh;
+    --marge-d: 37vh;
+    --marge-e: 48vh;
+    --marge-f: 58vh;
     // --marge-g: 470px;
 }
 
@@ -51,11 +51,11 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)
     --font-pic-d: 1em;
     --index_z-r3: 2;
     --index_z-r8: -5;
-    --marge-a: 5vh;
-    --marge-b: 19vh;
-    --marge-c: 35vh;
-    --marge-d: 52vh;
-    --marge-e: 67vh;
+    --marge-a: 16vh;
+    --marge-b: 26vh;
+    --marge-c: 37vh;
+    --marge-d: 48vh;
+    --marge-e: 58vh;
     // --marge-f: 62%;
     // --marge-g: 77%;
 }
@@ -108,10 +108,10 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)
         background-color: #e0ded8;
         color: $orange;
         text-align: center;
-        font-size: 1.5em;
 
         & h4 {
             margin: auto 0;
+            font-size: 2.5vh;
         }
     }
 
@@ -202,10 +202,8 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)
             }
 
             &_R9 {
-                display: none;
                 transition: all 0.5s;
                 transition-delay: 9ms;
-                // margin: 590px auto 0;
                 transform: scale(1);
                 z-index: -51;
             }
@@ -228,35 +226,37 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)
                 background-color: white;
             }
 
-            &_Up {
-                // position: relative;
-                width: 47px;
-                height: 47px;
-                // font-size: 3em;
-                background-image: url(../../../public/pictures/logo/flecheUpBlanche.png);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-color: $orange;
-                margin-top: 2px;
-                z-index: 2;
-                border-radius: 10px;
-                border: none;
-            }
-
-            &_Down {
-                // position: relative;
-                width: 47px;
-                height: 47px;
-                // font-size: 3em;
-                // color: white;
-                background-image: url(../../../public/pictures/logo/flecheDownBlanche.png);
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-color: $orange;
-                margin-bottom: 2px;
-                z-index: 2;
-                border-radius: 10px;
-                border: none;
+            &__buttom {
+                z-index: 1;
+                &_Up {
+                    // position: relative;
+                    width: 47px;
+                    height: 47px;
+                    // font-size: 3em;
+                    background-image: url(../../../public/pictures/logo/flecheUpBlanche.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: $orange;
+                    margin-top: 2px;
+                    z-index: 2;
+                    border-radius: 10px;
+                    border: none;
+                }
+                &_Down {
+                    // position: relative;
+                    width: 47px;
+                    height: 47px;
+                    // font-size: 3em;
+                    // color: white;
+                    background-image: url(../../../public/pictures/logo/flecheDownBlanche.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: $orange;
+                    margin-bottom: 2px;
+                    z-index: 2;
+                    border-radius: 10px;
+                    border: none;
+                }
             }
 
             &_color {

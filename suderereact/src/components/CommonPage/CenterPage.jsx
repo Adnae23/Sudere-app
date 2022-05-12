@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 
 function CenterPage() {
   // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
-  const serie = 'Reseau';
+  // const serie = 'Reseau';
   // const serie = 'OUIGO';
-  // const serie = 'Duplex';
+  const serie = 'Duplex';
   // const serie = 'Atlantique';
   const rame = 820;
   const mat = '2N2';
@@ -94,43 +94,45 @@ function CenterPage() {
 
         <div className="centerPage__carrousel_trailersPic">
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque)}`}>
-            <img src={`../../pictures/${serie}/R8.png`} alt="R1" />
+            <img src={`../pictures/${serie}/R8.png`} alt="R1" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 1)}`}>
-            <img src={`../../pictures/${serie}/R1.png`} alt="R2" />
+            <img src={`../pictures/${serie}/R1.png`} alt="R2" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 2)}`}>
-            <img src={`../../pictures/${serie}/R2.png`} alt="R3" />
+            <img src={`../pictures/${serie}/R2.png`} alt="R3" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 3)}`}>
-            <img src={`../../pictures/${serie}/R2.png`} alt="R5" />
+            <img src={`../pictures/${serie}/R2.png`} alt="R5" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 4)}`}>
-            <img src={`../../pictures/${serie}/R5.png`} alt="R6" />
+            <img src={`../pictures/${serie}/R5.png`} alt="R6" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 5)}`}>
-            <img src={`../../pictures/${serie}/R5.png`} alt="R7" />
+            <img src={`../pictures/${serie}/R5.png`} alt="R7" />
           </div>
           {
             serie === 'Atlantique'
             && (
             <>
               <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-                <img src={`../../pictures/${serie}/R5.png`} alt="R8" />
+                <img src={`../pictures/${serie}/R5.png`} alt="R8" />
               </div>
               <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 7)}`}>
-                <img src={`../../pictures/${serie}/R5.png`} alt="R9" />
+                <img src={`../pictures/${serie}/R5.png`} alt="R9" />
               </div>
             </>
             )
           }
           <div className={serie === 'Atlantique' ? `centerPage__carrousel_trailersPic_R${result(remorque + 8)}` : `centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-            <img src={`../../pictures/${serie}/R8.png`} alt={serie === 'Atlantique' ? 'R10' : 'R8'} />
+            <img src={`../pictures/${serie}/R8.png`} alt={serie === 'Atlantique' ? 'R10' : 'R8'} />
           </div>
         </div>
 
         <div className="centerPage__carrousel_trailersNum">
-          <button className="centerPage__carrousel_trailersNum_Up" type="button" onKeyPress={moveUp} onClick={moveUp} />
+          <div className="centerPage__carrousel_trailersNum__buttom">
+            <button className="centerPage__carrousel_trailersNum__buttom_Up" type="button" onKeyPress={moveUp} onClick={moveUp} />
+          </div>
           <div className="centerPage__carrousel_trailersNum_bar" />
           <div className="centerPage__carrousel_trailersNum_color">
             <div className={remorque === remorqueR1 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('green')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('green')}`}>
@@ -189,7 +191,9 @@ function CenterPage() {
                 </div>
               </div>
             )}
-          <button className="centerPage__carrousel_trailersNum_Down" type="button" onKeyPress={moveDown} onClick={moveDown} />
+          <div className="centerPage__carrousel_trailersNum__buttom">
+            <button className="centerPage__carrousel_trailersNum__buttom_Down" type="button" onKeyPress={moveDown} onClick={moveDown} />
+          </div>
         </div>
       </div>
     </div>

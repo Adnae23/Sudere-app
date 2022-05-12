@@ -7,15 +7,14 @@ import Header from './components/Header';
 import Connexion from './components/Connexion';
 import ChoiceHome from './components/ChoiceHome';
 import CommonPage from './components/CommonPage/CommonPage';
-// import Header from './components/Header';
 import Admin from './components/Administration/Admin';
 import CreateUser from './components/Administration/CreateUser';
 import UpdateUser from './components/Administration/UpdateUser';
 import UpdateDatabase from './components/Administration/UpdateDatabase';
 
 function App() {
-//   const [selectedFile, setSelectedFile] = useState(null);
-//   const [submit, setSubmit] = useState(false);
+  //   const [selectedFile, setSelectedFile] = useState(null);
+  //   const [submit, setSubmit] = useState(false);
 
   //   useEffect(() => {
   //     async function handleSubmit(event) {
@@ -63,12 +62,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      {/* <Header /> */}
-      {/* <Admin /> */}
-      {/* <form onSubmit={backUp}>
-        <input type="file" name="excelFile" onChange={handleFileSelect} />
-        <input type="submit" value="Upload File" />
-      </form> */}
     </div>
   );
 }

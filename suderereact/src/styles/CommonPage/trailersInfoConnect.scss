@@ -8,7 +8,7 @@
             margin-bottom: 80px;
             &__title {
                 color: $carbone;
-                font-size: 25px;
+                font-size: 3vh;
             }
         }
         &__expi-1 {
@@ -18,52 +18,10 @@
             align-items: center;
             &__exp {
                 width: 200px;
-                font-size: 13px;
+                font-size: 2vh;
             }
             &__result {
-                font-size: 13px;
-                text-align: end;
-            }
-        }
-        &__expi-2 {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            &__exp {
-                width: 200px;
-                font-size: 13px;
-            }
-            &__result {
-                font-size: 13px;
-                text-align: end;
-            }
-        }
-        &__expi-3 {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            &__exp {
-                width: 200px;
-                font-size: 13px;
-            }
-            &__result {
-                font-size: 13px;
-                text-align: end;
-            }
-        }
-        &__expi-4 {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            &__exp {
-                width: 200px;
-                font-size: 13px;
-            }
-            &__result {
-                font-size: 13px;
+                font-size: 2vh;
                 text-align: end;
             }
         }

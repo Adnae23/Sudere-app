@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 function ChoiceHome() {
   return (
     <div className="content">
-      <NavLink to="/CommonPage">
-        <button type="button" className="content__train">
-          <div className="content__train__img">
-            <img className="content__train__img__1" src="./pictures/logo/train(2).jpg" alt="train" />
+      <NavLink className="content__nav" to="/CommonPage">
+        <button type="button" className="content__nav__train">
+          <div className="content__nav__train__img">
+            <img className="content__nav__train__img__1" src="./pictures/logo/train(2).jpg" alt="train" />
           </div>
-          <h3 className="content__train__title">Consultation</h3>
+          <h3 className="content__nav__train__title">Consultation</h3>
         </button>
       </NavLink>
       <NavLink to="/Connexion">
