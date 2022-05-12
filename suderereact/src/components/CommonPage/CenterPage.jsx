@@ -1,17 +1,24 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import DataTrainContext from '../../contexts/DataTrainContext';
 
 function CenterPage() {
-  // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
-  // const serie = 'Reseau';
-  // const serie = 'OUIGO';
-  const serie = 'Duplex';
-  // const serie = 'Atlantique';
-  const rame = 820;
-  const mat = '2N2';
-  const axe = 'SUD-EST';
-  // ************************ FIN DES VARIABLES A RECUPERER DANS USECONTEXT ************************
+  const { dataTrain } = useContext(DataTrainContext);
   const [remorque, setRemorque] = useState(1);
+  let number = {};
+  let serie = {};
+  // let mat = {};
+  let line = {};
+
+  // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
+
+  number = dataTrain.number;
+  serie = dataTrain.serie;
+  // const { mat } = dataTrain;
+  line = dataTrain.line;
+  dataTrain.isSelected = remorque;
+
+  // ************************ FIN DES VARIABLES A RECUPERER DANS USECONTEXT ************************
 
   const nbrTrailer = serie === 'Atlantique' ? 10 : 8;
   const remorqueR1 = serie === 'Atlantique' ? 5 : 4;
@@ -85,9 +92,9 @@ function CenterPage() {
   return (
     <div className="centerPage">
       <div className="centerPage__infoRame">
-        <h4>{`Rame: ${rame}`}</h4>
-        <h4>{`Matériel: ${mat}`}</h4>
-        <h4>{`Axe: ${axe}`}</h4>
+        <h4>{`Rame: ${number}`}</h4>
+        <h4>{`Matériel: ${serie}`}</h4>
+        <h4>{`Axe: ${line}`}</h4>
       </div>
 
       <div className="centerPage__carrousel">
@@ -114,14 +121,14 @@ function CenterPage() {
           {
             serie === 'Atlantique'
             && (
-            <>
-              <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-                <img src={`../pictures/${serie}/R5.png`} alt="R8" />
-              </div>
-              <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 7)}`}>
-                <img src={`../pictures/${serie}/R5.png`} alt="R9" />
-              </div>
-            </>
+              <>
+                <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
+                  <img src={`../pictures/${serie}/R5.png`} alt="R8" />
+                </div>
+                <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 7)}`}>
+                  <img src={`../pictures/${serie}/R5.png`} alt="R9" />
+                </div>
+              </>
             )
           }
           <div className={serie === 'Atlantique' ? `centerPage__carrousel_trailersPic_R${result(remorque + 8)}` : `centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
