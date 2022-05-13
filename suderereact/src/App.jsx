@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
+import { CookiesProvider } from 'react-cookie';
 import Header from './components/Header';
 import Connexion from './components/Connexion';
 import ChoiceHome from './components/ChoiceHome';
@@ -52,24 +53,26 @@ function App() {
   //     setSubmit(true);
   // };
   return (
-    <ConnectionContext.Provider value={{isConnected, setIsConnected}}>
-      <div className="app">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Header />}>
-              <Route path="/" element={<ChoiceHome />} />
-              <Route path="/connexion" element={<Connexion />} />
-            </Route>
-            <Route path="/commonPage" element={<CommonPage />} />
-            <Route path="/admin" element={<Admin />}>
-              <Route index element={<UpdateUser />} />
-              <Route path="/admin/addUser" element={<CreateUser />} />
-              <Route path="/admin/updateDb" element={<UpdateDatabase />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </ConnectionContext.Provider>
+    <CookiesProvider>
+      <ConnectionContext.Provider value={{isConnected, setIsConnected}}>
+        <div className="app">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Header />}>
+                <Route path="/" element={<ChoiceHome />} />
+                <Route path="/connexion" element={<Connexion />} />
+              </Route>
+              <Route path="/commonPage" element={<CommonPage />} />
+              <Route path="/admin" element={<Admin />}>
+                <Route index element={<UpdateUser />} />
+                <Route path="/admin/addUser" element={<CreateUser />} />
+                <Route path="/admin/updateDb" element={<UpdateDatabase />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </ConnectionContext.Provider>
+    </CookiesProvider>
   );
 }
 

@@ -13,7 +13,7 @@ function Connexion() {
   async function handleClick(event) {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', login);
+      const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
       console.log(response);
       setIsConnected(true);
       navigate('/CommonPage');
