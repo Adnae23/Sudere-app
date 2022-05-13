@@ -16,7 +16,7 @@ function TrailersInfoConnect() {
     <div className="trailersglobal">
       <div className="trailersglobal__trailersInfo">
         <div className="trailersglobal__trailersInfo__title">
-          <h4 className="trailersglobal__trailersInfo__title__title">{dataTrain && `Remorque: ${dataTrain.trailer}`}</h4>
+          <h4 className="trailersglobal__trailersInfo__title__title">{dataTrain && `Remorque: ${dataTrain.isSelected}`}</h4>
         </div>
         <div className="trailersglobal__trailersInfo__expi-1">
           <p className="trailersglobal__trailersInfo__expi-1__exp">Temps passé depuis la dernière intervention:</p>

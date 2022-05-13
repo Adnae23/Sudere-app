@@ -47,7 +47,7 @@ function LeftPage() {
           </NavLink>
           <p>saisir un numéro de rame:</p>
           <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} />
-          <button className="leftPage__right__topBloc__searchButton" type="button" onClick={searchTrain}>Rechercher</button>
+          <button className="leftPage__right__topBloc__searchButton" type="button" onClick={searchTrain} onKeyPress={searchTrain}>Rechercher</button>
         </div>
         <div className="leftPage__right__centerBloc">
           <div className="leftPage__right__centerBloc__filters">

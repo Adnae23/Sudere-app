@@ -16,7 +16,7 @@ function CenterPage() {
   serie = dataTrain.serie;
   // const { mat } = dataTrain;
   line = dataTrain.line;
-  dataTrain.isSelected = remorque;
+  // dataTrain.isSelected = remorque;
 
   // ************************ FIN DES VARIABLES A RECUPERER DANS USECONTEXT ************************
 

@@ -3,12 +3,15 @@ import DataTrainContext from '../../contexts/DataTrainContext';
 
 function TrailersInfoConsult() {
   const { dataTrain } = useContext(DataTrainContext);
-  let message = '';
+  let message = [];
   if (dataTrain) {
-    if (dataTrain.firstname === 'default') {
+    if (dataTrain) {
       message = 'Jamais Traitée';
     } else {
-      message = dataTrain && `${dataTrain.firstname} ${dataTrain.lastname} au ${dataTrain.center}`;
+      message[0] = dataTrain.pastTime ? `${dataTrain.pastTime} Jours` : '----';
+      message[1] = dataTrain ? `${dataTrain.date}` : '----';
+      message[2] = dataTrain ? `${dataTrain.processingTime} Heures` : '----';
+      message[3] = dataTrain.firstname === 'default' ? '----' : `${dataTrain.firstname} ${dataTrain.lastname} au ${dataTrain.center}`;
     }
   }
 
@@ -20,19 +23,19 @@ function TrailersInfoConsult() {
       </div>
       <div className="trailersInfo2__expi">
         <p className="trailersInfo2__expi__exp">Temps passé depuis la dernière intervention:</p>
-        <p className="trailersInfo2__expi__result">{dataTrain && `${dataTrain.pastTime} Jours`}</p>
+        <p className="trailersInfo2__expi__result">{message[0]}</p>
       </div>
       <div className="trailersInfo2__expi">
         <p className="trailersInfo2__expi__exp">Date de la dernière intervention:</p>
-        <p className="trailersInfo2__expi__result">{dataTrain && `${dataTrain.date}`}</p>
+        <p className="trailersInfo2__expi__result">{message[1]}</p>
       </div>
       <div className="trailersInfo2__expi">
         <p className="trailersInfo2__expi__exp">Durée de traitement:</p>
-        <p className="trailersInfo2__expi__result">{dataTrain && `${dataTrain.processingTime} Heures`}</p>
+        <p className="trailersInfo2__expi__result">{message[2]}</p>
       </div>
       <div className="trailersInfo2__expi">
         <p className="trailersInfo2__expi__exp">Réalisation par:</p>
-        <p className="trailersInfo2__expi__result">{`${message}`}</p>
+        <p className="trailersInfo2__expi__result">{message[3]}</p>
       </div>
 
     </div>
