@@ -1,44 +1,39 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useState } from 'react';
-import { format, parseISO } from 'date-fns';
+// import { format, parseISO } from 'date-fns';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import DataTrainContext from '../../contexts/DataTrainContext';
 
 function LeftPage() {
   const [trainNumber, setTrainNumber] = useState('');
-  const { dataTrain, setDataTrain } = useContext(DataTrainContext);
-  const train = {};
+  const { setDataTrain } = useContext(DataTrainContext);
+  const isConnected = true;
   function InputTrain(inputNumber) {
-    if (inputNumber.length < 5) {
+    if (inputNumber.length < 5 && inputNumber.length > 0) {
       setTrainNumber(inputNumber);
+    } else if (inputNumber.length === 0) {
+      setDataTrain([]);
+      setTrainNumber('');
     } else {
       setTrainNumber(inputNumber.slice(0, 4));
     }
   }
-  const toDay = new Date().getTime();
+  // const toDay = new Date().getTime();
   async function searchTrain() {
-    const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`);
-
-    train.number = response.data[0].train;
-    train.serie = response.data[0].serie;
-    train.line = response.data[0].line;
-    train.trailer = response.data[0].id;
-    train.date1 = new Date(response.data[0].date);
-    train.date = format(parseISO(response.data[0].date), 'dd/MM/yyyy');
-    train.pastTime = Math.round((toDay - train.date1.getTime()) / 86400000) - 1;
-    train.processingTime = response.data[0].processingTime;
-    train.firstname = response.data[0].firstname;
-    train.lastname = response.data[0].lastname;
-    train.center = response.data[0].center;
-
-    setDataTrain({ ...dataTrain, ...train });
+    if (trainNumber.length > 0) {
+      const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`);
+      setDataTrain(response.data);
+    } else {
+      setDataTrain([]);
+      setTrainNumber('');
+    }
   }
 
   return (
     <div className="leftPage">
       <div className="leftPage__title">
-        <h1>SUDERE: CONSULTATION</h1>
+        <h1>{isConnected ? 'SUDERE: MODIFICATION' : 'SUDERE: CONSULTATION'}</h1>
       </div>
       <div className="leftPage__right">
         <div className="leftPage__right__topBloc">
@@ -59,11 +54,11 @@ function LeftPage() {
         </div>
         <div className="leftPage__right__bottomBloc">
           <div className="leftPage__right__bottomBloc__button1">
-            <button className="leftPage__right__bottomBloc__button1__button" type="button">Paramètres</button>
+            <button className={isConnected ? 'leftPage__right__bottomBloc__button1__button' : 'leftPage__right__bottomBloc__button1__buttonNone'} type="button">Paramètres</button>
           </div>
           <div className="leftPage__right__bottomBloc__button2">
             <img src="../pictures/logo/groupeOrange.png" alt="connexion" className="leftPage__right__bottomBloc__button2__img" />
-            <button className="leftPage__right__bottomBloc__button2__button" type="submit">Connexion</button>
+            <button className="leftPage__right__bottomBloc__button2__button" type="submit">{isConnected ? 'Déconnexion' : 'Connexion'}</button>
           </div>
         </div>
       </div>

@@ -1,10 +1,21 @@
+.rightPage__red {
+    background-color: $raspberry;
+}
+
+.rightPage__orange {
+    background-color: $orange;
+}
+
+.rightPage__green {
+    background-color: $vert_pomme;
+}
+
 .rightPage {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 97%;
     height: 100%;
-    background-color: $raspberry;
     margin-left: 20px;
 
     &__connect {
@@ -31,8 +42,7 @@
     }
 
     &__consult {
-        display: none;
-        // display: flex;
+        display: flex;
         justify-content: center;
         align-items: center;
         width: 97%;

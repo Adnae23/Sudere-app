@@ -1,34 +1,39 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useContext } from 'react';
 import DataTrainContext from '../../contexts/DataTrainContext';
+import TrailerSelectedContext from '../../contexts/TrailerSelectedContext';
 
 function CenterPage() {
   const { dataTrain } = useContext(DataTrainContext);
   const [remorque, setRemorque] = useState(1);
-  let number = {};
-  let serie = {};
-  // let mat = {};
-  let line = {};
+  const { setTrailerSelected } = useContext(TrailerSelectedContext);
 
   // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
-
-  number = dataTrain.number;
-  serie = dataTrain.serie;
-  // const { mat } = dataTrain;
-  line = dataTrain.line;
-  // dataTrain.isSelected = remorque;
-
+  const train = {};
+  if (dataTrain.length > 0) {
+    train.number = dataTrain[0].train;
+    train.serie = dataTrain[0].serie;
+    train.line = dataTrain[0].line;
+    train.trailer = dataTrain[0].id;
+  }
   // ************************ FIN DES VARIABLES A RECUPERER DANS USECONTEXT ************************
 
-  const nbrTrailer = serie === 'Atlantique' ? 10 : 8;
-  const remorqueR1 = serie === 'Atlantique' ? 5 : 4;
-  const remorqueR2 = serie === 'Atlantique' ? 4 : 3;
-  const remorqueR3 = serie === 'Atlantique' ? 3 : 2;
-  const remorqueR5 = serie === 'Atlantique' ? 2 : 1;
-  const remorqueR6 = serie === 'Atlantique' ? 1 : 7;
-  const remorqueR7 = serie === 'Atlantique' ? 9 : 6;
-  const remorqueR8 = serie === 'Atlantique' ? 6 : 5;
+  const trailerAtlantic = [0, 6, 5, 3, 2, 1, 10, 9, 8, 7];
+  const trailerOther = [0, 5, 3, 2, 1, 8, 7, 6];
+  const nbrTrailer = train.serie === 'Atlantique' ? 10 : 8;
+  const remorqueR1 = train.serie === 'Atlantique' ? 5 : 4;
+  const remorqueR2 = train.serie === 'Atlantique' ? 4 : 3;
+  const remorqueR3 = train.serie === 'Atlantique' ? 3 : 2;
+  const remorqueR5 = train.serie === 'Atlantique' ? 2 : 1;
+  const remorqueR6 = train.serie === 'Atlantique' ? 1 : 7;
+  const remorqueR7 = train.serie === 'Atlantique' ? 9 : 6;
+  const remorqueR8 = train.serie === 'Atlantique' ? 6 : 5;
 
+  function calculPastTime(rem) {
+    train.pastTime = Math.round((new Date() - new Date(dataTrain[rem].date).getTime()) / 86400000) - 1;
+    return train.pastTime;
+  }
   function moveUp() {
     if (remorque >= nbrTrailer - 1) {
       setRemorque(1);
@@ -85,54 +90,74 @@ function CenterPage() {
     return resultat;
   }
 
+  function smallBig(position) {
+    let laClassName;
+    if (remorque === position) {
+      laClassName = 'big';
+      if (train.serie === 'Atlantique') {
+        setTrailerSelected(trailerAtlantic[position]);
+      } else {
+        setTrailerSelected(trailerOther[position]);
+      }
+    } else {
+      laClassName = 'small';
+    }
+    return laClassName;
+  }
+
   function ColorSelect(date) {
-    return date;
+    if (date > 1095) {
+      return 'red';
+    } if (date > 900) {
+      return 'orange';
+    }
+    return 'green';
   }
 
   return (
     <div className="centerPage">
       <div className="centerPage__infoRame">
-        <h4>{`Rame: ${number}`}</h4>
-        <h4>{`Matériel: ${serie}`}</h4>
-        <h4>{`Axe: ${line}`}</h4>
+        <h4>{`Rame: ${train.number}`}</h4>
+        <h4>{`Matériel: ${train.serie}`}</h4>
+        <h4>{`Axe: ${train.line}`}</h4>
       </div>
 
       <div className="centerPage__carrousel">
 
         <div className="centerPage__carrousel_trailersPic">
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque)}`}>
-            <img src={`../pictures/${serie}/R8.png`} alt="R1" />
+            <img src={`../pictures/${train.serie}/R8.png`} alt="R1" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 1)}`}>
-            <img src={`../pictures/${serie}/R1.png`} alt="R2" />
+            <img src={`../pictures/${train.serie}/R1.png`} alt="R2" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 2)}`}>
-            <img src={`../pictures/${serie}/R2.png`} alt="R3" />
+            <img src={`../pictures/${train.serie}/R2.png`} alt="R3" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 3)}`}>
-            <img src={`../pictures/${serie}/R2.png`} alt="R5" />
+            <img src={`../pictures/${train.serie}/R2.png`} alt="R5" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 4)}`}>
-            <img src={`../pictures/${serie}/R5.png`} alt="R6" />
+            <img src={`../pictures/${train.serie}/R5.png`} alt="R6" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 5)}`}>
-            <img src={`../pictures/${serie}/R5.png`} alt="R7" />
+            <img src={`../pictures/${train.serie}/R5.png`} alt="R7" />
           </div>
           {
-            serie === 'Atlantique'
+            train.serie === 'Atlantique'
             && (
               <>
                 <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-                  <img src={`../pictures/${serie}/R5.png`} alt="R8" />
+                  <img src={`../pictures/${train.serie}/R5.png`} alt="R8" />
                 </div>
                 <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 7)}`}>
-                  <img src={`../pictures/${serie}/R5.png`} alt="R9" />
+                  <img src={`../pictures/${train.serie}/R5.png`} alt="R9" />
                 </div>
               </>
             )
           }
-          <div className={serie === 'Atlantique' ? `centerPage__carrousel_trailersPic_R${result(remorque + 8)}` : `centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-            <img src={`../pictures/${serie}/R8.png`} alt={serie === 'Atlantique' ? 'R10' : 'R8'} />
+          <div className={train.serie === 'Atlantique' ? `centerPage__carrousel_trailersPic_R${result(remorque + 8)}` : `centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
+            <img src={`../pictures/${train.serie}/R8.png`} alt={train.serie === 'Atlantique' ? 'R10' : 'R8'} />
           </div>
         </div>
 
@@ -142,50 +167,50 @@ function CenterPage() {
           </div>
           <div className="centerPage__carrousel_trailersNum_bar" />
           <div className="centerPage__carrousel_trailersNum_color">
-            <div className={remorque === remorqueR1 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('green')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('green')}`}>
+            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR1)}_${ColorSelect(calculPastTime(0))}`}>
               R1
             </div>
           </div>
           <div className="centerPage__carrousel_trailersNum_color">
-            <div className={remorque === remorqueR2 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('red')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('red')}`}>
+            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR2)}_${ColorSelect(calculPastTime(1))}`}>
               R2
             </div>
           </div>
           <div className="centerPage__carrousel_trailersNum_color">
-            <div className={remorque === remorqueR3 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('green')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('green')}`}>
+            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR3)}_${ColorSelect(calculPastTime(2))}`}>
               R3
             </div>
           </div>
           <div className="centerPage__carrousel_trailersNum_color">
-            <div className={remorque === remorqueR5 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('orange')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('orange')}`}>
+            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR5)}_${ColorSelect(calculPastTime(3))}`}>
               R5
             </div>
           </div>
           <div className="centerPage__carrousel_trailersNum_color">
-            <div className={remorque === remorqueR6 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('orange')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('orange')}`}>
+            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR6)}_${ColorSelect(calculPastTime(4))}`}>
               R6
             </div>
           </div>
           <div className="centerPage__carrousel_trailersNum_color">
-            <div className={remorque === remorqueR7 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('red')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('red')}`}>
+            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR7)}_${ColorSelect(calculPastTime(5))}`}>
               R7
             </div>
           </div>
-          {serie === 'Atlantique'
+          {train.serie === 'Atlantique'
             ? (
               <>
                 <div className="centerPage__carrousel_trailersNum_color">
-                  <div className={remorque === 8 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('green')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('green')}`}>
+                  <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(8)}_${ColorSelect(calculPastTime(6))}`}>
                     R8
                   </div>
                 </div>
                 <div className="centerPage__carrousel_trailersNum_color">
-                  <div className={remorque === 7 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('orange')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('orange')}`}>
+                  <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(7)}_${ColorSelect(calculPastTime(7))}`}>
                     R9
                   </div>
                 </div>
                 <div className="centerPage__carrousel_trailersNum_color">
-                  <div className={remorque === remorqueR8 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('red')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('red')}`}>
+                  <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR8)}_${ColorSelect(calculPastTime(8))}`}>
                     R10
                   </div>
                 </div>
@@ -193,7 +218,7 @@ function CenterPage() {
             )
             : (
               <div className="centerPage__carrousel_trailersNum_color">
-                <div className={remorque === remorqueR8 ? `centerPage__carrousel_trailersNum_color_R_big_${ColorSelect('green')}` : `centerPage__carrousel_trailersNum_color_R_small_${ColorSelect('green')}`}>
+                <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR8)}_${ColorSelect(calculPastTime(6))}`}>
                   R8
                 </div>
               </div>
