@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const CentersList = createContext(null);
+const CentersListContext = createContext(null);
 
-export default CentersList;
+export default CentersListContext;

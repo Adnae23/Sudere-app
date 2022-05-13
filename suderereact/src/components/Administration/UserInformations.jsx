@@ -8,6 +8,7 @@ import UpdateUserModifyButtonContext from '../../contexts/UpdateUserModifyButton
 import UsertoUpdateContext from '../../contexts/UsertoUpdateContext';
 import CentersListContext from '../../contexts/CentersListContext';
 import ProfilesListContext from '../../contexts/ProfilesListContext';
+import teamImg from '../../assets/team.jpg';
 
 function UserInformations() {
   const { selectedUser, setSelectedUser } = useContext(SelectedUserContext);
@@ -76,7 +77,12 @@ function UserInformations() {
             </p>
           </li>
         </ul>
-      ) : <p>Sélectionnez un utilisateur</p>}
+      ) : (
+        <div className="userInformations__notSelected">
+          <img className="userInformations__notSelected__img" src={teamImg} alt="équipe" />
+          <p className="userInformations__notSelected__info">Sélectionnez un utilisateur dans la liste</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -7,10 +7,12 @@
     display: flex;
     flex-direction: row;
     &__illustration {
-        display: flex;
-        flex-direction: column;
         width: 38.5%;
+        text-align: center;
         margin-right: 1.5%;
+        &__img {
+            width: 80%;
+        }
     }
     &__panel {
         width: 60%;

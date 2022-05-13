@@ -31,7 +31,7 @@ class UsersMiddlewares {
   }
 
   checkBodyForPassword(req, res, next) {
-    if (!req.body.password) {
+    if (!req.body.previous || !req.body.new || !req.body.confirm) {
       res.status(400).send('bad request4');
     } else {
       next();
@@ -81,20 +81,22 @@ class UsersMiddlewares {
 
   // ********************************** vérifie les critères du password
   checkShapingForPassword(req, res, next) {
-    const {
-      password,
-    } = req.body;
+    const { newPassword, confirmPassword } = req.body;
 
-    const { error } = Joi.object({
-      password: Joi.string().min(8).max(255).required(),
-    }).validate({
-      password,
-    }, { abortEarly: false });
-
-    if (error) {
-      res.status(422).json({ validationErrors: error.details });
+    if (newPassword !== confirmPassword) {
+      res.sendStatus(422);
     } else {
-      next();
+      const { error } = Joi.object({
+        password: Joi.string().min(8).max(255).required(),
+      }).validate({
+        newPassword,
+      }, { abortEarly: false });
+
+      if (error) {
+        res.status(422).json({ validationErrors: error.details });
+      } else {
+        next();
+      }
     }
   }
 

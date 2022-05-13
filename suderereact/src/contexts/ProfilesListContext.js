@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const ProfilesList = createContext(null);
+const ProfilesListContext = createContext(null);
 
-export default ProfilesList;
+export default ProfilesListContext;

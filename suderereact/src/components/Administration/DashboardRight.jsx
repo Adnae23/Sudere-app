@@ -10,6 +10,7 @@ import UserContext from '../../contexts/UserContext';
 
 function DashboardRight() {
   const [isUpdated, setIsUpdated] = useState(false);
+  const [dashboardRightTitle, setDashboardRightTitle] = useState('Gestion des utilisateurs');
   const [centers, setCenters] = useState([]);
   const [profiles, setProfiles] = useState([]);
   const { user } = useContext(UserContext);
@@ -37,13 +38,13 @@ function DashboardRight() {
       <CentersListContext.Provider value={{ centers, setCenters }}>
         <ProfilesListContext.Provider value={{ profiles, setProfiles }}>
           <div className="dashboardRight">
-            <h2 className="dashboardRight__title">Gestion des utilisateurs</h2>
+            <h2 className="dashboardRight__title">{dashboardRightTitle}</h2>
             <div className="dashboardRight__nav">
               <ul className="dashboardRight__nav__ul">
-                <li><NavLink className={({ isActive }) => `dashboardRight__nav__ul__link${isActive ? '--active' : ''}`} to="/admin/">Modifier utilisateur</NavLink></li>
-                <li><NavLink className={({ isActive }) => `dashboardRight__nav__ul__link${isActive ? '--active' : ''}`} to="/admin/addUser">Créer utilisateur</NavLink></li>
-                {user !== undefined && user.profile === 'ADMIN'
-                && <li><NavLink className={({ isActive }) => `dashboardRight__nav__ul__link${isActive ? '--active' : ''}`} to="/admin/updateDb">Gérer Base de données</NavLink></li>}
+                <li><NavLink onClick={() => { setDashboardRightTitle('Gestion des utilisateurs'); }} className={({ isActive }) => `dashboardRight__nav__ul__link${isActive ? '--active' : ''}`} to="/admin/">Modifier utilisateur</NavLink></li>
+                <li><NavLink onClick={() => { setDashboardRightTitle('Gestion des utilisateurs'); }} className={({ isActive }) => `dashboardRight__nav__ul__link${isActive ? '--active' : ''}`} to="/admin/addUser">Créer utilisateur</NavLink></li>
+                {user.profile === 'ADMIN'
+                && <li><NavLink onClick={() => { setDashboardRightTitle('Gestion de la base de données'); }} className={({ isActive }) => `dashboardRight__nav__ul__link${isActive ? '--active' : ''}`} to="/admin/updateDb">Gérer Base de données</NavLink></li>}
               </ul>
             </div>
             <div className="dashboardRight__outlet">

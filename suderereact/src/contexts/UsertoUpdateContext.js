@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const UsertoUpdate = createContext(null);
+const UsertoUpdateContext = createContext(null);
 
-export default UsertoUpdate;
+export default UsertoUpdateContext;

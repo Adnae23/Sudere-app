@@ -12,7 +12,7 @@ import UpdateDatabase from './components/Administration/UpdateDatabase';
 import UserContext from './contexts/UserContext';
 
 function App() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState('');
   const { decodeToken } = useJwt();
   const test = {
     firstname: 'Galen',
@@ -46,7 +46,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Header />} />
-            {user !== undefined && user.profile !== 'UTILISATEUR'
+            {user.profile !== 'UTILISATEUR'
               && (
                 <Route path="/admin" element={<Admin />}>
                   <Route index element={<UpdateUser />} />
