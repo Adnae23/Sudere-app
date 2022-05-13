@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
+const jwt = require('jsonwebtoken');
 const { getUserById } = require('../models/auth.models');
 const { verifyPassword } = require('../../utils/helperUser');
 
@@ -23,6 +24,30 @@ class AuthMiddlewares {
       res.status(404).send('User or Password does not match');
     } else {
       next();
+    }
+  }
+
+  checkCookie(req, res, next) {
+    if (!req.cookie) {
+      return res.sendStatus(403);
+    }
+    if (req.cookie.user_token) {
+      return next();
+    }
+    return res.sendStatus(403);
+  }
+
+  verifyToken(req, res, next) {
+    const token = req.cookies.user_token;
+    try {
+      const data = jwt.verify(token, process.env.PRIVATE_KEY);
+      if (data) {
+        next();
+      } else {
+        res.sendStatus(500);
+      }
+    } catch {
+      res.sendStatus(403);
     }
   }
 }

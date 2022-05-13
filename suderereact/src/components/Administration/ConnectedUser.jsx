@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 
 function ConnectedUser() {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="userInfos">
       <ul className="userInfos__list">
-        <li>GALEN ERSO</li>
-        <li>8902809S</li>
-        <li>TSEE</li>
-        <li>ADMIN</li>
+        <li className="userInfos__list__item">
+          {user.firstname}
+          {' '}
+          {user.lastname}
+        </li>
+        <li className="userInfos__list__item">{user.cp}</li>
+        <li className="userInfos__list__item">{user.center}</li>
+        <li className="userInfos__list__item">{user.profile}</li>
       </ul>
     </div>
   );
