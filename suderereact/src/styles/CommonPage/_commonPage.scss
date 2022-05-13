@@ -10,15 +10,32 @@
         // background-color: white;
     }
 
-    &__center {
-        width: 38%;
-        margin: 15px 0 15px 0px;
-        // background-color: green;
+    &__isTrain {
+        width: 76%;
+        display: flex;
+
+        &__center {
+            width: 50%;
+            margin: 15px 0 15px 0px;
+        }
+
+        &__right {
+            width: 50%;
+            margin: 15px 15px 15px 0;
+        }
     }
 
-    &__right {
-        width: 38%;
-        margin: 15px 15px 15px 0;
-        // background-color: white;
+    &__empty {
+        width: 76%;
+        height: 98%;
+
+        & h4 {
+            margin-top: 30%;
+            font-family: $Avenir;
+            color: $orange;
+            font-size: 4vh;
+            text-align: center;
+        }
+
     }
 }
