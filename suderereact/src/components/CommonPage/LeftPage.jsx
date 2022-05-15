@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useState } from 'react';
-// import { format, parseISO } from 'date-fns';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import DataTrainContext from '../../contexts/DataTrainContext';
@@ -8,7 +7,7 @@ import DataTrainContext from '../../contexts/DataTrainContext';
 function LeftPage() {
   const [trainNumber, setTrainNumber] = useState('');
   const { setDataTrain } = useContext(DataTrainContext);
-  const isConnected = true;
+  const isConnected = false;
   function InputTrain(inputNumber) {
     if (inputNumber.length < 5 && inputNumber.length > 0) {
       setTrainNumber(inputNumber);
@@ -19,7 +18,6 @@ function LeftPage() {
       setTrainNumber(inputNumber.slice(0, 4));
     }
   }
-  // const toDay = new Date().getTime();
   async function searchTrain() {
     if (trainNumber.length > 0) {
       const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`);

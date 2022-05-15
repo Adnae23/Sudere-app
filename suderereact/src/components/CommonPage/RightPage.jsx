@@ -11,6 +11,9 @@ function RightPage() {
   const { trailerSelected } = useContext(TrailerSelected);
   const isConnected = true;
   const rem2 = (trailerSelected - 1) > 3 ? (trailerSelected - 2) : trailerSelected - 1;
+  //
+  // ********************************** calcul la couleur en fonction de la derniere realisation
+  //
   function color() {
     const date = Math.round((new Date() - new Date(dataTrain[rem2].date).getTime()) / 86400000) - 1;
     if (date > 1095) {
