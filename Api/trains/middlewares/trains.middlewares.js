@@ -1,8 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
+// eslint-disable-next-line import/no-unresolved
 const Joi = require('Joi');
 const { getUserById } = require('../../users/models/users.models');
 
 class TrainsMiddlewares {
+  // ********************************** verifie la présence des données entrantes (date - temps - user)
   checkBody(req, res, next) {
     if (!req.body.date || !req.body.processingTime || !req.body.userId) {
       res.status(400).send('bad request');
@@ -11,6 +14,7 @@ class TrainsMiddlewares {
     }
   }
 
+  // ********************************** verifie la conformité des données entrantes
   checkShapingForTrailers(req, res, next) {
     const { date, processingTime, userId } = req.body;
     const { error } = Joi.object({
@@ -25,6 +29,7 @@ class TrainsMiddlewares {
     }
   }
 
+  // ********************************** verifie la présence de user
   async checkExistingUser(req, res, next) {
     const { userId } = req.body;
     const existingUser = await getUserById(userId);
