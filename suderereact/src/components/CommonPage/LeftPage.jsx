@@ -52,7 +52,7 @@ function LeftPage() {
         </div>
         <div className="leftPage__right__bottomBloc">
           <div className="leftPage__right__bottomBloc__button1">
-            <NavLink to="/admin">
+            <NavLink to="/parametres">
               <button className={isConnected ? 'leftPage__right__bottomBloc__button1__button' : 'leftPage__right__bottomBloc__button1__buttonNone'} type="button">Paramètres</button>
             </NavLink>
           </div>

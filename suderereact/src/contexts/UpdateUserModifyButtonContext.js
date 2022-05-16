@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const UpdateUserModifyButton = createContext(null);
+const UpdateUserModifyButtonContext = createContext(null);
 
-export default UpdateUserModifyButton;
+export default UpdateUserModifyButtonContext;

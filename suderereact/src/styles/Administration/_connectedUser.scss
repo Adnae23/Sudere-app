@@ -1,12 +1,16 @@
-.userInfos{
+.userInfos {
     margin: 0 auto;
     height: 35vh;
     display: flex;
     align-items: center;
-    &__list{
+    &__list {
         padding: 0;
         list-style: none;
         color: $orange;
         font-size: 1.5vw;
+
+        &__item {
+            text-transform: uppercase;
+        }
     }
 }

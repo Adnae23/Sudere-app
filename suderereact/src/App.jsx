@@ -1,11 +1,14 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-undef */
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/jsx-no-constructed-context-values */
-import './styles/index.scss';
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-// import React, { useEffect, useState } from 'react';
+// import { decodeToken } from 'react-jwt';
 // import axios from 'axios';
+import './styles/index.scss';
+import {
+  BrowserRouter, Route, Routes,
+} from 'react-router-dom';
 import Header from './components/Header';
 import Connexion from './components/Connexion';
 import ChoiceHome from './components/ChoiceHome';
@@ -14,45 +17,29 @@ import Admin from './components/Administration/Admin';
 import CreateUser from './components/Administration/CreateUser';
 import UpdateUser from './components/Administration/UpdateUser';
 import UpdateDatabase from './components/Administration/UpdateDatabase';
-import ConnectionContext from './contexts/ConnectionContext';
+import UserContext from './contexts/UserContext';
 
 function App() {
-  const [isConnected, setIsConnected] = useState(false);
-  //   const [selectedFile, setSelectedFile] = useState(null);
-  //   const [submit, setSubmit] = useState(false);
+  const [user, setUser] = useState(false);
 
-  //   useEffect(() => {
-  //     async function handleSubmit(event) {
-  //       const formData = new FormData();
-  //       formData.append('excelFile', selectedFile);
-  //       try {
-  //         await axios.post('http://localhost:5000/db', formData, {
-  //           headers: { 'Content-Type': 'multipart/form-data' },
-  //         })
-  //           .then((result) => {
-  //             console.log('Success:', result);
-  //           })
-  //           .catch((error) => {
-  //             console.error('Error:', error);
-  //           });
-  //       } catch (error) {
-  //         console.log(error);
+  // useEffect(() => {
+  //   const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
+  //   async function verifToken() {
+  //     try {
+  //       const response = await axios.get('http://localhost:5000/auth', config);
+  //       const token = response.data;
+  //       if (token) {
+  //         setUser(decodeToken(token));
   //       }
+  //     } catch (error) {
+  //       console.log(error);
   //     }
-  //     if (submit === true) {
-  //       handleSubmit();
-  //       setSubmit(false);
-  //     }
-  //   }, [submit]);
-  //   const handleFileSelect = async (event) => {
-  //     await setSelectedFile(event.target.files[0]);
-  //   };
-  //   const backUp = (event) => {
-  //     event.preventDefault();
-  //     setSubmit(true);
-  // };
+  //   }
+  //   verifToken();
+  // }, []);
+
   return (
-    <ConnectionContext.Provider value={{isConnected, setIsConnected}}>
+    <UserContext.Provider value={{ user, setUser }}>
       <div className="app">
         <BrowserRouter>
           <Routes>
@@ -61,15 +48,15 @@ function App() {
               <Route path="/connexion" element={<Connexion />} />
             </Route>
             <Route path="/commonPage" element={<CommonPage />} />
-            <Route path="/admin" element={<Admin />}>
+            <Route path="/parametres" element={<Admin />}>
               <Route index element={<UpdateUser />} />
-              <Route path="/admin/addUser" element={<CreateUser />} />
-              <Route path="/admin/updateDb" element={<UpdateDatabase />} />
+              <Route path="/parametres/addUser" element={<CreateUser />} />
+              <Route path="/parametres/updateDb" element={<UpdateDatabase />} />
             </Route>
           </Routes>
         </BrowserRouter>
       </div>
-    </ConnectionContext.Provider>
+    </UserContext.Provider>
   );
 }
 

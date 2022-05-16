@@ -12,7 +12,7 @@ class DbController {
         await DbModel.insertSerie(serie);
       });
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      res.status(500).send('insert serie error');
     }
 
     // ********************************** Ajoute les nouvelles lines dans la db
@@ -22,33 +22,50 @@ class DbController {
         await DbModel.insertLine(line);
       });
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      res.status(500).send('insert line error');
     }
 
     // ********************************** Ajoute/màj les nouvelles rames dans la db et créé les remorque s'il le faut
     try {
       req.trainsReplace.map(async (train) => {
-        await DbModel.replaceTrain(train);
+        try {
+          await DbModel.replaceTrain(train);
+        } catch (error) {
+          res.status(500).send('error');
+        }
+
         for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer + 1) {
           if (trainsTrailer !== 3) {
-            await DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
+            try {
+              await DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
+            } catch (error) {
+              res.status(500).send('error');
+            }
           }
         }
       });
       // res.status(201).send('Insert successfully')
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      res.status(500).send('replacing error');
     }
 
     // ********************************** Supprime les rames dans la db
     try {
       req.trainsDelete.map(async (train) => {
-        await DbModel.deleteTrailers(train);
-        await DbModel.deleteTrain(train);
+        try {
+          await DbModel.deleteTrailers(train);
+        } catch (error) {
+          res.status(500).send('error');
+        }
+        try {
+          await DbModel.deleteTrain(train);
+        } catch (error) {
+          res.status(500).send('error');
+        }
       });
       res.sendStatus(200);
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      res.status(500).send('deleting error');
     }
   }
 }

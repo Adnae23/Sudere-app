@@ -1,4 +1,4 @@
-.userInformations {
+.userForm {
     width: 90%;
     margin-top: 0;
     padding: 5%;
@@ -32,21 +32,16 @@
             }
         }
     }
-    &__notSelected {
-        margin: 0;
+    &__button {
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        width: 100%;
-        text-align: center;
-        &__img {
-            width: 50%;
-        }
-        &__info {
-            display: block;
-            font-size: 1.2vw;
-            margin-top: 0;
+        padding: 20px;
+        &__submit {
+            border: none;
+            background-color: $orange;
+            color: white;
+            font-size: 1vw;
+            padding: 10px;
         }
     }
 }
