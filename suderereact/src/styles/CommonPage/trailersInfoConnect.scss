@@ -1,25 +1,42 @@
 .trailersglobal {
     width: 95%;
+
     &__trailersInfo {
+        &__noCure {
+            color: $raspberry;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        &__noCure__none {
+            color: $warm_gray_1;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
         &__title {
             display: flex;
             justify-content: center;
             height: 30px;
             margin-bottom: 80px;
+
             &__title {
                 color: $carbone;
                 font-size: 3vh;
             }
         }
+
         &__expi-1 {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+
             &__exp {
                 width: 200px;
                 font-size: 2vh;
             }
+
             &__result {
                 font-size: 2vh;
                 text-align: end;

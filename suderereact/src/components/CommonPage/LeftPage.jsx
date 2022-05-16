@@ -7,7 +7,7 @@ import DataTrainContext from '../../contexts/DataTrainContext';
 function LeftPage() {
   const [trainNumber, setTrainNumber] = useState('');
   const { setDataTrain } = useContext(DataTrainContext);
-  const isConnected = false;
+  const isConnected = true;
   function InputTrain(inputNumber) {
     if (inputNumber.length < 5 && inputNumber.length > 0) {
       setTrainNumber(inputNumber);
@@ -52,7 +52,9 @@ function LeftPage() {
         </div>
         <div className="leftPage__right__bottomBloc">
           <div className="leftPage__right__bottomBloc__button1">
-            <button className={isConnected ? 'leftPage__right__bottomBloc__button1__button' : 'leftPage__right__bottomBloc__button1__buttonNone'} type="button">Paramètres</button>
+            <NavLink to="/admin">
+              <button className={isConnected ? 'leftPage__right__bottomBloc__button1__button' : 'leftPage__right__bottomBloc__button1__buttonNone'} type="button">Paramètres</button>
+            </NavLink>
           </div>
           <div className="leftPage__right__bottomBloc__button2">
             <img src="../pictures/logo/groupeOrange.png" alt="connexion" className="leftPage__right__bottomBloc__button2__img" />

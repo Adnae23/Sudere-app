@@ -5,16 +5,32 @@
     align-items: center;
     width: 100%;
     margin: 10px;
+
+    &__noCure {
+        color: $raspberry;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    &__noCure__none {
+        color: $warm_gray_1;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+
     &__title {
         display: flex;
         justify-content: space-between;
         height: 30px;
         margin-bottom: 80px;
+
         &__title {
             color: $carbone;
             font-size: 25px;
         }
     }
+
     &__expi {
         display: flex;
         flex-direction: row;
@@ -27,6 +43,7 @@
             width: 40%;
             text-align: start;
         }
+
         &__result {
             width: 40%;
             font-size: 13px;

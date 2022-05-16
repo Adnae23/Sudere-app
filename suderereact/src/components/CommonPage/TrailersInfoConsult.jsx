@@ -11,12 +11,15 @@ function TrailersInfoConsult() {
   let message;
   let messageTime;
   let cure = true;
+  let noSure = '__none';
   if (dataTrain.length > 0) {
     if (dataTrain[rem2].firstname === 'default') {
       cure = false;
+      noSure = '';
       message = '-  -  -  -   ';
     } else {
       cure = true;
+      noSure = '__none';
       message = dataTrain && `${dataTrain[rem2].firstname} ${dataTrain[rem2].lastname} au ${dataTrain[rem2].center}`;
     }
   }
@@ -42,6 +45,9 @@ function TrailersInfoConsult() {
   return (
 
     <div className="trailersInfo2">
+      <div className={`trailersInfo2__noCure${noSure}`}>
+        <h4>REMORQUE JAMAIS TRAITÉE</h4>
+      </div>
       <div className="trailersInfo12__title">
         <h4 className="trailersInfo2__title__title">{`Remorque: ${trailerSelected}`}</h4>
       </div>

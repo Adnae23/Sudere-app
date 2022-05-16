@@ -10,7 +10,7 @@ function DashboardLeft() {
         <h1 className="dashboardLeft__title--vertical">SUDERE: DASHBOARD</h1>
       </div>
       <div className="dashboardLeft__user">
-        <NavLink to="/"><button className="dashboardLeft__user__button--back" type="submit" label="back" /></NavLink>
+        <NavLink to="/CommonPage"><button className="dashboardLeft__user__button--back" type="submit" label="back" /></NavLink>
         <ConnectedUser />
         <hr className="dashboardLeft__user__separator" />
         <UserPassword />

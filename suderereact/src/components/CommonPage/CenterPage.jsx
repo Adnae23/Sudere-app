@@ -126,38 +126,38 @@ function CenterPage() {
 
         <div className="centerPage__carrousel_trailersPic">
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque)}`}>
-            <img src={`../pictures/${train.serie}/R8.png`} alt="R1" />
+            <img src={`../pictures/${train.serie}/R8.svg`} alt="R1" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 1)}`}>
-            <img src={`../pictures/${train.serie}/R1.png`} alt="R2" />
+            <img src={`../pictures/${train.serie}/R1.svg`} alt="R2" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 2)}`}>
-            <img src={`../pictures/${train.serie}/R2.png`} alt="R3" />
+            <img src={`../pictures/${train.serie}/R2.svg`} alt="R3" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 3)}`}>
-            <img src={`../pictures/${train.serie}/R2.png`} alt="R5" />
+            <img src={`../pictures/${train.serie}/R2.svg`} alt="R5" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 4)}`}>
-            <img src={`../pictures/${train.serie}/R5.png`} alt="R6" />
+            <img src={`../pictures/${train.serie}/R5.svg`} alt="R6" />
           </div>
           <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 5)}`}>
-            <img src={`../pictures/${train.serie}/R5.png`} alt="R7" />
+            <img src={`../pictures/${train.serie}/R5.svg`} alt="R7" />
           </div>
           {
             train.serie === 'Atlantique'
             && (
               <>
                 <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-                  <img src={`../pictures/${train.serie}/R5.png`} alt="R8" />
+                  <img src={`../pictures/${train.serie}/R5.svg`} alt="R8" />
                 </div>
                 <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 7)}`}>
-                  <img src={`../pictures/${train.serie}/R5.png`} alt="R9" />
+                  <img src={`../pictures/${train.serie}/R5.svg`} alt="R9" />
                 </div>
               </>
             )
           }
           <div className={train.serie === 'Atlantique' ? `centerPage__carrousel_trailersPic_R${result(remorque + 8)}` : `centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
-            <img src={`../pictures/${train.serie}/R8.png`} alt={train.serie === 'Atlantique' ? 'R10' : 'R8'} />
+            <img src={`../pictures/${train.serie}/R5.svg`} alt={train.serie === 'Atlantique' ? 'R10' : 'R8'} />
           </div>
         </div>
 
