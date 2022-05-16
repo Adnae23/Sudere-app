@@ -13,7 +13,8 @@ function ConnectedUser() {
           {user.lastname}
         </li>
         <li className="userInfos__list__item">{user.cp}</li>
-        <li className="userInfos__list__item">{user.center}</li>
+        {user.center !== 'aucun'
+        && <li className="userInfos__list__item">{user.center}</li>}
         <li className="userInfos__list__item">{user.profile}</li>
       </ul>
     </div>

@@ -46,14 +46,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Header />} />
-            {user.profile !== 'UTILISATEUR'
-              && (
-                <Route path="/admin" element={<Admin />}>
-                  <Route index element={<UpdateUser />} />
-                  <Route path="/admin/addUser" element={<CreateUser />} />
-                  <Route path="/admin/updateDb" element={<UpdateDatabase />} />
-                </Route>
-              )}
+            <Route path="/parametres/" element={<Admin />}>
+              <Route index element={<UpdateUser />} />
+              <Route path="/parametres/addUser" element={<CreateUser />} />
+              <Route path="/parametres/updateDb" element={<UpdateDatabase />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
