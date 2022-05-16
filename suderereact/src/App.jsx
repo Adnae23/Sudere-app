@@ -1,10 +1,18 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useEffect, useState } from 'react';
-import { useJwt } from 'react-jwt';
-import axios from 'axios';
+/* eslint-disable no-undef */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { useState } from 'react';
+// import { decodeToken } from 'react-jwt';
+// import axios from 'axios';
 import './styles/index.scss';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter, Route, Routes,
+} from 'react-router-dom';
 import Header from './components/Header';
+import Connexion from './components/Connexion';
+import ChoiceHome from './components/ChoiceHome';
+import CommonPage from './components/CommonPage/CommonPage';
 import Admin from './components/Administration/Admin';
 import CreateUser from './components/Administration/CreateUser';
 import UpdateUser from './components/Administration/UpdateUser';
@@ -12,49 +20,43 @@ import UpdateDatabase from './components/Administration/UpdateDatabase';
 import UserContext from './contexts/UserContext';
 
 function App() {
-  const [user, setUser] = useState('');
-  const { decodeToken } = useJwt();
-  const test = {
-    firstname: 'Galen',
-    lastname: 'Erso',
-    cp: '8902809S',
-    center: 'aucun',
-    profile: 'ADMIN',
-  };
+  const [user, setUser] = useState(false);
 
-  useEffect(() => {
-    async function verifToken() {
-      try {
-        const response = await axios.get('http://localhost:5000/auth');
-        const token = response.data;
-        if (token) {
-          setUser(decodeToken(token));
-        } else {
-          setUser(test);
-        }
-      } catch (error) {
-        console.log(error);
-        setUser(test);
-      }
-    }
-    verifToken();
-  }, []);
+  // useEffect(() => {
+  //   const config = { headers: { 'Content-Type': 'application/json' }, withCredentials: true };
+  //   async function verifToken() {
+  //     try {
+  //       const response = await axios.get('http://localhost:5000/auth', config);
+  //       const token = response.data;
+  //       if (token) {
+  //         setUser(decodeToken(token));
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   verifToken();
+  // }, []);
 
   return (
-    <div className="app">
-      <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser }}>
+      <div className="app">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Header />} />
-            <Route path="/parametres/" element={<Admin />}>
+            <Route path="/" element={<Header />}>
+              <Route path="/" element={<ChoiceHome />} />
+              <Route path="/connexion" element={<Connexion />} />
+            </Route>
+            <Route path="/commonPage" element={<CommonPage />} />
+            <Route path="/parametres" element={<Admin />}>
               <Route index element={<UpdateUser />} />
               <Route path="/parametres/addUser" element={<CreateUser />} />
               <Route path="/parametres/updateDb" element={<UpdateDatabase />} />
             </Route>
           </Routes>
         </BrowserRouter>
-      </UserContext.Provider>
-    </div>
+      </div>
+    </UserContext.Provider>
   );
 }
 

@@ -28,13 +28,13 @@ class AuthMiddlewares {
   }
 
   checkCookie(req, res, next) {
-    if (!req.cookie) {
-      return res.sendStatus(403);
+    if (!req.cookies) {
+      return res.status(403).send('error1');
     }
-    if (req.cookie.user_token) {
+    if (req.cookies.user_token) {
       return next();
     }
-    return res.sendStatus(403);
+    return res.status(403).send('error2');
   }
 
   verifyToken(req, res, next) {
@@ -47,7 +47,7 @@ class AuthMiddlewares {
         res.sendStatus(500);
       }
     } catch {
-      res.sendStatus(403);
+      res.status(403).send('error3');
     }
   }
 }

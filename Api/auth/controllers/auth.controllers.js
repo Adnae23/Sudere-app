@@ -8,9 +8,10 @@ class UserController {
   async signIn(req, res) {
     const cp = req.body.login;
     const user = await getUserById(cp);
+    console.log(user[0]);
     const token = await calculateToken(cp, user[0].firstname, user[0].lastname, user[0].center, user[0].profile);
     res.cookie('user_token', token, { httpOnly: true });
-    res.status(200).send('connected');
+    res.status(200).send(token);
   }
 
   async logout(req, res) {

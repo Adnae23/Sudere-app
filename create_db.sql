@@ -64,7 +64,7 @@ number VARCHAR(3) NOT NULL,
 date DATE,
 processingTime INT,
 id_train INT NOT NULL,
-id_user VARCHAR(8) DEFAULT '8709168M',
+id_user VARCHAR(8) DEFAULT '00000000',
 CONSTRAINT fk_trailers_trains
     FOREIGN KEY (id_train) REFERENCES trains(id) ON UPDATE CASCADE ON DELETE CASCADE,
 CONSTRAINT fk_trailers_users
@@ -73,6 +73,11 @@ CONSTRAINT fk_trailers_users
 INSERT INTO users (id, firstname, lastname, email, password, id_profile, id_center)
     VALUES
     ('8709168M', 'Anais', 'Roussy Renard', 'anais.renard@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$ghwLB4UR+t/RVJg9oIecZw$AqkL4hZ/N7J3iNQZyWBBdbiXzLtU40Q4QE1Et756a5M', 1, 7),
+<<<<<<< HEAD
     ('8902809S', 'Gael', 'Douence', 'gaeldouence@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$ghwLB4UR+t/RVJg9oIecZw$AqkL4hZ/N7J3iNQZyWBBdbiXzLtU40Q4QE1Et756a5M', 1, 7),
     ('0000000D', 'Default', 'Default', 'default@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$/WV5vIukFknAKKBR36nVhA$3nr6KYWBx58a3ZXB0omol3IRr09Uegasvb0atUH7KmQ', 1, 7);
+=======
+    ('8902809S', 'Gael', 'Douence', 'gaeldouence@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$ghwLB4UR+t/RVJg9oIecZw$AqkL4hZ/N7J3iNQZyWBBdbiXzLtU40Q4QE1Et756a5M', 1, 7);
+	('00000000', 'default', 'default', 'default', '$argon2id$v=19$m=65536,t=5,p=1$/WV5vIukFknAKKBR36nVhA$3nr6KYWBx58a3ZXB0omol3IRr09Uegasvb0atUH7KmQ', 3, 7);
+>>>>>>> 0b3690c1de4ff7eb26d29c1859767474f0f9184d
 

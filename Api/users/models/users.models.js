@@ -40,9 +40,9 @@ class UserModel {
   async getUserById(id) {
     // ********************************** récupère un utilisateur spécifique avec son numéro de CP depuis la db
     try {
-      const sql = 'SELECT * FROM users WHERE id = ?';
+      const sql = 'SELECT users.id, firstname, lastname, email, centers.name AS center , profiles.name AS profile FROM users INNER JOIN centers ON centers.id = users.id_center INNER JOIN profiles ON profiles.id = users.id_profile WHERE users.id=? ';
       const result = await connection.promise().query(sql, [id]);
-      return result[0];
+      return result;
     } catch (error) {
       throw error;
     }
