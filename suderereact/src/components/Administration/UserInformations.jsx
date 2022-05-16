@@ -48,11 +48,7 @@ function UserInformations() {
           </li>
           <li className="userInformations__list__item">
             <p className="userInformations__list__item--left">{'Email: '}</p>
-            <p className="userInformations__list__item--right">
-              {unlockUpdate ? (
-                <input className="userInformations__list__item--right--input" type="text" defaultValue={selectedUser.email} />
-              ) : selectedUser.email}
-            </p>
+            <p className="userInformations__list__item--right">{selectedUser.email}</p>
           </li>
           <li className="userInformations__list__item">
             <p className="userInformations__list__item--left">{'Établissement: '}</p>

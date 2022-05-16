@@ -16,8 +16,8 @@ const hashPassword = (plainPassword) => argon2.hash(plainPassword, hashingOption
 
 const verifyPassword = (plainPassword, hashedPassword) => argon2.verify(hashedPassword, plainPassword, hashingOptions);
 
-const calculateToken = (userId, userFirstname, userLastname, userCenter, userProfile) => jwt.sign({
-  cp: userId, firstname: userFirstname, lastname: userLastname, center: userCenter, profile: userProfile,
+const calculateToken = (userId, userFirstname, userLastname, userEmail, userCenter, userProfile) => jwt.sign({
+  cp: userId, firstname: userFirstname, lastname: userLastname, email: userEmail, center: userCenter, profile: userProfile,
 }, process.env.PRIVATE_KEY, { expiresIn: maxAge });
 
 const expireToken = () => jwt.sign({ foo: 'bar' }, process.env.PRIVATE_KEY, { expiresIn: minAge });

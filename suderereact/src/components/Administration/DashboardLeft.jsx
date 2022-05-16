@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ConnectedUser from './ConnectedUser';
-import UserPassword from './UserPassword';
+import MyPassword from './MyPassword';
 
 function DashboardLeft() {
   return (
@@ -10,10 +10,10 @@ function DashboardLeft() {
         <h1 className="dashboardLeft__title--vertical">SUDERE: DASHBOARD</h1>
       </div>
       <div className="dashboardLeft__user">
-        <NavLink to="/"><button className="dashboardLeft__user__button--back" type="submit" label="back" /></NavLink>
+        <NavLink to="/commonPage"><button className="dashboardLeft__user__button--back" type="submit" label="back" /></NavLink>
         <ConnectedUser />
         <hr className="dashboardLeft__user__separator" />
-        <UserPassword />
+        <MyPassword />
         <button className="dashboardLeft__user__button--logout" type="submit">Déconnexion</button>
       </div>
     </div>

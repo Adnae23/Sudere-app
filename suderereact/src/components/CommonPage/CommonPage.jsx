@@ -1,16 +1,13 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import CenterPage from './CenterPage';
 import LeftPage from './LeftPage';
 import RightPage from './RightPage';
 import DataTrainContext from '../../contexts/DataTrainContext';
-import UserContext from '../../contexts/UserContext';
 
 function CommonPage() {
-  const { user } = useContext(UserContext);
-  console.log(user);
   const [dataTrain, setDataTrain] = useState();
-  // const { dataTrain } = useContext(DataTrainContext);
+
   return (
     <DataTrainContext.Provider value={{ dataTrain, setDataTrain }}>
       <div className="commonPage">

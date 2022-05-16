@@ -32,7 +32,6 @@ function UserPassword() {
 
   return (
     <div className="userPassword">
-      <h5 className="userPassword__title">Changer mot de passe:</h5>
       <form onSubmit={handleSubmit} className="userPassword__form">
         <div className="userPassword__form__inputs">
           <div className="userPassword__form__inputs__line">
