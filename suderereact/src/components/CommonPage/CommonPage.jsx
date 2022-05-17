@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import LeftPage from './LeftPage';
 import DataTrainContext from '../../contexts/DataTrainContext';
-import TrailerSelectedContext from '../../contexts/TrailerSelectedContext';
+// import TrailerSelectedContext from '../../contexts/TrailerSelectedContext';
 
 function CommonPage() {
-  const [trailerSelected, setTrailerSelected] = useState(1);
+  // const [trailerSelected, setTrailerSelected] = useState(1);
   const [dataTrain, setDataTrain] = useState();
   // const { dataTrain } = useContext(DataTrainContext);
   console.log(dataTrain);

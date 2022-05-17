@@ -1,39 +1,24 @@
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useContext } from 'react';
-import { decodeToken } from 'react-jwt';
+import React, { useState } from 'react';
+// import { decodeToken } from 'react-jwt';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-<<<<<<< HEAD:suderereact/src/components/Connexion.jsx
-import UserContext from '../contexts/UserContext';
-=======
-import ConnectionContext from '../../contexts/ConnectionContext';
->>>>>>> 45cbdf2d5ab98da3f59caeaeb9c55455087f94ef:suderereact/src/components/Home/Connexion.jsx
+// import UserContext from '../contexts/UserContext';
+// import ConnectionContext from '../../contexts/ConnectionContext';
 
 function Connexion() {
-  const { setUser } = useContext(UserContext);
+  // const { setUser } = useContext(UserContext);
   const [login, setLogin] = useState('');
   const object = {};
   const navigate = useNavigate();
   async function handleClick(event) {
     event.preventDefault();
-<<<<<<< HEAD:suderereact/src/components/Connexion.jsx
-    try {
-      const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
-      const token = response.data;
-      if (token) {
-        setUser(decodeToken(token));
-        navigate('/CommonPage');
-      }
-    } catch (error) {
-      setLogin({ login: '', password: '' });
-      console.log(error);
-=======
     if (login.password !== 'defaultpassword') {
       try {
         const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
         console.log(response);
-        setIsConnected(true);
+        // setIsConnected(true);
         navigate('/CommonPage');
       } catch (error) {
         setLogin({ login: '', password: '' });
@@ -41,7 +26,6 @@ function Connexion() {
       }
     } else {
       navigate('/Admin');
->>>>>>> 45cbdf2d5ab98da3f59caeaeb9c55455087f94ef:suderereact/src/components/Home/Connexion.jsx
     }
   }
   const handleChange = (event) => {
