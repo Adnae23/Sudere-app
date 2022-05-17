@@ -44,14 +44,15 @@ function LeftPage() {
           </NavLink>
           <p>saisir un numéro de rame:</p>
           <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} />
-          <button className="leftPage__right__topBloc__searchButton" type="button" onClick={searchTrain} onKeyPress={searchTrain}>Rechercher</button>
+          <NavLink to="/commonpage/leftcomponents">
+            <button className="leftPage__right__topBloc__searchButton" type="button" onClick={searchTrain} onKeyPress={searchTrain}>Rechercher</button>
+          </NavLink>
         </div>
         <div className="leftPage__right__centerBloc">
           <div className="leftPage__right__centerBloc__filters">
-            <h4 className="leftPage__right__centerBloc__filters__title">STATS</h4>
-            <button className="leftPage__right__centerBloc__filters__button" type="button">Général</button>
-            <button className="leftPage__right__centerBloc__filters__button" type="button">Matériel</button>
-            <button className="leftPage__right__centerBloc__filters__button" type="button">Axe</button>
+            <NavLink to="/commonPage/statistic">
+              <button className="leftPage__right__centerBloc__filters__button" type="button">Statistique</button>
+            </NavLink>
           </div>
         </div>
         <div className="leftPage__right__bottomBloc">

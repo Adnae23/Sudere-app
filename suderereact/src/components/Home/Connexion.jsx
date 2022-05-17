@@ -4,7 +4,11 @@ import React, { useState, useContext } from 'react';
 import { decodeToken } from 'react-jwt';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+<<<<<<< HEAD:suderereact/src/components/Connexion.jsx
 import UserContext from '../contexts/UserContext';
+=======
+import ConnectionContext from '../../contexts/ConnectionContext';
+>>>>>>> 45cbdf2d5ab98da3f59caeaeb9c55455087f94ef:suderereact/src/components/Home/Connexion.jsx
 
 function Connexion() {
   const { setUser } = useContext(UserContext);
@@ -13,6 +17,7 @@ function Connexion() {
   const navigate = useNavigate();
   async function handleClick(event) {
     event.preventDefault();
+<<<<<<< HEAD:suderereact/src/components/Connexion.jsx
     try {
       const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
       const token = response.data;
@@ -23,6 +28,20 @@ function Connexion() {
     } catch (error) {
       setLogin({ login: '', password: '' });
       console.log(error);
+=======
+    if (login.password !== 'defaultpassword') {
+      try {
+        const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
+        console.log(response);
+        setIsConnected(true);
+        navigate('/CommonPage');
+      } catch (error) {
+        setLogin({ login: '', password: '' });
+        console.log(error);
+      }
+    } else {
+      navigate('/Admin');
+>>>>>>> 45cbdf2d5ab98da3f59caeaeb9c55455087f94ef:suderereact/src/components/Home/Connexion.jsx
     }
   }
   const handleChange = (event) => {
