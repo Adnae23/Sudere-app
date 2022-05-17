@@ -5,7 +5,7 @@ const { checkExistingUser, checkCookie, verifyToken } = require('./middlewares/a
 const router = express.Router();
 
 router.post('/login', [checkExistingUser, signIn]);
-router.post('/logout', [logout]);
+router.get('/logout', [logout]);
 router.get('/', [checkCookie, verifyToken, refresh]);
 
 module.exports = router;

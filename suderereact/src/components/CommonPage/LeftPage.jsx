@@ -59,7 +59,7 @@ function LeftPage() {
         </div>
         <div className="leftPage__right__bottomBloc">
           <div className="leftPage__right__bottomBloc__button1">
-            <NavLink to="/parametres"><button className="leftPage__right__bottomBloc__button1__button" type="button">Paramètres</button></NavLink>
+            <NavLink to="/parametres/"><button className="leftPage__right__bottomBloc__button1__button" type="button">Paramètres</button></NavLink>
           </div>
           <div className="leftPage__right__bottomBloc__button2">
             <img src="../pictures/logo/groupeOrange.png" alt="connexion" className="leftPage__right__bottomBloc__button2__img" />
