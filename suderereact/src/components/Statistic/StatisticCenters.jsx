@@ -1,39 +1,28 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
+import React, { useState } from 'react';
+import { MultiSelect } from 'react-multi-select-component';
+
+const options = [
+  { label: 'TSEE', value: 'TSEE' },
+  { label: 'TLG', value: 'TLG' },
+  { label: 'TLL', value: 'TLL' },
+  { label: 'NST', value: 'NST' },
+  { label: 'TALT', value: 'TALT' },
+  { label: 'TEE', value: 'TEE' },
+  { label: 'Aucun', value: 'Aucun' },
+];
 
 function StatisticCenters() {
+  const [selected, setSelected] = useState([]);
+
   return (
     <div>
       <fieldset>
-        <legend>Centers</legend>
-        <div>
-          <input type="checkbox" name="TSEE" />
-          <label htmlFor="TSEE">TSEE</label>
-        </div>
-        <div>
-          <input type="checkbox" name="TLG" />
-          <label htmlFor="TLG">TLG</label>
-        </div>
-        <div>
-          <input type="checkbox" name="TLL" />
-          <label htmlFor="TLL">TLL</label>
-        </div>
-        <div>
-          <input type="checkbox" name="NST" />
-          <label htmlFor="NST">NST</label>
-        </div>
-        <div>
-          <input type="checkbox" name="TALT" />
-          <label htmlFor="TALT">TALT</label>
-        </div>
-        <div>
-          <input type="checkbox" name="TEE" />
-          <label htmlFor="TEE">TEE</label>
-        </div>
-        <div>
-          <input type="checkbox" name="Aucun" />
-          <label htmlFor="Aucun">Aucun</label>
-        </div>
+        <legend>Centres</legend>
+        <MultiSelect options={options} value={selected} onChange={setSelected} labelledBy="séries" />
       </fieldset>
     </div>
   );
