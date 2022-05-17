@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import dateFormat from 'dateformat';
 // import axios from 'axios';
+import UserContext from '../../contexts/UserContext';
 
 function TrailersModifConnect() {
+  const { user } = useContext(UserContext);
   const toDay = new Date();
   const toDay2 = dateFormat(toDay, 'yyyy-mm-dd');
   const [dateTime, setDateTime] = useState(toDay2);
+  setDateTime({ firstname: user.firstname, lastname: user.lastname, center: user.center });
   const [warning, setWarning] = useState('__none');
   const object = {};
   const mDate = new Date();
