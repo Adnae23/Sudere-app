@@ -3,6 +3,9 @@ import React from 'react';
 import StatisticCenters from './StatisticCenters';
 import StatisticSeries from './StatisticSeries';
 import StatisticAxes from './StatisticAxes';
+import StatisticDate from './StatisticDate';
+import StatisticDuration from './StatisticDuration';
+import StatisticChoice from './StatisticChoice';
 
 function StatisticSort() {
   return (
@@ -12,7 +15,15 @@ function StatisticSort() {
         <StatisticSeries />
         <StatisticCenters />
       </div>
-      <div />
+      <div>
+        <StatisticDate />
+      </div>
+      <div>
+        <StatisticDuration />
+      </div>
+      <div>
+        <StatisticChoice />
+      </div>
     </div>
   );
 }

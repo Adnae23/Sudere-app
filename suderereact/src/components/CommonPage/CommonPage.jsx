@@ -1,9 +1,8 @@
 import { useCookies } from 'react-cookie';
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useState } from 'react';
-import CenterPage from './CenterPage';
+import { Outlet } from 'react-router-dom';
 import LeftPage from './LeftPage';
-import RightPage from './RightPage';
 import DataTrainContext from '../../contexts/DataTrainContext';
 
 function CommonPage() {
@@ -17,20 +16,7 @@ function CommonPage() {
         <div className="commonPage__left">
           <LeftPage />
         </div>
-        {dataTrain ? (
-          <div className="commonPage__isTrain">
-            <div className="commonPage__isTrain__center">
-              <CenterPage />
-            </div>
-            <div className="commonPage__isTrain__right">
-              <RightPage />
-            </div>
-          </div>
-        ) : (
-          <div className="commonPage__empty">
-            <h4>Veuillez entrer un numéro de rame</h4>
-          </div>
-        )}
+        <Outlet />
       </div>
     </DataTrainContext.Provider>
   );

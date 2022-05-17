@@ -16,6 +16,10 @@ import CreateUser from './components/Administration/CreateUser';
 import UpdateUser from './components/Administration/UpdateUser';
 import UpdateDatabase from './components/Administration/UpdateDatabase';
 import ConnectionContext from './contexts/ConnectionContext';
+import StatisticSort from './components/Statistic/StatisticSort';
+import StatisticGraphic from './components/Statistic/StatisticGraphic';
+import AwaitCommon from './components/CommonPage/AwaitCommon';
+import LeftComponent from './components/CommonPage/LeftComponents';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -63,7 +67,12 @@ function App() {
                 <Route path="/" element={<ChoiceHome />} />
                 <Route path="/connexion" element={<Connexion />} />
               </Route>
-              <Route path="/commonPage" element={<CommonPage />} />
+              <Route path="/commonPage" element={<CommonPage />}>
+                <Route index element={<AwaitCommon />} />
+                <Route path="leftcomponents" element={<LeftComponent />} />
+                <Route path="statistic" element={<StatisticSort />} />
+                <Route path="graphic" element={<StatisticGraphic />} />
+              </Route>
               <Route path="/admin" element={<Admin />}>
                 <Route index element={<UpdateUser />} />
                 <Route path="/admin/addUser" element={<CreateUser />} />
