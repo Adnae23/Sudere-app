@@ -3,7 +3,7 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ConnectionContext from '../contexts/ConnectionContext';
+import ConnectionContext from '../../contexts/ConnectionContext';
 
 function Connexion() {
   const { setIsConnected } = useContext(ConnectionContext);
@@ -12,14 +12,18 @@ function Connexion() {
   const navigate = useNavigate();
   async function handleClick(event) {
     event.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
-      console.log(response);
-      setIsConnected(true);
-      navigate('/CommonPage');
-    } catch (error) {
-      setLogin({ login: '', password: '' });
-      console.log(error);
+    if (login.password !== 'defaultpassword') {
+      try {
+        const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
+        console.log(response);
+        setIsConnected(true);
+        navigate('/CommonPage');
+      } catch (error) {
+        setLogin({ login: '', password: '' });
+        console.log(error);
+      }
+    } else {
+      navigate('/Admin');
     }
   }
   const handleChange = (event) => {

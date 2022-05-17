@@ -2,14 +2,14 @@
 /* eslint-disable object-curly-spacing */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import './styles/index.scss';
-import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import { CookiesProvider } from 'react-cookie';
-import Header from './components/Header';
-import Connexion from './components/Connexion';
-import ChoiceHome from './components/ChoiceHome';
+import Header from './components/Home/Header';
+import Connexion from './components/Home/Connexion';
+import ChoiceHome from './components/Home/ChoiceHome';
 import CommonPage from './components/CommonPage/CommonPage';
 import Admin from './components/Administration/Admin';
 import CreateUser from './components/Administration/CreateUser';
@@ -19,42 +19,43 @@ import ConnectionContext from './contexts/ConnectionContext';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
-  //   const [selectedFile, setSelectedFile] = useState(null);
-  //   const [submit, setSubmit] = useState(false);
 
-  //   useEffect(() => {
-  //     async function handleSubmit(event) {
-  //       const formData = new FormData();
-  //       formData.append('excelFile', selectedFile);
-  //       try {
-  //         await axios.post('http://localhost:5000/db', formData, {
-  //           headers: { 'Content-Type': 'multipart/form-data' },
+  // const [selectedFile, setSelectedFile] = useState(null);
+  // const [submit, setSubmit] = useState(false);
+
+  // useEffect(() => {
+  //   async function handleSubmit() {
+  //     const formData = new FormData();
+  //     formData.append('excelFile', selectedFile);
+  //     try {
+  //       await axios.post('http://localhost:5000/db', formData, {
+  //         headers: { 'Content-Type': 'multipart/form-data' },
+  //       })
+  //         .then((result) => {
+  //           console.log('Success:', result);
   //         })
-  //           .then((result) => {
-  //             console.log('Success:', result);
-  //           })
-  //           .catch((error) => {
-  //             console.error('Error:', error);
-  //           });
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
+  //         .catch((error) => {
+  //           console.error('Error:', error);
+  //         });
+  //     } catch (error) {
+  //       console.log(error);
   //     }
-  //     if (submit === true) {
-  //       handleSubmit();
-  //       setSubmit(false);
-  //     }
-  //   }, [submit]);
-  //   const handleFileSelect = async (event) => {
-  //     await setSelectedFile(event.target.files[0]);
-  //   };
-  //   const backUp = (event) => {
-  //     event.preventDefault();
-  //     setSubmit(true);
+  //   }
+  //   if (submit === true) {
+  //     handleSubmit();
+  //     setSubmit(false);
+  //   }
+  // }, [submit]);
+  // const handleFileSelect = async (event) => {
+  //   await setSelectedFile(event.target.files[0]);
+  // };
+  // const backUp = (event) => {
+  //   event.preventDefault();
+  //   setSubmit(true);
   // };
   return (
     <CookiesProvider>
-      <ConnectionContext.Provider value={{isConnected, setIsConnected}}>
+      <ConnectionContext.Provider value={{ isConnected, setIsConnected }}>
         <div className="app">
           <BrowserRouter>
             <Routes>
@@ -73,6 +74,12 @@ function App() {
         </div>
       </ConnectionContext.Provider>
     </CookiesProvider>
+    // <div>
+    //   <form onSubmit={backUp}>
+    //     <input type="file" name="excelFile" onChange={handleFileSelect} />
+    //     <input type="submit" value="Upload File" />
+    //   </form>
+    // </div>
   );
 }
 
