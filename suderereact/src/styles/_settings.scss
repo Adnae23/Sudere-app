@@ -1,27 +1,31 @@
 @font-face {
     font-family: Avenir;
-    src: url(./fonts/AvenirLTStd-Black.otf);
+    src: url(../../public/fonts/AvenirLTStd_Black.otf);
 }
 
+$Avenir: Avenir;
+
 $carbone: #333333;
-$warm_gray_1: #E0DED8;
-$warm_gray_3: #C3BEB4;
-$orange: #E05206;
-$raspberry: #CD0037;
+$warm_gray_3: #c3beb4;
+$warm_gray_1: #e0ded8;
+$orange: #e05206;
+$raspberry: #cd0037;
+$safran: #ffb612;
+$vert_pomme: #82be00;
 
 @mixin vertical-title {
     margin: 0;
     width: 100%;
-    transform: rotate( 180deg );
+    transform: rotate(180deg);
     writing-mode: vertical-rl;
     text-orientation: mixed;
     font-size: 3vw;
 }
 
-body{
+body {
     background-color: $carbone;
     margin: auto;
-    font-family: 'Avenir';
+    font-family: "Avenir";
     width: 100%;
     height: 100%;
 }

@@ -1,0 +1,53 @@
+.rightPage__red {
+    background-color: $raspberry;
+}
+
+.rightPage__orange {
+    background-color: $safran;
+}
+
+.rightPage__green {
+    background-color: $vert_pomme;
+}
+
+.rightPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 97%;
+    height: 100%;
+    margin-left: 20px;
+
+    &__connect {
+        width: 97%;
+        height: 97%;
+        margin: 5px;
+        background-color: $warm_gray_1;
+
+        &__info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60%;
+            width: 100%;
+        }
+
+        &__modif {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40%;
+            background-color: $carbone;
+        }
+    }
+
+    &__consult {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 97%;
+        height: 97%;
+        margin: 5px;
+        background-color: $warm_gray_1;
+    }
+}

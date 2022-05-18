@@ -1,0 +1,59 @@
+.formConnect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__alerte {
+        color: $orange;
+        font-size: 2vh;
+        margin: auto;
+    }
+
+    &__alerte__none {
+        color: $carbone;
+        font-size: 2vh;
+        margin: auto;
+    }
+
+    &__date,
+    &__delai {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 20px;
+        align-items: center;
+
+        &__label {
+            font-size: 2vh;
+            color: white;
+        }
+
+        &__valeur {
+            width: 30%;
+            border: none;
+            color: $carbone;
+            font-size: 2vh;
+            padding: 10px;
+            text-align: right;
+
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+        }
+    }
+
+    &__valid {
+        display: flex;
+        justify-content: center;
+
+        &__button {
+            background-color: $orange;
+            border: none;
+            color: white;
+            font-size: 2vh;
+            padding: 10px;
+        }
+    }
+}
