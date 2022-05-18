@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import UserFromList from './UserFromList';
+import UpdatedUserContext from '../../contexts/UpdatedUserContext';
 
 function UserList() {
   const [list, setList] = useState([]);
+  const { isUpdated } = useContext(UpdatedUserContext);
 
   useEffect(() => {
     async function fetchListUsers() {
@@ -16,10 +18,10 @@ function UserList() {
       }
     }
     fetchListUsers();
-  }, []);
+  }, [isUpdated]);
   return (
     <div className="listUsers">
-      {list.length !== 0 && list.map((user) => <UserFromList className="listUsers__user" key={user.id} user={user} />)}
+      {list.length !== 0 && list.map((user) => <UserFromList key={user.id} user={user} />)}
     </div>
   );
 }
