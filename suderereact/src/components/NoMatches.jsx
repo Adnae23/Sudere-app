@@ -14,11 +14,8 @@ function NoMatches() {
       }
     };
     redirect();
-    const reload = () => {
-      setReloaded(true);
-    };
     setTimeout(() => {
-      reload();
+      setReloaded(true);
     }, [500]);
   }, [reloaded]);
   return (

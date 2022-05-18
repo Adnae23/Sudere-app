@@ -1,6 +1,6 @@
-.dashboardRight{
+.dashboardRight {
     width: 100%;
-    &__title{
+    &__title {
         display: block;
         margin-top: 1.5%;
         margin-right: 1.5%;
@@ -8,7 +8,7 @@
         margin-bottom: 0;
         font-size: 1.5vw;
     }
-    &__nav{
+    &__nav {
         margin-top: 1.5%;
         margin-right: 1.5%;
         margin-left: 1.5%;
@@ -16,28 +16,29 @@
         padding: 0;
         background-color: $carbone;
         color: white;
-        
-        &__ul{
+
+        &__ul {
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            // justify-content: space-between;
             list-style: none;
-            &__link{
+            &__link {
+                margin-right: 200px;
                 text-decoration: none;
                 color: white;
                 font-size: 1.2vw;
-                &--active{
+                &--active {
+                    margin-right: 200px;
                     color: $orange;
                     text-decoration: none;
                     font-size: 1.2vw;
-    
                 }
             }
-        }  
+        }
     }
-    &__outlet{
+    &__outlet {
         margin-right: 1.5%;
         margin-left: 1.5%;
         margin-bottom: 1.5%;
