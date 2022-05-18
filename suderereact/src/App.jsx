@@ -58,7 +58,7 @@ function App() {
             </Route>
             {user
               && (
-              <Route path="/admin" element={<Admin />}>
+              <Route path="/parametres/" element={<Admin />}>
                 <Route index element={<MyProfile />} />
                 <Route path="/parametres/updateUser" element={<UpdateUser />} />
                 <Route path="/parametres/addUser" element={<CreateUser />} />

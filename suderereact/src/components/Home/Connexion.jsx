@@ -1,12 +1,10 @@
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ConnectionContext from '../../contexts/ConnectionContext';
 
 function Connexion() {
-  const { setIsConnected } = useContext(ConnectionContext);
   const [login, setLogin] = useState('');
   const object = {};
   const navigate = useNavigate();
@@ -16,14 +14,13 @@ function Connexion() {
       try {
         const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
         console.log(response);
-        setIsConnected(true);
         navigate('/CommonPage');
       } catch (error) {
         setLogin({ login: '', password: '' });
         console.log(error);
       }
     } else {
-      navigate('/Admin');
+      navigate('/parametres/');
     }
   }
   const handleChange = (event) => {

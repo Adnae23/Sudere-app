@@ -5,11 +5,12 @@ import TrailersInfoConsult from './TrailersInfoConsult';
 import TrailersModifConnect from './TrailersModifConnect';
 import DataTrainContext from '../../contexts/DataTrainContext';
 import TrailerSelected from '../../contexts/TrailerSelectedContext';
+import UserContext from '../../contexts/UserContext';
 
 function RightPage() {
   const { dataTrain } = useContext(DataTrainContext);
   const { trailerSelected } = useContext(TrailerSelected);
-  const isConnected = true;
+  const { user } = useContext(UserContext);
   const rem2 = (trailerSelected - 1) > 3 ? (trailerSelected - 2) : trailerSelected - 1;
   //
   // ********************************** calcul la couleur en fonction de la derniere realisation
@@ -25,7 +26,7 @@ function RightPage() {
   }
   return (
     <div className={`rightPage  rightPage__${color()}`}>
-      {isConnected ? (
+      {user ? (
 
         <div className="rightPage__connect">
           <div className="rightPage__connect__info">

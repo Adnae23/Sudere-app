@@ -3,11 +3,12 @@ import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DataTrainContext from '../../contexts/DataTrainContext';
+import UserContext from '../../contexts/UserContext';
 
 function LeftPage() {
   const [trainNumber, setTrainNumber] = useState('');
   const { setDataTrain } = useContext(DataTrainContext);
-  const isConnected = true;
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   function InputTrain(inputNumber) {
     if (inputNumber.length < 5 && inputNumber.length > 0) {
@@ -39,10 +40,25 @@ function LeftPage() {
     }
   }
 
+  const handleClick = () => {
+    if (user) {
+      axios.get('http://localhost:5000/auth/logout', { withCredentials: true })
+        .then(() => {
+          setUser(false);
+          navigate('/');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      navigate('/connexion');
+    }
+  };
+
   return (
     <div className="leftPage">
       <div className="leftPage__title">
-        <h1>{isConnected ? 'SUDERE: MODIFICATION' : 'SUDERE: CONSULTATION'}</h1>
+        <h1>{user ? 'SUDERE: MODIFICATION' : 'SUDERE: CONSULTATION'}</h1>
       </div>
       <div className="leftPage__right">
         <div className="leftPage__right__topBloc">
@@ -63,13 +79,13 @@ function LeftPage() {
         </div>
         <div className="leftPage__right__bottomBloc">
           <div className="leftPage__right__bottomBloc__button1">
-            <NavLink to="/admin">
-              <button className={isConnected ? 'leftPage__right__bottomBloc__button1__button' : 'leftPage__right__bottomBloc__button1__buttonNone'} type="button">Paramètres</button>
+            <NavLink to="/parametres/">
+              <button className={user ? 'leftPage__right__bottomBloc__button1__button' : 'leftPage__right__bottomBloc__button1__buttonNone'} type="button">Paramètres</button>
             </NavLink>
           </div>
           <div className="leftPage__right__bottomBloc__button2">
             <img src="../pictures/logo/groupeOrange.png" alt="connexion" className="leftPage__right__bottomBloc__button2__img" />
-            <button className="leftPage__right__bottomBloc__button2__button" type="submit">{isConnected ? 'Déconnexion' : 'Connexion'}</button>
+            <button className="leftPage__right__bottomBloc__button2__button" onClick={handleClick} type="submit">{user ? 'Déconnexion' : 'Connexion'}</button>
           </div>
         </div>
       </div>
