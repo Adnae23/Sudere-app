@@ -1,10 +1,11 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 const Joi = require('Joi');
 const { getUserById } = require('../../users/models/users.models');
 
 class TrainsMiddlewares {
   checkBody(req, res, next) {
-    if (!req.body.date || !req.body.processingTime || !req.body.userId) {
+    if (!req.body.date || !req.body.processingTime || !req.body.userId || !req.body.trailerId) {
       res.status(400).send('bad request');
     } else {
       next();
@@ -12,12 +13,17 @@ class TrainsMiddlewares {
   }
 
   checkShapingForTrailers(req, res, next) {
-    const { date, processingTime, userId } = req.body;
+    const {
+      date, processingTime, userId, trailerId,
+    } = req.body;
     const { error } = Joi.object({
       date: Joi.string().required(),
       processingTime: Joi.number().required(),
       userId: Joi.string().min(8).max(8).required(),
-    }).validate({ date, processingTime, userId }, { abortEarly: false });
+      trailerId: Joi.number().required(),
+    }).validate({
+      date, processingTime, userId, trailerId,
+    }, { abortEarly: false });
     if (error) {
       res.status(422).json({ ValidationErrors: error });
     } else {
