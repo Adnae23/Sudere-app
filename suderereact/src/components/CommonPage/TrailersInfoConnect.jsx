@@ -65,7 +65,7 @@ function TrailersInfoConnect() {
           <p className="trailersglobal__trailersInfo__expi-1__result">{cure ? dataTrain && `${dataTrain[rem2].processingTime} Heure(s)` : `${message}`}</p>
         </div>
         <div className="trailersglobal__trailersInfo__expi-1">
-          <p className="trailersglobal__trailersInfo__expi-1__exp">Réalisation par:</p>
+          <p className="trailersglobal__trailersInfo__expi-1__exp">Validé par:</p>
           <p className="trailersglobal__trailersInfo__expi-1__result">{`${message}`}</p>
         </div>
       </div>
