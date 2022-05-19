@@ -1,0 +1,23 @@
+.statistic {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+
+    &__fieldset {
+        width: 20%;
+        background-color: $warm_gray_3;
+        margin: 1.5%;
+    }
+
+    &__grafic {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $warm_gray_3;
+        margin-top: 1.5%;
+        margin-right: 1.5%;
+        margin-bottom: 1.5%;
+    }
+}

@@ -1,28 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import StatisticCenters from './StatisticCenters';
-import StatisticSeries from './StatisticSeries';
-import StatisticAxes from './StatisticAxes';
-import StatisticDate from './StatisticDate';
-import StatisticDuration from './StatisticDuration';
-import StatisticChoice from './StatisticChoice';
+import StatisticGraphic from './StatisticGraphic';
+import StatisticFieldset from './StatisticFieldset';
 
 function StatisticSort() {
   return (
-    <div>
-      <div>
-        <StatisticAxes />
-        <StatisticSeries />
-        <StatisticCenters />
+    <div className="statistic">
+      <div className="statistic__fieldset">
+        <StatisticFieldset />
       </div>
-      <div>
-        <StatisticDate />
-      </div>
-      <div>
-        <StatisticDuration />
-      </div>
-      <div>
-        <StatisticChoice />
+      <div className="statistic__grafic">
+        <StatisticGraphic />
       </div>
     </div>
   );
