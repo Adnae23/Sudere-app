@@ -3,12 +3,12 @@ import React from 'react';
 
 function StatisticDuration() {
   return (
-    <div>
-      <fieldset>
-        <legend>Durée</legend>
-        <div>
-          <label htmlFor="hours">{'Nombres d\'heures'}</label>
-          <select type="select">
+    <div className="duration">
+      <fieldset className="duration__fieldset">
+        <legend className="duration__fieldset__legend">Durée</legend>
+        <div className="duration__fieldset__div">
+          <label className="duration__fieldset__div__label" htmlFor="hours">{'Nombres d\'heures'}</label>
+          <select className="duration__fieldset__div__select" type="select">
             <option value="--">--</option>
             <option value="1">Un</option>
             <option value="2">Deux</option>

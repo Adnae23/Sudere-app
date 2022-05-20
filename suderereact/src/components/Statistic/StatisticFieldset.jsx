@@ -13,20 +13,23 @@ function StatisticFieldset() {
       <div className="stats__title">
         Selection
       </div>
-      <div className="stats__num1">
-        <StatisticAxes />
-        <StatisticSeries />
-        <StatisticCenters />
+      <div className="stats__center">
+        <div className="stats__center__num1">
+          <StatisticAxes />
+          <StatisticSeries />
+          <StatisticCenters />
+        </div>
+        <div className="stats__center__num2">
+          <StatisticDate />
+        </div>
+        <div className="stats__center__num3">
+          <StatisticDuration />
+        </div>
+        <div className="stats__center__num4">
+          <StatisticChoice />
+        </div>
       </div>
-      <div className="stats__num2">
-        <StatisticDate />
-      </div>
-      <div className="stats__num3">
-        <StatisticDuration />
-      </div>
-      <div className="stats__num4">
-        <StatisticChoice />
-      </div>
+      <div className="stats__footer" />
     </div>
   );
 }

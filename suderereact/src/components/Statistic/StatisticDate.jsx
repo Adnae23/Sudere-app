@@ -3,16 +3,16 @@ import React from 'react';
 
 function StatisticDate() {
   return (
-    <div>
-      <fieldset>
-        <legend>Date</legend>
-        <div>
-          <label htmlFor="date">De</label>
-          <input type="date" min="2021/01/01" />
+    <div className="date">
+      <fieldset className="date__fieldset">
+        <legend className="date__fieldset__legend">Date</legend>
+        <div className="date__fieldset__div">
+          <label className="date__fieldset__div__label" htmlFor="date">De</label>
+          <input className="date__fieldset__div__input" type="date" min="2021/01/01" />
         </div>
-        <div>
-          <label htmlFor="date">A</label>
-          <input type="date" min="2021/01/01" />
+        <div className="date__fieldset__div">
+          <label className="date__fieldset__div__label" htmlFor="date">A</label>
+          <input className="date__fieldset__div__input" type="date" min="2021/01/01" />
         </div>
       </fieldset>
     </div>
