@@ -42,7 +42,7 @@ class UserModel {
     try {
       const sql = 'SELECT users.id, firstname, lastname, email, centers.name AS center , profiles.name AS profile FROM users INNER JOIN centers ON centers.id = users.id_center INNER JOIN profiles ON profiles.id = users.id_profile WHERE users.id=? ';
       const result = await connection.promise().query(sql, [id]);
-      return result;
+      return result[0];
     } catch (error) {
       throw error;
     }

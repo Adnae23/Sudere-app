@@ -20,10 +20,10 @@ function StatisticSeries() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <div>
-      <fieldset>
-        <legend>Séries</legend>
-        <MultiSelect options={options} value={selected} onChange={setSelected} labelledBy="séries" />
+    <div className="serie">
+      <fieldset className="serie__fieldset">
+        <legend className="serie__fieldset__legend">Séries</legend>
+        <MultiSelect className="serie__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="séries" />
       </fieldset>
     </div>
   );

@@ -118,9 +118,18 @@ function CenterPage() {
   return (
     <div className="centerPage">
       <div className="centerPage__infoRame">
-        <h4>{`Rame: ${train.number}`}</h4>
-        <h4>{`Matériel: ${train.serie}`}</h4>
-        <h4>{`Axe: ${train.line}`}</h4>
+        <h4>
+          <span>Rame: </span>
+          { train.number }
+        </h4>
+        <h4>
+          <span>Matériel: </span>
+          {train.serie}
+        </h4>
+        <h4>
+          <span>Axe: </span>
+          {train.line}
+        </h4>
       </div>
 
       <div className="centerPage__carrousel">

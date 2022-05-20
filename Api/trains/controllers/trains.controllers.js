@@ -23,11 +23,11 @@ class TrainsControllers {
 
   updateTrailer = (req, res) => {
     const {
-      date, processingTime, userId, trailerId,
+      date, processingTime, userId, trailerId, trainId,
     } = req.body;
 
     try {
-      TrainsModels.updateTrailer(date, processingTime, userId, trailerId);
+      TrainsModels.updateTrailer(date, processingTime, userId, trailerId, trainId);
       res.status(201).send('trailer successfuly updated');
     } catch (error) {
       res.status(500).send({ error: error.message });

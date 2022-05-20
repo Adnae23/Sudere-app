@@ -1,0 +1,27 @@
+.duration {
+
+    &__fieldset {
+        margin-top: 5px;
+
+        &__legend {}
+
+        &__div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 20px;
+            margin-right: 20px;
+
+            &__label {
+                width: 120px;
+                height: 10px;
+            }
+
+            &__select {
+                font-family: $Avenir;
+                width: 40%;
+                height: 30%;
+            }
+        }
+    }
+}

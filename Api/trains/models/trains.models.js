@@ -6,7 +6,7 @@ const connection = require('../../db-config');
 class TrainsModel {
   async getTrainById(id) {
     try {
-      const sql = 'SELECT `lines`.name AS line, series.name AS serie, trains.id AS train, users.id AS CP, users.firstname, users.lastname, centers.name AS center, number AS trailer, trailers.id, `date`, processingTime FROM trailers INNER JOIN trains ON trains.id = trailers.id_train INNER JOIN `lines` ON`lines`.id = trains.id_line INNER JOIN series ON series.id = trains.id_serie INNER JOIN users ON users.id = trailers.id_user INNER JOIN centers ON centers.id = users.id_center WHERE id_train=?';
+      const sql = 'SELECT `lines`.name AS line, series.name AS serie, trains.id AS train, users.id AS CP, users.firstname, users.lastname, centers.name AS center, number AS trailer, trailers.id, `date`, processingTime FROM trailers INNER JOIN trains ON trains.id = trailers.id_train INNER JOIN `lines` ON`lines`.id = trains.id_line INNER JOIN series ON series.id = trains.id_serie INNER JOIN users ON users.id = trailers.id_user INNER JOIN centers ON centers.id = users.id_center WHERE id_train=? ORDER BY trailers.id';
       const result = await connection.promise().query(sql, [id]);
       return result[0];
     } catch (error) {
@@ -24,10 +24,10 @@ class TrainsModel {
     }
   }
 
-  async updateTrailer(date, processingTime, userId, trailerId) {
+  async updateTrailer(date, processingTime, userId, trailerId, trainId) {
     try {
-      const sql = 'UPDATE trailers SET date = ? , processingTime = ?, id_user = ? WHERE id = ?';
-      const result = await connection.promise().query(sql, [date, processingTime, userId, trailerId]);
+      const sql = 'UPDATE trailers SET date = ? , processingTime = ?, id_user = ? WHERE number = ? AND id_train = ?';
+      const result = await connection.promise().query(sql, [date, processingTime, userId, trailerId, trainId]);
       return result[0];
     } catch (error) {
       throw error;

@@ -16,10 +16,10 @@ function StatisticAxes() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <div>
-      <fieldset>
-        <legend>Axes</legend>
-        <MultiSelect options={options} value={selected} onChange={setSelected} labelledBy="Select" />
+    <div className="axe">
+      <fieldset className="axe__fieldset">
+        <legend className="axe__fieldset__legend">Axes</legend>
+        <MultiSelect className="axe__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="Select" />
       </fieldset>
     </div>
   );

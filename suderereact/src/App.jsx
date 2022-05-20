@@ -9,9 +9,9 @@ import './styles/index.scss';
 import {
   BrowserRouter, Route, Routes,
 } from 'react-router-dom';
-import Header from './components/Header';
-import Connexion from './components/Connexion';
-import ChoiceHome from './components/ChoiceHome';
+import Header from './components/Home/Header';
+import Connexion from './components/Home/Connexion';
+import ChoiceHome from './components/Home/ChoiceHome';
 import CommonPage from './components/CommonPage/CommonPage';
 import Admin from './components/Administration/Admin';
 import CreateUser from './components/Administration/CreateUser';
@@ -24,6 +24,7 @@ import RightComponent from './components/CommonPage/RightComponent';
 import UserContext from './contexts/UserContext';
 import MyProfile from './components/Administration/MyProfile';
 import NoMatches from './components/NoMatches';
+// import DataTrainContext from './contexts/DataTrainContext';
 
 function App() {
   const [user, setUser] = useState();

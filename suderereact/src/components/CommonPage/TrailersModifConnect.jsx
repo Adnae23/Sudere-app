@@ -3,8 +3,10 @@ import axios from 'axios';
 import dateFormat from 'dateformat';
 import UserContext from '../../contexts/UserContext';
 import TrailerSelected from '../../contexts/TrailerSelectedContext';
+import DataTrainContext from '../../contexts/DataTrainContext';
 
 function TrailersModifConnect() {
+  const { dataTrain } = useContext(DataTrainContext);
   const { user } = useContext(UserContext);
   const { trailerSelected } = useContext(TrailerSelected);
   const toDay = new Date();
@@ -21,11 +23,6 @@ function TrailersModifConnect() {
   async function updateTrailer(event) {
     event.preventDefault();
     if (dateTime.date !== '' && dateTime.processingTime !== '') {
-      // const test = {
-      //   userId: user.cp, trailerId: trailerSelected,
-      // };
-      // setDateTime({ ...dateTime, ...test });
-      console.log(dateTime);
       setWarning('__none');
       axios.put('http://localhost:5000/trains', dateTime)
         .then((response) => {
@@ -45,6 +42,7 @@ function TrailersModifConnect() {
     object[key] = key === 'date' ? event.target.value : +event.target.value;
     object.userId = user.cp;
     object.trailerId = trailerSelected;
+    object.trainId = dataTrain[0].train;
     setDateTime({ ...dateTime, ...object });
   };
 

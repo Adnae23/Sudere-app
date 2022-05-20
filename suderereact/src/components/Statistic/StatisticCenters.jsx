@@ -19,10 +19,10 @@ function StatisticCenters() {
   const [selected, setSelected] = useState([]);
 
   return (
-    <div>
-      <fieldset>
-        <legend>Centres</legend>
-        <MultiSelect options={options} value={selected} onChange={setSelected} labelledBy="séries" />
+    <div className="center">
+      <fieldset className="center__fieldset">
+        <legend className="center__fieldset__legend">Centres</legend>
+        <MultiSelect className="center__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="séries" />
       </fieldset>
     </div>
   );

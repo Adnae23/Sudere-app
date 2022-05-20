@@ -7,10 +7,12 @@ import UserContext from '../../contexts/UserContext';
 
 function LeftPage() {
   const [trainNumber, setTrainNumber] = useState('');
-  const { setDataTrain } = useContext(DataTrainContext);
+  const { dataTrain, setDataTrain } = useContext(DataTrainContext);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  if (!dataTrain) navigate('/commonPage');
   function InputTrain(inputNumber) {
+    navigate('/commonPage');
     if (inputNumber.length < 5 && inputNumber.length > 0) {
       setTrainNumber(inputNumber);
     } else if (inputNumber.length === 0) {

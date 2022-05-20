@@ -25,7 +25,7 @@ function TrailersInfoConnect() {
   }
 
   function calculPastTime() {
-    const pastTime = Math.round((new Date() - new Date(dataTrain[rem2].date).getTime()) / 86400000) - 1;
+    const pastTime = Math.round((new Date() - new Date(dataTrain[rem2].date).getTime()) / 86400000);
     if (pastTime < 0) {
       messageTime = message;
     } else if (pastTime === 0) {
