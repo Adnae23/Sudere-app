@@ -101,6 +101,7 @@ class DbModel {
       const result = await connection.promise().query(sql, [trailer, id]);
       return result[0];
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }

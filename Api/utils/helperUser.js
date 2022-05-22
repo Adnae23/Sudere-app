@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
+const jwt_decode = require('jwt-decode');
 
 const maxAge = 60000;
 const minAge = 1;
@@ -20,6 +21,8 @@ const calculateToken = (userId, userFirstname, userLastname, userEmail, userCent
   cp: userId, firstname: userFirstname, lastname: userLastname, email: userEmail, center: userCenter, profile: userProfile,
 }, process.env.PRIVATE_KEY, { expiresIn: maxAge });
 
+const decodeToken = (token) => jwt_decode(token);
+
 const expireToken = () => jwt.sign({ foo: 'bar' }, process.env.PRIVATE_KEY, { expiresIn: minAge });
 
 module.exports = {
@@ -27,5 +30,6 @@ module.exports = {
   hashPassword,
   verifyPassword,
   calculateToken,
+  decodeToken,
   expireToken,
 };

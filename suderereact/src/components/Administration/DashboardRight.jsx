@@ -18,13 +18,13 @@ function DashboardRight() {
   useEffect(() => {
     async function fetchCentersAndProfiles() {
       try {
-        const centersList = await axios.get('http://localhost:5000/users/centers-list');
+        const centersList = await axios.get('http://localhost:5000/users/centers-list', { withCredentials: true });
         setCenters([...centersList.data]);
       } catch (error) {
         console.error('Error:', error);
       }
       try {
-        const profilesList = await axios.get('http://localhost:5000/users/profiles-list');
+        const profilesList = await axios.get('http://localhost:5000/users/profiles-list', { withCredentials: true });
         setProfiles([...profilesList.data]);
       } catch (error) {
         console.error('Error:', error);

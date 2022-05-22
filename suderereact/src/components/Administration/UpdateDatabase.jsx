@@ -12,6 +12,7 @@ function UpdateDatabase() {
       formData.append('excelFile', selectedFile);
       try {
         await axios.post('http://localhost:5000/db', formData, {
+          withCredentials: true,
           headers: { 'Content-Type': 'multipart/form-data' },
         })
           .then((result) => {

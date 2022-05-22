@@ -1,12 +1,17 @@
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DataTrainContext from '../../contexts/DataTrainContext';
 import UserContext from '../../contexts/UserContext';
 
 function LeftPage() {
-  const [trainNumber, setTrainNumber] = useState('');
+  const [trainNumber, setTrainNumber] = useState(() => {
+    const saved = localStorage.getItem('train');
+    const initialValue = JSON.parse(saved);
+    return initialValue || '';
+  });
   const { dataTrain, setDataTrain } = useContext(DataTrainContext);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -56,6 +61,20 @@ function LeftPage() {
       navigate('/connexion');
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('trains', JSON.stringify(trainNumber));
+    const verifToken = () => {
+      axios.get('http://localhost:5000/auth', { withCredentials: true })
+        .then((response) => {
+          const token = response.data;
+          if (token) {
+            setUser(decodeToken(token));
+          }
+        });
+    };
+    verifToken();
+  }, [trainNumber]);
 
   return (
     <div className="leftPage">

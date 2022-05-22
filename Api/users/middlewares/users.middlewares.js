@@ -1,10 +1,43 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-len */
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const { getUserById } = require('../models/users.models');
-const { hashPassword } = require('../../utils/helperUser');
+const { hashPassword, decodeToken } = require('../../utils/helperUser');
 
 class UsersMiddlewares {
+  checkCookie(req, res, next) {
+    if (!req.cookies) {
+      return res.status(404).send('cookies not found');
+    }
+    if (req.cookies.user_token) {
+      return next();
+    }
+    return res.sendStatus(401);
+  }
+
+  checkProfile(req, res, next) {
+    const token = decodeToken(req.cookies.user_token);
+    if (token.profile !== 'ADMIN' && token.profile !== 'REFERENT') {
+      return res.status(403).send('no authorized');
+    }
+    return next();
+  }
+
+  verifyToken(req, res, next) {
+    const token = req.cookies.user_token;
+    try {
+      const data = jwt.verify(token, process.env.PRIVATE_KEY);
+      if (data) {
+        next();
+      } else {
+        res.sendStatus(500);
+      }
+    } catch {
+      res.status(403).send('error3');
+    }
+  }
+
   checkBodyId(req, res, next) {
     if (!req.body.id) {
       res.status(400).send('bad request1');
@@ -25,6 +58,16 @@ class UsersMiddlewares {
   checkBodyForUpdate(req, res, next) {
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.profile) {
       res.status(400).send('bad request3');
+    } else {
+      next();
+    }
+  }
+
+  checkRequestProfile(req, res, next) {
+    const { tokenProfile } = req.cookies.user_token;
+    const { bodyProfile } = req.body;
+    if (bodyProfile === 'ADMIN' && tokenProfile !== 'ADMIN') {
+      res.sendStatus(401);
     } else {
       next();
     }

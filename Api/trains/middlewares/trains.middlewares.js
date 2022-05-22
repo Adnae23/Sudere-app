@@ -1,9 +1,34 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
+const jwt = require('jsonwebtoken');
 const Joi = require('Joi');
 const { getUserById } = require('../../users/models/users.models');
 
 class TrainsMiddlewares {
+  checkCookie(req, res, next) {
+    if (!req.cookies) {
+      return res.status(404).send('error1');
+    }
+    if (req.cookies.user_token) {
+      return next();
+    }
+    return res.status(401).send('error2');
+  }
+
+  verifyToken(req, res, next) {
+    const token = req.cookies.user_token;
+    try {
+      const data = jwt.verify(token, process.env.PRIVATE_KEY);
+      if (data) {
+        next();
+      } else {
+        res.sendStatus(500);
+      }
+    } catch {
+      res.status(403).send('error3');
+    }
+  }
+
   checkBody(req, res, next) {
     // eslint-disable-next-line max-len
     if (!req.body.date || !req.body.processingTime || !req.body.userId || !req.body.trailerId || !req.body.trainId) {
