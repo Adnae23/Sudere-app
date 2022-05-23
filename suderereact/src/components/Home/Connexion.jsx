@@ -1,27 +1,28 @@
+/* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { decodeToken } from 'react-jwt';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import UserContext from '../../contexts/UserContext';
 
 function Connexion() {
   const [login, setLogin] = useState('');
+  const { setUser } = useContext(UserContext);
   const object = {};
   const navigate = useNavigate();
   async function handleClick(event) {
     event.preventDefault();
-    // if (login.password !== 'defaultpassword') {
-    try {
-      const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
-      console.log(response);
-      navigate('/CommonPage');
-    } catch (error) {
-      setLogin({ login: '', password: '' });
-      console.log(error);
-    }
-    // } else {
-    //   navigate('/parametres/');
-    // }
+    await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true })
+      .then((response) => {
+        setUser(decodeToken(response.data));
+        navigate('/CommonPage');
+      })
+      .catch((error) => {
+        setLogin({ login: '', password: '' });
+        console.log(error);
+      });
   }
   const handleChange = (event) => {
     const key = event.target.id;
