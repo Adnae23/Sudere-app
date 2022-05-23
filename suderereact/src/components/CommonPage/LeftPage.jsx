@@ -29,7 +29,7 @@ function LeftPage() {
     }
   }
   const handleSearch = () => {
-    setRefresh(!refresh);
+    setRefresh(true);
   };
 
   const handleClick = () => {
@@ -66,10 +66,11 @@ function LeftPage() {
         setDataTrain([]);
         setTrainNumber('');
       }
+      setRefresh(false);
     }
     searchTrain();
     if (!dataTrain) navigate('/commonPage');
-  }, [trainNumber, refresh]);
+  }, [refresh]);
 
   return (
     <div className="leftPage">

@@ -8,7 +8,6 @@ function CenterPage() {
   const { dataTrain } = useContext(DataTrainContext);
   const [remorque, setRemorque] = useState(1);
   const { setTrailerSelected } = useContext(TrailerSelectedContext);
-  console.log(dataTrain);
 
   // **************************** VARIABLES A RECUPERER DANS USECONTEXT ****************************
   const train = {};
