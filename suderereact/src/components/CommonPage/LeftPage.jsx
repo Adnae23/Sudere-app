@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useEffect, useState } from 'react';
@@ -31,6 +32,11 @@ function LeftPage() {
   }
   const handleSearch = () => {
     setRefresh(!refresh);
+  };
+  const handlekeyPress = (e) => {
+    if (e.key === 'Enter') {
+      setRefresh(!refresh);
+    }
   };
 
   const handleClick = () => {
@@ -70,7 +76,7 @@ function LeftPage() {
     }
     searchTrain();
     if (!dataTrain) navigate('/commonPage');
-  }, [trainNumber, refresh, reloadTrailer]);
+  }, [refresh, reloadTrailer]);
 
   return (
     <div className="leftPage">
@@ -83,7 +89,7 @@ function LeftPage() {
             <button className="leftPage__right__topBloc__return__button" type="button" />
           </NavLink>
           <p>saisir un numéro de rame:</p>
-          <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} />
+          <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} onKeyPress={handlekeyPress} />
           <button className="leftPage__right__topBloc__searchButton" type="button" onClick={handleSearch} onKeyPress={handleSearch}>Rechercher</button>
 
         </div>
