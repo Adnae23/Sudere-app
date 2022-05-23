@@ -4,11 +4,13 @@ import dateFormat from 'dateformat';
 import UserContext from '../../contexts/UserContext';
 import TrailerSelected from '../../contexts/TrailerSelectedContext';
 import DataTrainContext from '../../contexts/DataTrainContext';
+// import ReloadTrailerContext from '../../contexts/ReloadTrailerContext';
 
 function TrailersModifConnect() {
   const { dataTrain } = useContext(DataTrainContext);
   const { user } = useContext(UserContext);
   const { trailerSelected } = useContext(TrailerSelected);
+  // const { reloadTrailer, setReloadTrailer } = useContext(ReloadTrailerContext);
   const toDay = new Date();
   const toDay2 = dateFormat(toDay, 'yyyy-mm-dd');
   const [dateTime, setDateTime] = useState({ date: toDay2 });
@@ -24,9 +26,10 @@ function TrailersModifConnect() {
     event.preventDefault();
     if (dateTime.date !== '' && dateTime.processingTime !== '') {
       setWarning('__none');
-      axios.put('http://localhost:5000/trains', dateTime)
+      axios.put('http://localhost:5000/trains', dateTime, { withCredentials: true })
         .then((response) => {
           console.log(response);
+          // setReloadTrailer(!reloadTrailer);
         })
         .catch((error) => {
           console.log(error);

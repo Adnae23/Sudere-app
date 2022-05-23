@@ -79,10 +79,11 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
     height: 60px;
     font-size: 2em;
     font-weight: bolder;
+
     @media screen and (max-width: 520px) {
         width: 40px;
         height: 40px;
-        }
+    }
 
 }
 
@@ -90,11 +91,12 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
     width: 30px;
     height: 30px;
     font-size: 1em;
+
     @media screen and (max-width: 520px) {
         width: 20px;
         height: 20px;
         font-size: 0.8em;
-        }
+    }
 }
 
 .centerPage {
@@ -108,15 +110,16 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
         width: 100%;
         height: 13%;
         display: flex;
-        flex-direction: column;
         justify-content: space-evenly;
         background-color: #e0ded8;
         color: $orange;
         text-align: center;
+
         @media screen and (max-width: 520px) {
+            flex-direction: column;
             height: 20%;
-            }
-    
+        }
+
 
         & h4 {
             margin: auto 0;
@@ -135,10 +138,11 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
         justify-content: center;
         align-items: center;
         background-color: #e0ded8;
+
         @media screen and (max-width: 520px) {
             height: 78%;
-            }
-    
+        }
+
 
         &_trailersPic {
             display: flex;
@@ -217,9 +221,10 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 transform: scale(1);
                 z-index: -51;
             }
+
             @media screen and (max-width: 520px) {
                 display: none;
-            }        
+            }
         }
 
         &_trailersNum {
@@ -302,10 +307,11 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 &_R_big_green {
                     background-color: $vert_pomme;
                 }
+
                 @media screen and (max-width: 520px) {
                     width: 40px;
                     height: 40px;
-                    }            
+                }
             }
         }
     }

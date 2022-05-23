@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DataTrainContext from '../../contexts/DataTrainContext';
 import UserContext from '../../contexts/UserContext';
+import ReloadTrailerContext from '../../contexts/ReloadTrailerContext';
 
 function LeftPage() {
   const [trainNumber, setTrainNumber] = useState(() => {
@@ -14,6 +15,7 @@ function LeftPage() {
   });
   const { dataTrain, setDataTrain } = useContext(DataTrainContext);
   const { user, setUser } = useContext(UserContext);
+  const { reloadtrailer } = useContext(ReloadTrailerContext);
   const navigate = useNavigate();
   if (!dataTrain) navigate('/commonPage');
   function InputTrain(inputNumber) {
@@ -62,6 +64,12 @@ function LeftPage() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      searchTrain();
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem('trains', JSON.stringify(trainNumber));
     const verifToken = () => {
@@ -74,7 +82,7 @@ function LeftPage() {
         });
     };
     verifToken();
-  }, [trainNumber]);
+  }, [trainNumber, reloadtrailer]);
 
   return (
     <div className="leftPage">
@@ -87,7 +95,7 @@ function LeftPage() {
             <button className="leftPage__right__topBloc__return__button" type="button" />
           </NavLink>
           <p>saisir un numéro de rame:</p>
-          <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} />
+          <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} onKeyPress={(e) => handleKeyPress(e)} />
           <button className="leftPage__right__topBloc__searchButton" type="button" onClick={searchTrain} onKeyPress={searchTrain}>Rechercher</button>
 
         </div>
