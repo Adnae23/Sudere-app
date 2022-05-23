@@ -29,7 +29,6 @@ function StatisticFieldset() {
           <StatisticChoice />
         </div>
       </div>
-      <div className="stats__footer" />
     </div>
   );
 }

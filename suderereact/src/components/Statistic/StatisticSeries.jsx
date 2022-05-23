@@ -21,10 +21,10 @@ function StatisticSeries() {
 
   return (
     <div className="serie">
-      <fieldset className="serie__fieldset">
+      <div className="serie__fieldset">
         <legend className="serie__fieldset__legend">Séries</legend>
         <MultiSelect className="serie__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="séries" />
-      </fieldset>
+      </div>
     </div>
   );
 }

@@ -17,10 +17,10 @@ function StatisticAxes() {
 
   return (
     <div className="axe">
-      <fieldset className="axe__fieldset">
+      <div className="axe__fieldset">
         <legend className="axe__fieldset__legend">Axes</legend>
         <MultiSelect className="axe__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="Select" />
-      </fieldset>
+      </div>
     </div>
   );
 }

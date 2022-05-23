@@ -4,7 +4,7 @@ import React from 'react';
 function StatisticDuration() {
   return (
     <div className="duration">
-      <fieldset className="duration__fieldset">
+      <div className="duration__fieldset">
         <legend className="duration__fieldset__legend">Durée</legend>
         <div className="duration__fieldset__div">
           <label className="duration__fieldset__div__label" htmlFor="hours">{'Nombres d\'heures'}</label>
@@ -21,7 +21,7 @@ function StatisticDuration() {
             <option value="9">Neuf</option>
           </select>
         </div>
-      </fieldset>
+      </div>
     </div>
   );
 }

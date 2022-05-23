@@ -3,26 +3,26 @@ import React from 'react';
 
 function StatisticChoice() {
   return (
-    <div>
-      <fieldset>
-        <legend>Choisir le status des remorques</legend>
-        <div>
-          <input type="checkbox" name="traitées" />
-          <label htmlFor="traitées">Traitées</label>
+    <div className="choice">
+      <div className="choice__fieldset">
+        <legend className="choice__fieldset__legend">Choisir le status des remorques</legend>
+        <div className="choice__fieldset__div">
+          <input className="choice__fieldset__div__input" type="checkbox" name="traitées" />
+          <label className="choice__fieldset__div__label" htmlFor="traitées">Traitées</label>
         </div>
-        <div>
-          <input type="checkbox" name="partiellement traitées" />
-          <label htmlFor="partiellement traitées">Partiellement traitées</label>
+        <div className="choice__fieldset__div">
+          <input className="choice__fieldset__div__input" type="checkbox" name="partiellement traitées" />
+          <label className="choice__fieldset__div__label" htmlFor="partiellement traitées">Partiellement traitées</label>
         </div>
-        <div>
-          <input type="checkbox" name="non-traitées" />
-          <label htmlFor="non-traitées">Non-traitées</label>
+        <div className="choice__fieldset__div3">
+          <input className="choice__fieldset__div__input" type="checkbox" name="non-traitées" />
+          <label className="choice__fieldset__div__label" htmlFor="non-traitées">Non-traitées</label>
         </div>
-        <div>
-          <input type="checkbox" name="jamais traitées" />
-          <label htmlFor="jamais traitées">Jamais traitées</label>
+        <div className="choice__fieldset__div4">
+          <input className="choice__fieldset__div__input" type="checkbox" name="jamais traitées" />
+          <label className="choice__fieldset__div__label" htmlFor="jamais traitées">Jamais traitées</label>
         </div>
-      </fieldset>
+      </div>
     </div>
   );
 }

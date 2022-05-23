@@ -20,10 +20,10 @@ function StatisticCenters() {
 
   return (
     <div className="center">
-      <fieldset className="center__fieldset">
+      <div className="center__fieldset">
         <legend className="center__fieldset__legend">Centres</legend>
         <MultiSelect className="center__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="séries" />
-      </fieldset>
+      </div>
     </div>
   );
 }

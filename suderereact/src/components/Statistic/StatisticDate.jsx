@@ -4,7 +4,7 @@ import React from 'react';
 function StatisticDate() {
   return (
     <div className="date">
-      <fieldset className="date__fieldset">
+      <div className="date__fieldset">
         <legend className="date__fieldset__legend">Date</legend>
         <div className="date__fieldset__div">
           <label className="date__fieldset__div__label" htmlFor="date">De</label>
@@ -14,7 +14,7 @@ function StatisticDate() {
           <label className="date__fieldset__div__label" htmlFor="date">A</label>
           <input className="date__fieldset__div__input" type="date" min="2021/01/01" />
         </div>
-      </fieldset>
+      </div>
     </div>
   );
 }
