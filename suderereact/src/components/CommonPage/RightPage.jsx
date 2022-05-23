@@ -16,8 +16,6 @@ function RightPage() {
   // ********************************** calcul la couleur en fonction de la derniere realisation
   //
   function color() {
-    console.log(trailerSelected);
-    console.log(rem2);
     const date = Math.round((new Date() - new Date(dataTrain[rem2].date).getTime()) / 86400000) - 1;
     if (date > 1095) {
       return 'red';

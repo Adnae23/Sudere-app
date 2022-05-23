@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useEffect, useState } from 'react';
