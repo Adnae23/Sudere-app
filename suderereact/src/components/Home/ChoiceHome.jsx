@@ -12,15 +12,23 @@ function ChoiceHome() {
           <h3 className="content__nav__train__title">Consultation</h3>
         </button>
       </NavLink>
-      <NavLink to="/Connexion">
-        <button type="button" className="content__team">
-          <div className="content__team__img">
-            <img className="content__team__img__2" src="./pictures/logo/team.jpg" alt="team" />
+      <NavLink className="content__connect" to="/Connexion">
+        <button type="button" className="content__connect__team">
+          <div className="content__connect__team__img">
+            <img className="content__connect__team__img__2" src="./pictures/logo/team.jpg" alt="team" />
           </div>
-          <h3 className="content__team__title-1">Connexion</h3>
-          <h3 className="content__team__title-2">(PC et Tablette)</h3>
+          <h3 className="content__connect__team__title-1">Connexion</h3>
         </button>
       </NavLink>
+      <div className="content__connect__mobile">
+        <button type="button" className="content__connect__mobile">
+          <div className="content__connect__mobile__img">
+            <img className="content__connect__mobile__img__2" src="./pictures/logo/team.jpg" alt="team" />
+          </div>
+          <h3 className="content__connect__mobile__title-1">Connexion</h3>
+          <h3 className="content__connect__mobile__title-2">(PC et Tablette)</h3>
+        </button>
+      </div>
     </div>
   );
 }

@@ -5,88 +5,151 @@
     align-items: center;
     height: 68vh;
     justify-content: center;
+
     @media screen and (max-width: 520px) {
         flex-direction: column-reverse;
     }
+
     &__nav {
         margin-right: 12%;
 
         &__train {
             background-color: $warm_gray_1;
             border: none;
+
             @media screen and (max-width: 520px) {
                 margin-right: 0;
             }
+
             &__img {
                 height: 12rem;
                 background-color: $warm_gray_1;
                 border: none;
+
                 @media screen and (max-width: 520px) {
                     height: 7rem;
                     margin: 2rem;
                 }
+
                 &__1 {
                     max-height: 100%;
                 }
             }
+
             &__title {
                 color: $carbone;
+
                 @media screen and (max-width: 520px) {
                     margin: 8px;
                 }
             }
         }
+
         &__train:hover {
             transform: scale(1.02);
+
             h3 {
                 color: $orange;
             }
         }
     }
-    &__navConnect{
-        
-    }
-    &__team {
-        background-color: $warm_gray_1;
-        border: none;
-        &__img {
-            height: 12rem;
-            @media screen and (max-width: 520px) {
-                height: 7rem;
-            }
-            &__2 {
-                max-height: 100%;
+
+    &__connect {
+
+        &__team {
+            background-color: $warm_gray_1;
+            border: none;
+
+            &__img {
+                height: 12rem;
+
                 @media screen and (max-width: 520px) {
-                    opacity: 0.5;
+                    height: 7rem;
+                }
+
+                &__2 {
+                    max-height: 100%;
+
+                    @media screen and (max-width: 520px) {
+                        opacity: 0.5;
+                    }
                 }
             }
-        }
-        &__title-1 {
-            color: $carbone;
-            @media screen and (max-width: 520px) {
-                margin: 8px;
-                margin-bottom: 1px;
+
+            &__title-1 {
+                color: $carbone;
+
+                @media screen and (max-width: 520px) {
+                    margin: 8px;
+                    margin-bottom: 1px;
+                }
             }
-        }
-        &__title-2 {
-            display: none;
-            color: $raspberry;
+
             @media screen and (max-width: 520px) {
-                margin: 8px;
-                display: block;
-                font-size: 2vh;
-                margin: 1px;
+                display: none;
             }
+
         }
-    }
-    &__team:hover {
-        transform: scale(1.02);
-        color: $orange;
-        h3 {
+
+        &__mobile {
+            background-color: $warm_gray_1;
+            border: none;
+
+            &__img {
+                height: 12rem;
+
+                @media screen and (max-width: 520px) {
+                    height: 7rem;
+                }
+
+                &__2 {
+                    max-height: 100%;
+
+                    @media screen and (max-width: 520px) {
+                        opacity: 0.5;
+                    }
+                }
+            }
+
+            &__title-1 {
+                color: $carbone;
+
+                @media screen and (max-width: 520px) {
+                    margin: 8px;
+                    margin-bottom: 1px;
+                }
+            }
+
+            &__title-2 {
+                display: none;
+                color: $raspberry;
+
+                @media screen and (max-width: 520px) {
+                    margin: 8px;
+                    display: block;
+                    font-size: 2vh;
+                    margin: 1px;
+                }
+            }
+
+            @media screen and (min-width: 520px) {
+                display: none;
+            }
+
+        }
+
+        &__team:hover {
+            transform: scale(1.02);
             color: $orange;
+
+            h3 {
+                color: $orange;
+            }
+
+            @media screen and (max-width: 520px) {
+                transform: none;
+            }
         }
-        @media screen and (max-width: 520px) {
-            transform: none;
-        }
+
     }
 }
