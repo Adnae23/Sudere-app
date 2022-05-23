@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -7,7 +8,7 @@ import TrailerSelectedContext from '../../contexts/TrailerSelectedContext';
 import ReloadTrailerContext from '../../contexts/ReloadTrailerContext';
 
 function CommonPage() {
-  const [dataTrain, setDataTrain] = useState([]);
+  const [dataTrain, setDataTrain] = useState();
   const [trailerSelected, setTrailerSelected] = useState(1);
   const [reloadTrailer, setReloadTrailer] = useState(false);
 
@@ -19,7 +20,8 @@ function CommonPage() {
             <div className="commonPage__left">
               <LeftPage />
             </div>
-            <Outlet />
+            {dataTrain
+              && <Outlet />}
           </div>
         </ReloadTrailerContext.Provider>
       </DataTrainContext.Provider>

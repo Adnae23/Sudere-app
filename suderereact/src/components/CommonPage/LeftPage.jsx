@@ -15,9 +15,9 @@ function LeftPage() {
   });
   const { dataTrain, setDataTrain } = useContext(DataTrainContext);
   const { user, setUser } = useContext(UserContext);
-  const { reloadtrailer } = useContext(ReloadTrailerContext);
+  const { reloadTrailer } = useContext(ReloadTrailerContext);
+  const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
-  if (!dataTrain) navigate('/commonPage');
   function InputTrain(inputNumber) {
     navigate('/commonPage');
     if (inputNumber.length < 5 && inputNumber.length > 0) {
@@ -29,25 +29,9 @@ function LeftPage() {
       setTrainNumber(inputNumber.slice(0, 4));
     }
   }
-  async function searchTrain() {
-    if (trainNumber.length > 0) {
-      try {
-        const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`);
-        console.log(response.data);
-        setDataTrain(response.data);
-        if (response.data.length !== 0) {
-          navigate('/commonPage/rightcomponent');
-        } else {
-          navigate('/commonPage');
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      setDataTrain([]);
-      setTrainNumber('');
-    }
-  }
+  const handleSearch = () => {
+    setRefresh(!refresh);
+  };
 
   const handleClick = () => {
     if (user) {
@@ -64,25 +48,29 @@ function LeftPage() {
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      searchTrain();
-    }
-  };
-
   useEffect(() => {
     localStorage.setItem('trains', JSON.stringify(trainNumber));
-    const verifToken = () => {
-      axios.get('http://localhost:5000/auth', { withCredentials: true })
-        .then((response) => {
-          const token = response.data;
-          if (token) {
-            setUser(decodeToken(token));
+    async function searchTrain() {
+      if (trainNumber.length > 0) {
+        try {
+          const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`, { withCredentials: true });
+          setDataTrain(response.data);
+          if (response.data.length !== 0) {
+            navigate('/commonPage/rightcomponent');
+          } else {
+            navigate('/commonPage');
           }
-        });
-    };
-    verifToken();
-  }, [trainNumber, reloadtrailer]);
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        setDataTrain([]);
+        setTrainNumber('');
+      }
+    }
+    searchTrain();
+    if (!dataTrain) navigate('/commonPage');
+  }, [trainNumber, refresh, reloadTrailer]);
 
   return (
     <div className="leftPage">
@@ -95,8 +83,8 @@ function LeftPage() {
             <button className="leftPage__right__topBloc__return__button" type="button" />
           </NavLink>
           <p>saisir un numéro de rame:</p>
-          <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} onKeyPress={(e) => handleKeyPress(e)} />
-          <button className="leftPage__right__topBloc__searchButton" type="button" onClick={searchTrain} onKeyPress={searchTrain}>Rechercher</button>
+          <input className="leftPage__right__topBloc__input" type="number" value={trainNumber} onChange={(event) => InputTrain(event.target.value)} />
+          <button className="leftPage__right__topBloc__searchButton" type="button" onClick={handleSearch} onKeyPress={handleSearch}>Rechercher</button>
 
         </div>
         <div className="leftPage__right__centerBloc">
