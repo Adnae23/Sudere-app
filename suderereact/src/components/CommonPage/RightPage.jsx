@@ -28,7 +28,7 @@ function RightPage() {
   }
   return (
     <div className={`rightPage  rightPage__${color()}`}>
-      {user ? (
+      {user && dataTrain ? (
 
         <div className="rightPage__connect">
           <div className="rightPage__connect__info">
