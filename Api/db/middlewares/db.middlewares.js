@@ -3,10 +3,40 @@
 /* eslint-disable global-require */
 /* eslint-disable max-len */
 const XLSX = require('xlsx');
+const jwt = require('jsonwebtoken');
 const { getTrains } = require('../models/db.models');
 const { compare } = require('../../utils/compare');
+const { decodeToken } = require('../../utils/helperUser');
 
 class DbMiddlewares {
+  checkCookie(req, res, next) {
+    if (!req.cookies) {
+      return res.status(404).send('error1');
+    }
+    if (req.cookies.user_token) {
+      const token = decodeToken(req.cookies.user_token);
+      if (token.profile !== 'ADMIN') {
+        return res.sendStatus(403);
+      }
+      return next();
+    }
+    return res.status(401).send('ici');
+  }
+
+  verifyToken(req, res, next) {
+    const token = req.cookies.user_token;
+    try {
+      const data = jwt.verify(token, process.env.PRIVATE_KEY);
+      if (data) {
+        next();
+      } else {
+        res.sendStatus(500);
+      }
+    } catch {
+      res.status(403).send('error3');
+    }
+  }
+
   checkFile(req, res, next) {
     if (req.files === null) {
       res.status(404).send('file not found');

@@ -10,18 +10,18 @@ function Connexion() {
   const navigate = useNavigate();
   async function handleClick(event) {
     event.preventDefault();
-    if (login.password !== 'defaultpassword') {
-      try {
-        const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
-        console.log(response);
-        navigate('/CommonPage');
-      } catch (error) {
-        setLogin({ login: '', password: '' });
-        console.log(error);
-      }
-    } else {
-      navigate('/parametres/');
+    // if (login.password !== 'defaultpassword') {
+    try {
+      const response = await axios.post('http://localhost:5000/auth/login', login, { withCredentials: true });
+      console.log(response);
+      navigate('/CommonPage');
+    } catch (error) {
+      setLogin({ login: '', password: '' });
+      console.log(error);
     }
+    // } else {
+    //   navigate('/parametres/');
+    // }
   }
   const handleChange = (event) => {
     const key = event.target.id;

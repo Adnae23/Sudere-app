@@ -63,7 +63,7 @@ class DbController {
           res.status(500).send('error');
         }
       });
-      res.sendStatus(200);
+      // res.sendStatus(200);
     } catch (error) {
       res.status(500).send('deleting error');
     }

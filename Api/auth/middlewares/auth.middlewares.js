@@ -16,15 +16,20 @@ class AuthMiddlewares {
   // ********************************** vérifie si user bien présent dans la db
   async checkExistingUser(req, res, next) {
     const { password, login } = req.body;
-    const existingUser = await getUserById(login);
-    const hashedPassword = existingUser[0].password;
-    if (existingUser.length === 0) {
-      res.status(404).send('User or Password does not match');
-    } else if (!await verifyPassword(password, hashedPassword)) {
-      res.status(404).send('User or Password does not match');
-    } else {
-      next();
+    let existingUser = '';
+    let hashedPassword = '';
+    try {
+      existingUser = await getUserById(login);
+      hashedPassword = existingUser[0].password;
+    } catch (error) {
+      return res.status(500).send('oups');
     }
+    if (existingUser.length === 0) {
+      return res.status(404).send('User or Password does not match');
+    } if (!await verifyPassword(password, hashedPassword)) {
+      return res.status(404).send('User or Password does not match');
+    }
+    return next();
   }
 
   checkCookie(req, res, next) {
