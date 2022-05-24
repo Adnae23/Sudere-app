@@ -12,7 +12,7 @@ const trainsRouter = require('./trains/trains.routes');
 const usersRouter = require('./users/users.route');
 const authRouter = require('./auth/auth.route');
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());
 app.use(fileUpload());
 

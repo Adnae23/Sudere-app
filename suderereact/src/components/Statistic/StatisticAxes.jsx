@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
-
-const options = [
-  { label: 'GRD', value: 'GRD' },
-  { label: 'Sud EST', value: 'Sud-Est' },
-  { label: 'Nord', value: 'Nord' },
-  { label: 'Atlantique', value: 'Atlantique' },
-  { label: 'Est', value: 'Est' },
-  { label: 'Bisheim', value: 'Bisheim' },
-  { label: 'FALBALA', value: 'FALBALA' },
-  { label: 'Forest', value: 'Forest' },
-];
 
 function StatisticAxes() {
   const [selected, setSelected] = useState([]);
+  const [lines, setLines] = useState([]);
+
+  useEffect(() => {
+    const fetchLines = () => {
+      axios.get('http://localhost:5000/db/lines/', { withCredentials: true })
+        .then((response) => {
+          const options = response.data.map((option) => {
+            const line = { label: option.name, value: option.name };
+            return line;
+          });
+          setLines(options);
+        });
+    };
+    fetchLines();
+  }, []);
 
   return (
     <div className="axe">
       <div className="axe__fieldset">
         <legend className="axe__fieldset__legend">Axes</legend>
-        <MultiSelect className="axe__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="Select" />
+        {lines
+        && <MultiSelect className="axe__fieldset__select" options={lines} value={selected} onChange={setSelected} labelledBy="Select" />}
       </div>
     </div>
   );

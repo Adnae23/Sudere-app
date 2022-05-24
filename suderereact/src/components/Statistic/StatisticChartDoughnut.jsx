@@ -22,16 +22,16 @@ const options = {
   },
 };
 
-const data = {
-  labels: ['Traitées', 'Partiellement traitrées', 'Jamais traitées', 'A traiter'],
-  datasets: [
-    {
-      data: ['45', '25', '20', '10'],
-      backgroundColor: ['#82be00', '#ffb612', '#cd0037', '#cd0037'],
-      borderColor: ['#e0ded8'],
-    },
-  ],
-};
+// const data = {
+//   labels: ['Traitées', 'Partiellement traitrées', 'Jamais traitées', 'A traiter'],
+//   datasets: [
+//     {
+//       data: ['45', '25', '20', '10'],
+//       backgroundColor: ['#82be00', '#ffb612', '#cd0037', '#cd0037'],
+//       borderColor: ['#e0ded8'],
+//     },
+//   ],
+// };
 
 function StatisticChartDoughnut() {
   return (

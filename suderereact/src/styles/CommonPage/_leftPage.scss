@@ -85,10 +85,20 @@
         }
 
         &__centerBloc {
-            // display: flex;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
             height: 45%;
             width: 100%;
             font-family: $Avenir;
+
+            &__div {
+                margin-top: 20px;
+                margin-bottom: 25px;
+                height: 2px;
+                width: 100%;
+                background-color: $warm_gray_3;
+            }
 
             &__filters {
                 display: flex;
@@ -128,6 +138,7 @@
             &__button1 {
                 text-align: center;
                 height: 20%;
+
                 &__button {
                     height: 30px;
                     border: none;

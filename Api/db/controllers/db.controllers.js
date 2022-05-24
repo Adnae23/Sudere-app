@@ -46,9 +46,36 @@ class DbController {
         await DbModel.deleteTrailers(train);
         await DbModel.deleteTrain(train);
       });
-      res.sendStatus(200);
+      // res.sendStatus(200);
     } catch (error) {
       res.status(500).send({ error: error.message });
+    }
+  }
+
+  async fetchLines(req, res) {
+    try {
+      const lines = await DbModel.getLines();
+      res.status(200).send(lines);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async fetchSeries(req, res) {
+    try {
+      const series = await DbModel.getSeries();
+      res.status(200).send(series);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async fetchCenters(req, res) {
+    try {
+      const centers = await DbModel.getCenters();
+      res.status(200).send(centers);
+    } catch (error) {
+      res.status(500).send(error);
     }
   }
 }
