@@ -115,12 +115,6 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
         color: $orange;
         text-align: center;
 
-        @media screen and (max-width: 520px) {
-            flex-direction: column;
-            height: 20%;
-        }
-
-
         & h4 {
             margin: auto 0;
             font-size: 2.5vh;
@@ -128,6 +122,10 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
             & span {
                 color: $carbone;
             }
+        }
+
+        @media screen and (max-width: 520px) {
+            display: none;
         }
     }
 
@@ -140,7 +138,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
         background-color: #e0ded8;
 
         @media screen and (max-width: 520px) {
-            height: 78%;
+            height: 100%;
         }
 
 

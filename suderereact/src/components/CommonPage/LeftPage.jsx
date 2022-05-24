@@ -17,10 +17,12 @@ function LeftPage() {
   const { dataTrain, setDataTrain } = useContext(DataTrainContext);
   const { user, setUser } = useContext(UserContext);
   const { reloadTrailer } = useContext(ReloadTrailerContext);
+  const [displayCenter, setDisplayCenter] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
   function InputTrain(inputNumber) {
     navigate('/commonPage');
+    setDisplayCenter(false);
     if (inputNumber.length < 5 && inputNumber.length > 0) {
       setTrainNumber(inputNumber);
     } else if (inputNumber.length === 0) {
@@ -62,8 +64,10 @@ function LeftPage() {
           const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`, { withCredentials: true });
           setDataTrain(response.data);
           if (response.data.length !== 0) {
+            setDisplayCenter(true);
             navigate('/commonPage/rightcomponent');
           } else {
+            setDisplayCenter(false);
             navigate('/commonPage');
           }
         } catch (error) {
@@ -75,7 +79,10 @@ function LeftPage() {
       }
     }
     searchTrain();
-    if (!dataTrain) navigate('/commonPage');
+    if (!dataTrain) {
+      setDisplayCenter(false);
+      navigate('/commonPage');
+    }
   }, [refresh, reloadTrailer]);
 
   return (
@@ -84,6 +91,7 @@ function LeftPage() {
         <h1>{user ? 'SUDERE: MODIFICATION' : 'SUDERE: CONSULTATION'}</h1>
       </div>
       <div className="leftPage__right">
+        <p className="leftPage__right__mobile">saisir un numéro de rame:</p>
         <div className="leftPage__right__topBloc">
           <NavLink to="/" className="leftPage__right__topBloc__return">
             <button className="leftPage__right__topBloc__return__button" type="button" />
@@ -112,6 +120,25 @@ function LeftPage() {
           </div>
         </div>
       </div>
+      {displayCenter
+        && (
+          <div className="leftPage__infoRame">
+            <div className="leftPage__infoRame__mobile">
+              <h4>
+                <span>Rame: </span>
+                {dataTrain[0].train}
+              </h4>
+              <h4>
+                <span>Matériel: </span>
+                {dataTrain[0].serie}
+              </h4>
+              <h4>
+                <span>Axe: </span>
+                {dataTrain[0].line}
+              </h4>
+            </div>
+          </div>
+        )}
     </div>
   );
 }

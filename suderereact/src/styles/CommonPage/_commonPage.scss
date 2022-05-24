@@ -3,6 +3,8 @@
     width: 100vw;
     height: 100vh;
     background-color: $carbone;
+
+
     @media screen and (max-width: 520px) {
         flex-direction: column;
     }
@@ -10,11 +12,13 @@
     &__left {
         width: 24%;
         margin: 15px 0 15px 15px;
+
         @media screen and (max-width: 520px) {
             width: 100%;
             display: flex;
             flex-direction: column;
-        }    
+            margin: 15px 0 15px 0px;
+        }
     }
 
     &__isTrain {
@@ -24,6 +28,7 @@
         &__center {
             width: 50%;
             margin: 15px 0 15px 0px;
+
             @media screen and (max-width: 520px) {
                 width: 35%;
             }
@@ -33,11 +38,13 @@
         &__right {
             width: 50%;
             margin: 15px 15px 15px 0;
+
             @media screen and (max-width: 520px) {
                 width: 65%;
             }
 
         }
+
         @media screen and (max-width: 520px) {
             width: 100%;
             height: 100%;
@@ -54,7 +61,8 @@
             color: $orange;
             font-size: 4vh;
             text-align: center;
-        }                
+        }
+
         @media screen and (max-width: 520px) {
             width: 100%;
         }
