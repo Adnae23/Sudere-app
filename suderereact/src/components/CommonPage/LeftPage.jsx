@@ -40,7 +40,7 @@ function LeftPage() {
       setRefresh(!refresh);
     }
   };
-
+  // ********************************************* verifie si connecte ou pas
   const handleClick = () => {
     if (user) {
       axios.get('http://localhost:5000/auth/logout', { withCredentials: true })
@@ -55,18 +55,21 @@ function LeftPage() {
       navigate('/connexion');
     }
   };
-
+  // ********************************************* recherche les donnees du train
   useEffect(() => {
     localStorage.setItem('trains', JSON.stringify(trainNumber));
     async function searchTrain() {
+      console.log(reloadTrailer);
       if (trainNumber.length > 0) {
         try {
           const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`, { withCredentials: true });
           setDataTrain(response.data);
+          // ********************************************* si reponse affiche le carousel
           if (response.data.length !== 0) {
             setDisplayCenter(true);
             navigate('/commonPage/rightcomponent');
           } else {
+            // ********************************************* si pas de reponse affiche la page noire
             setDisplayCenter(false);
             navigate('/commonPage');
           }

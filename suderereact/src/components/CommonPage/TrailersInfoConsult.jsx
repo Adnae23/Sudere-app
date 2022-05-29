@@ -12,6 +12,7 @@ function TrailersInfoConsult() {
   let messageTime;
   let cure = true;
   let noSure = '__none';
+  // ********************************************* prepare les donnees ou messages a afficher
   if (dataTrain.length > 0) {
     if (dataTrain[rem2].firstname === 'default') {
       cure = false;
@@ -23,7 +24,7 @@ function TrailersInfoConsult() {
       message = dataTrain && `${dataTrain[rem2].firstname} ${dataTrain[rem2].lastname} au ${dataTrain[rem2].center}`;
     }
   }
-
+  // ********************************************* calcul le temps depuis la derniere intervention
   function calculPastTime() {
     const pastTime = Math.round((new Date() - new Date(dataTrain[rem2].date).getTime()) / 86400000);
     if (pastTime < 0) {
@@ -37,7 +38,7 @@ function TrailersInfoConsult() {
     }
     return messageTime;
   }
-
+  // ********************************************* mise en forme de la date
   function formatDate() {
     return format(parseISO(dataTrain[rem2].date), 'dd/MM/yyyy');
   }

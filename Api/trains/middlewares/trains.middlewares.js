@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable class-methods-use-this */
 const jwt = require('jsonwebtoken');
@@ -30,8 +31,9 @@ class TrainsMiddlewares {
   }
 
   checkBody(req, res, next) {
+    console.log(req.body);
     // eslint-disable-next-line max-len
-    if (!req.body.date || !req.body.processingTime || !req.body.userId || !req.body.trailerId || !req.body.trainId) {
+    if (!req.body.date || !req.body.userId || !req.body.trailerId || !req.body.trainId || !req.body.oldDate || !req.body.oldUserId) {
       res.status(400).send('bad request');
     } else {
       next();
@@ -40,16 +42,19 @@ class TrainsMiddlewares {
 
   checkShapingForTrailers(req, res, next) {
     const {
-      date, processingTime, userId, trailerId, trainId,
+      date, processingTime, userId, trailerId, trainId, oldDate, oldProcessingTime, oldUserId,
     } = req.body;
     const { error } = Joi.object({
       date: Joi.string().required(),
+      oldDate: Joi.string().required(),
       processingTime: Joi.number().required(),
+      oldProcessingTime: Joi.number().required(),
       userId: Joi.string().min(8).max(8).required(),
+      oldUserId: Joi.string().min(8).max(8).required(),
       trailerId: Joi.number().required(),
       trainId: Joi.number().required(),
     }).validate({
-      date, processingTime, userId, trailerId, trainId,
+      date, processingTime, userId, trailerId, trainId, oldDate, oldProcessingTime, oldUserId,
     }, { abortEarly: false });
     if (error) {
       res.status(422).json({ ValidationErrors: error });

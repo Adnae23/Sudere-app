@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
 const TrainsModels = require('../models/trains.models');
 
@@ -23,11 +25,11 @@ class TrainsControllers {
 
   updateTrailer = (req, res) => {
     const {
-      date, processingTime, userId, trailerId, trainId,
+      date, processingTime, userId, trailerId, trainId, oldDate, oldProcessingTime, oldUserId,
     } = req.body;
 
     try {
-      TrainsModels.updateTrailer(date, processingTime, userId, trailerId, trainId);
+      TrainsModels.updateTrailer(date, processingTime, userId, trailerId, trainId, oldDate, oldProcessingTime, oldUserId);
       res.status(201).send('trailer successfuly updated');
     } catch (error) {
       res.status(500).send({ error: error.message });
