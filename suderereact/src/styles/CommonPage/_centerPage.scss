@@ -16,8 +16,8 @@
     --marge-g: 580px;
 }
 
-div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9),
-div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9)~div[class^="centerPage__carrousel_trailersPic_R"] {
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(9),
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(9)~div[class^="centerPage__carrousel__trailersPic__R"] {
     --scale-a: 1;
     --scale-b: 1.3;
     --scale-c: 1.6;
@@ -35,8 +35,8 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(9)~
     --marge-f: 58vh;
 }
 
-div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7),
-div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~div[class^="centerPage__carrousel_trailersPic_R"] {
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(7),
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(7)~div[class^="centerPage__carrousel__trailersPic__R"] {
     --scale-a: 1.3;
     --scale-b: 1.6;
     --scale-c: 1.3;
@@ -54,19 +54,19 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
     --marge-e: 58vh;
 }
 
-[class^="centerPage__carrousel_trailersPic_R"] {
+[class^="centerPage__carrousel__trailersPic__R"] {
     display: flex;
     align-items: center;
     position: absolute;
     width: 12vw;
 }
 
-[class^="centerPage__carrousel_trailersPic_R"] img {
+[class^="centerPage__carrousel__trailersPic__R"] img {
     height: auto;
     width: 100%;
 }
 
-[class^="centerPage__carrousel_trailersNum_color_R"] {
+[class^="centerPage__carrousel__trailersNum__color__R"] {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,7 +74,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
     border-radius: 50%;
 }
 
-[class^="centerPage__carrousel_trailersNum_color_R_big_"] {
+[class^="centerPage__carrousel__trailersNum__color__R__big__"] {
     width: 60px;
     height: 60px;
     font-size: 2em;
@@ -87,7 +87,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
 
 }
 
-[class^="centerPage__carrousel_trailersNum_color_R_small_"] {
+[class^="centerPage__carrousel__trailersNum__color__R__small__"] {
     width: 30px;
     height: 30px;
     font-size: 1em;
@@ -142,7 +142,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
         }
 
 
-        &_trailersPic {
+        &__trailersPic {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -150,21 +150,21 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
             height: 80vh;
             position: relative;
 
-            &_R1 {
+            &__R1 {
                 transition-delay: 1ms;
                 transform: scale(1);
                 transition: all 0.5s;
                 z-index: -5;
             }
 
-            &_R2 {
+            &__R2 {
                 transition-delay: 3ms;
                 transform: scale(1);
                 transition: all 0.9s;
                 z-index: -5;
             }
 
-            &_R3 {
+            &__R3 {
                 transition-delay: 3ms;
                 margin: var(--marge-a) auto 0;
                 transform: scale(1);
@@ -172,7 +172,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 z-index: var(--index_z-r3);
             }
 
-            &_R4 {
+            &__R4 {
                 transition-delay: 4ms;
                 margin: var(--marge-b) auto 0;
                 transform: scale(var(--scale-a));
@@ -180,7 +180,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 z-index: 2;
             }
 
-            &_R5 {
+            &__R5 {
                 transition-delay: 5ms;
                 margin: var(--marge-c) auto 0;
                 transform: scale(var(--scale-b));
@@ -188,7 +188,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 z-index: 2;
             }
 
-            &_R6 {
+            &__R6 {
                 transition-delay: 6ms;
                 margin: var(--marge-d) auto 0;
                 transform: scale(var(--scale-c));
@@ -196,7 +196,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 z-index: 2;
             }
 
-            &_R7 {
+            &__R7 {
                 transition: all 0.5s;
                 transition-delay: 7ms;
                 margin: var(--marge-e) auto 0;
@@ -205,7 +205,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 z-index: 2;
             }
 
-            &_R8 {
+            &__R8 {
                 transition: all 0.5s;
                 transition-delay: 8ms;
                 margin: var(--marge-f) auto 0;
@@ -213,7 +213,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 z-index: var(--index_z-r8);
             }
 
-            &_R9 {
+            &__R9 {
                 transition: all 0.5s;
                 transition-delay: 9ms;
                 transform: scale(1);
@@ -225,7 +225,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
             }
         }
 
-        &_trailersNum {
+        &__trailersNum {
             display: flex;
             position: relative;
             flex-direction: column;
@@ -234,7 +234,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
             height: 100%;
             width: 20%;
 
-            &_bar {
+            &__bar {
                 display: flex;
                 width: 5px;
                 height: 90%;
@@ -245,7 +245,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
             &__buttom {
                 z-index: 1;
 
-                &_Up {
+                &__Up {
                     width: 47px;
                     height: 47px;
                     background-image: url(../../../public/pictures/logo/flecheUpBlanche.png);
@@ -258,7 +258,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                     border: none;
                 }
 
-                &_Down {
+                &__Down {
                     width: 47px;
                     height: 47px;
                     background-image: url(../../../public/pictures/logo/flecheDownBlanche.png);
@@ -272,7 +272,7 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 }
             }
 
-            &_color {
+            &__color {
                 display: flex;
                 flex-direction: column;
                 position: relative;
@@ -282,27 +282,27 @@ div[class^="centerPage__carrousel_trailersPic_R"]:first-child:nth-last-child(7)~
                 width: 60px;
                 color: white;
 
-                &_R_small_red {
+                &__R__small__red {
                     background-color: $raspberry;
                 }
 
-                &_R_small_orange {
+                &__R__small__orange {
                     background-color: $safran;
                 }
 
-                &_R_small_green {
+                &__R__small__green {
                     background-color: $vert_pomme;
                 }
 
-                &_R_big_red {
+                &__R__big__red {
                     background-color: $raspberry;
                 }
 
-                &_R_big_orange {
+                &__R__big__orange {
                     background-color: $safran;
                 }
 
-                &_R_big_green {
+                &__R__big__green {
                     background-color: $vert_pomme;
                 }
 

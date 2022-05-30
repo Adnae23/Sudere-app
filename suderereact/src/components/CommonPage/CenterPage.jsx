@@ -29,11 +29,12 @@ function CenterPage() {
   const remorqueR6 = train.serie === 'Atlantique' ? 1 : 7;
   const remorqueR7 = train.serie === 'Atlantique' ? 9 : 6;
   const remorqueR8 = train.serie === 'Atlantique' ? 6 : 5;
-
+  // ********************************************* calcul le temps depuis la derniere intervention
   function calculPastTime(rem) {
     train.pastTime = Math.round((new Date() - new Date(dataTrain[rem].date).getTime()) / 86400000) - 1;
     return train.pastTime;
   }
+  // ********************************************* affiche la remorque précédente
   function moveUp() {
     if (remorque >= nbrTrailer - 1) {
       setRemorque(1);
@@ -41,7 +42,7 @@ function CenterPage() {
       setRemorque(remorque + 1);
     }
   }
-
+  // ********************************************* affiche la remorque suivante
   function moveDown() {
     if (remorque <= 1) {
       setRemorque(nbrTrailer - 1);
@@ -49,7 +50,7 @@ function CenterPage() {
       setRemorque(remorque - 1);
     }
   }
-
+  // ********************************************* positionne les remorques
   function result(rem) {
     let resultat = rem;
     if (rem >= nbrTrailer) {
@@ -90,6 +91,7 @@ function CenterPage() {
     return resultat;
   }
   // voir pour mettre un useEffect *************************************************
+  // ********************************************* changement taille n° remorque suivant position
   function smallBig(position) {
     let laClassName;
     if (remorque === position) {
@@ -104,7 +106,7 @@ function CenterPage() {
     }
     return laClassName;
   }
-
+  // ********************************************* colorie le n° de remorque en fonction de la date de la derniere intervention
   function ColorSelect(date) {
     if (date > 1095) {
       return 'red';
@@ -133,107 +135,107 @@ function CenterPage() {
 
       <div className="centerPage__carrousel">
 
-        <div className="centerPage__carrousel_trailersPic">
-          <div className={`centerPage__carrousel_trailersPic_R${result(remorque)}`}>
+        <div className="centerPage__carrousel__trailersPic">
+          <div className={`centerPage__carrousel__trailersPic__R${result(remorque)}`}>
             <img src={`../pictures/${train.serie}/R8.svg`} alt="R1" />
           </div>
-          <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 1)}`}>
+          <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 1)}`}>
             <img src={`../pictures/${train.serie}/R1.svg`} alt="R2" />
           </div>
-          <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 2)}`}>
+          <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 2)}`}>
             <img src={`../pictures/${train.serie}/R2.svg`} alt="R3" />
           </div>
-          <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 3)}`}>
+          <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 3)}`}>
             <img src={`../pictures/${train.serie}/R2.svg`} alt="R5" />
           </div>
-          <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 4)}`}>
+          <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 4)}`}>
             <img src={`../pictures/${train.serie}/R5.svg`} alt="R6" />
           </div>
-          <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 5)}`}>
+          <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 5)}`}>
             <img src={`../pictures/${train.serie}/R5.svg`} alt="R7" />
           </div>
           {
             train.serie === 'Atlantique'
             && (
               <>
-                <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
+                <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 6)}`}>
                   <img src={`../pictures/${train.serie}/R5.svg`} alt="R8" />
                 </div>
-                <div className={`centerPage__carrousel_trailersPic_R${result(remorque + 7)}`}>
+                <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 7)}`}>
                   <img src={`../pictures/${train.serie}/R5.svg`} alt="R9" />
                 </div>
               </>
             )
           }
-          <div className={train.serie === 'Atlantique' ? `centerPage__carrousel_trailersPic_R${result(remorque + 8)}` : `centerPage__carrousel_trailersPic_R${result(remorque + 6)}`}>
+          <div className={train.serie === 'Atlantique' ? `centerPage__carrousel__trailersPic__R${result(remorque + 8)}` : `centerPage__carrousel__trailersPic__R${result(remorque + 6)}`}>
             <img src={`../pictures/${train.serie}/R5.svg`} alt={train.serie === 'Atlantique' ? 'R10' : 'R8'} />
           </div>
         </div>
 
-        <div className="centerPage__carrousel_trailersNum">
-          <div className="centerPage__carrousel_trailersNum__buttom">
-            <button className="centerPage__carrousel_trailersNum__buttom_Up" type="button" onKeyPress={moveUp} onClick={moveUp} />
+        <div className="centerPage__carrousel__trailersNum">
+          <div className="centerPage__carrousel__trailersNum__buttom">
+            <button className="centerPage__carrousel__trailersNum__buttom__Up" type="button" onKeyPress={moveUp} onClick={moveUp} />
           </div>
-          <div className="centerPage__carrousel_trailersNum_bar" />
-          <div className="centerPage__carrousel_trailersNum_color">
-            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR1)}_${ColorSelect(calculPastTime(0))}`}>
+          <div className="centerPage__carrousel__trailersNum__bar" />
+          <div className="centerPage__carrousel__trailersNum__color">
+            <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR1)}__${ColorSelect(calculPastTime(0))}`}>
               R1
             </div>
           </div>
-          <div className="centerPage__carrousel_trailersNum_color">
-            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR2)}_${ColorSelect(calculPastTime(1))}`}>
+          <div className="centerPage__carrousel__trailersNum__color">
+            <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR2)}__${ColorSelect(calculPastTime(1))}`}>
               R2
             </div>
           </div>
-          <div className="centerPage__carrousel_trailersNum_color">
-            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR3)}_${ColorSelect(calculPastTime(2))}`}>
+          <div className="centerPage__carrousel__trailersNum__color">
+            <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR3)}__${ColorSelect(calculPastTime(2))}`}>
               R3
             </div>
           </div>
-          <div className="centerPage__carrousel_trailersNum_color">
-            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR5)}_${ColorSelect(calculPastTime(3))}`}>
+          <div className="centerPage__carrousel__trailersNum__color">
+            <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR5)}__${ColorSelect(calculPastTime(3))}`}>
               R5
             </div>
           </div>
-          <div className="centerPage__carrousel_trailersNum_color">
-            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR6)}_${ColorSelect(calculPastTime(4))}`}>
+          <div className="centerPage__carrousel__trailersNum__color">
+            <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR6)}__${ColorSelect(calculPastTime(4))}`}>
               R6
             </div>
           </div>
-          <div className="centerPage__carrousel_trailersNum_color">
-            <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR7)}_${ColorSelect(calculPastTime(5))}`}>
+          <div className="centerPage__carrousel__trailersNum__color">
+            <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR7)}__${ColorSelect(calculPastTime(5))}`}>
               R7
             </div>
           </div>
           {train.serie === 'Atlantique'
             ? (
               <>
-                <div className="centerPage__carrousel_trailersNum_color">
-                  <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(8)}_${ColorSelect(calculPastTime(6))}`}>
+                <div className="centerPage__carrousel__trailersNum__color">
+                  <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(8)}__${ColorSelect(calculPastTime(6))}`}>
                     R8
                   </div>
                 </div>
-                <div className="centerPage__carrousel_trailersNum_color">
-                  <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(7)}_${ColorSelect(calculPastTime(7))}`}>
+                <div className="centerPage__carrousel__trailersNum__color">
+                  <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(7)}__${ColorSelect(calculPastTime(7))}`}>
                     R9
                   </div>
                 </div>
-                <div className="centerPage__carrousel_trailersNum_color">
-                  <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR8)}_${ColorSelect(calculPastTime(8))}`}>
+                <div className="centerPage__carrousel__trailersNum__color">
+                  <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR8)}__${ColorSelect(calculPastTime(8))}`}>
                     R10
                   </div>
                 </div>
               </>
             )
             : (
-              <div className="centerPage__carrousel_trailersNum_color">
-                <div className={`centerPage__carrousel_trailersNum_color_R_${smallBig(remorqueR8)}_${ColorSelect(calculPastTime(6))}`}>
+              <div className="centerPage__carrousel__trailersNum__color">
+                <div className={`centerPage__carrousel__trailersNum__color__R__${smallBig(remorqueR8)}__${ColorSelect(calculPastTime(6))}`}>
                   R8
                 </div>
               </div>
             )}
-          <div className="centerPage__carrousel_trailersNum__buttom">
-            <button className="centerPage__carrousel_trailersNum__buttom_Down" type="button" onKeyPress={moveDown} onClick={moveDown} />
+          <div className="centerPage__carrousel__trailersNum__buttom">
+            <button className="centerPage__carrousel__trailersNum__buttom__Down" type="button" onKeyPress={moveDown} onClick={moveDown} />
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ function TrailersInfoConnect() {
   let messageTime;
   let cure = true;
   let noSure = '__none';
+  // ********************************************* affiche ou pas les données remorque
   if (dataTrain.length > 0) {
     if (dataTrain[rem2].firstname === 'default') {
       cure = false;
@@ -23,7 +24,7 @@ function TrailersInfoConnect() {
       message = dataTrain && `${dataTrain[rem2].firstname} ${dataTrain[rem2].lastname} au ${dataTrain[rem2].center}`;
     }
   }
-
+  // ********************************** calcul le message en fonction de la derniere realisation
   function calculPastTime() {
     const pastTime = Math.round((new Date() - new Date(dataTrain[rem2].date).getTime()) / 86400000);
     if (pastTime < 0) {
@@ -37,7 +38,7 @@ function TrailersInfoConnect() {
     }
     return messageTime;
   }
-
+  // ********************************** mise en forme de la date
   function formatDate() {
     return format(parseISO(dataTrain[rem2].date), 'dd/MM/yyyy');
   }

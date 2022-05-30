@@ -20,6 +20,7 @@ function LeftPage() {
   const [displayCenter, setDisplayCenter] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
+  // ********************************************* mise en forme du n° train depuis l'input
   function InputTrain(inputNumber) {
     navigate('/commonPage');
     setDisplayCenter(false);
