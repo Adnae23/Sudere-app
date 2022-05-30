@@ -31,7 +31,6 @@ class TrainsMiddlewares {
   }
 
   checkBody(req, res, next) {
-    console.log(req.body);
     // eslint-disable-next-line max-len
     if (!req.body.date || !req.body.userId || !req.body.trailerId || !req.body.trainId || !req.body.oldDate || !req.body.oldUserId) {
       res.status(400).send('bad request');
