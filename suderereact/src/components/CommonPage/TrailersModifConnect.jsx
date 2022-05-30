@@ -17,6 +17,7 @@ function TrailersModifConnect() {
   const rem2 = trailerSelected - 1 > 3 ? trailerSelected - 2 : trailerSelected - 1;
   const toDay = new Date();
   const toDay2 = dateFormat(toDay, 'yyyy-mm-dd');
+  const [dateInput, setDateInput] = useState(toDay2);
   const [dateTime, setDateTime] = useState({ date: toDay2 });
   const [warning, setWarning] = useState('__none');
   const object = {};
@@ -26,7 +27,7 @@ function TrailersModifConnect() {
   // ********************************************* met a jour la base de donnée trailers
   async function updateTrailer(event) {
     event.preventDefault();
-    if (dateTime.date !== '' && dateTime.processingTime !== '') {
+    if (dateInput !== '' && processingTime !== '') {
       setWarning('__none');
       try {
         const response = await axios.put('http://localhost:5000/trains', dateTime, { withCredentials: true });
@@ -35,7 +36,7 @@ function TrailersModifConnect() {
       } catch (error) {
         console.log(error);
       }
-      setDateTime({ ...dateTime, date: toDay2 });
+      setDateInput(toDay2);
       setProcessingTime('');
     } else {
       setWarning('');
@@ -45,6 +46,7 @@ function TrailersModifConnect() {
   async function canceledUpdateTrailer(event) {
     event.preventDefault();
     setWarning('__none');
+    console.log(dateTime);
     object.date = dateFormat(dataTrain[rem2].oldDate, 'yyyy-mm-dd');
     object.processingTime = dataTrain[rem2].oldProcessingTime;
     object.userId = dataTrain[rem2].oldUserId;
@@ -55,7 +57,7 @@ function TrailersModifConnect() {
     object.oldProcessingTime = dataTrain[rem2].processingTime;
     setDateTime({ ...dateTime, ...object });
     try {
-      const response = await axios.put('http://localhost:5000/trains', dateTime, { withCredentials: true });
+      const response = await axios.put('http://localhost:5000/trains', object, { withCredentials: true });
       console.log(response);
       setReloadTrailer(!reloadTrailer);
     } catch (error) {
@@ -66,6 +68,7 @@ function TrailersModifConnect() {
   const handleChange = (event) => {
     const key = event.target.id;
     setProcessingTime(key !== 'date' && +event.target.value);
+    setDateInput(key === 'date' && event.target.value);
     object[key] = key === 'date' ? event.target.value : +event.target.value;
     object.userId = user.cp;
     object.trailerId = trailerSelected;
@@ -83,7 +86,7 @@ function TrailersModifConnect() {
       </div>
       <div className="formConnect__date">
         <label className="formConnect__date__label" htmlFor="date__intervention">{'Date d\'intervention:'}</label>
-        <input className="formConnect__delai__valeur" onChange={handleChange} value={dateTime.date} id="date" type="date" min={minDate} max={toDay2} />
+        <input className="formConnect__delai__valeur" onChange={handleChange} value={dateInput} id="date" type="date" min={minDate} max={toDay2} />
       </div>
       <div className="formConnect__delai">
         <label className="formConnect__delai__label" htmlFor="duree__intervention">{'Durée d\'intervention:'}</label>

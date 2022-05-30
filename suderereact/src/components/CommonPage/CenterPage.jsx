@@ -89,7 +89,7 @@ function CenterPage() {
     }
     return resultat;
   }
-
+  // voir pour mettre un useEffect *************************************************
   function smallBig(position) {
     let laClassName;
     if (remorque === position) {

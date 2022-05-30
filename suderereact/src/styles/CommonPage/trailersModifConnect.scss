@@ -6,13 +6,21 @@
     &__alerte {
         color: $orange;
         font-size: 2vh;
-        margin: auto;
+        text-align: center;
+
+        & p {
+            margin: 0 0 10px;
+        }
     }
 
     &__alerte__none {
         color: $carbone;
         font-size: 2vh;
-        margin: auto;
+        text-align: center;
+
+        & p {
+            margin: 0 0 10px;
+        }
     }
 
     &__date,
@@ -20,12 +28,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin: 20px;
+        margin: 12px;
         align-items: center;
 
         &__label {
             font-size: 2vh;
-            color: white;
+            color: $warm_gray_1;
         }
 
         &__valeur {
@@ -46,14 +54,29 @@
 
     &__valid {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        margin: 12px;
 
         &__button {
             background-color: $orange;
             border: none;
-            color: white;
+            color: $warm_gray_1;
             font-size: 2vh;
             padding: 10px;
+        }
+
+        &__backup {
+            height: 52px;
+            background-color: $carbone;
+            color: $warm_gray_3;
+            border: none;
+            font-size: 1.3vh;
+            font-weight: bolder;
+
+            &:hover {
+                font-size: 1.4vh;
+                text-decoration: underline;
+            }
         }
     }
 }
