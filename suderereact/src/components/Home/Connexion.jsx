@@ -47,9 +47,6 @@ function Connexion() {
             <label className="form__content__login__password__label" htmlFor="password">Mot de passe:</label>
             <input onChange={handleChange} value={login.password} id="password" className="form__content__login__password__input" type="password" />
           </div>
-          <div className="form__content__login__lostpassword">
-            <button className="form__content__login__lostpassword__submit" type="button">Mot de passe oublié</button>
-          </div>
         </div>
         <div className="form__content__picture">
           <img className="form__content__picture__img" src="./pictures/logo/team.jpg" alt="team" />
