@@ -65,7 +65,7 @@ date DATE DEFAULT '1972-04-04',
 processingTime INT,
 id_train INT NOT NULL,
 id_user VARCHAR(8) DEFAULT '0000000D',
-oldDate DATE DEFAULT '1972-04-04',
+oldDATE DATE DEFAULT '1972-04-04',
 oldProcessingTime INT,
 oldId_user VARCHAR(8) DEFAULT '0000000D',
 CONSTRAINT fk_trailers_trains

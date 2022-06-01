@@ -10,9 +10,11 @@ const { decodeToken } = require('../../utils/helperUser');
 
 class DbMiddlewares {
   checkCookie(req, res, next) {
+    // ******************************* verifie la présence d'un cookies
     if (!req.cookies) {
       return res.status(404).send('error1');
     }
+    // ******************************* verifie la présence d'un user_token dans le cookies
     if (req.cookies.user_token) {
       const token = decodeToken(req.cookies.user_token);
       if (token.profile !== 'ADMIN') {
@@ -24,6 +26,7 @@ class DbMiddlewares {
   }
 
   verifyToken(req, res, next) {
+    // ******************************* verifie le contenu du user_token dans le cookies
     const token = req.cookies.user_token;
     try {
       const data = jwt.verify(token, process.env.PRIVATE_KEY);
@@ -37,6 +40,7 @@ class DbMiddlewares {
     }
   }
 
+  // ******************************* verifie la présence du fichier excel
   checkFile(req, res, next) {
     if (req.files === null) {
       res.status(404).send('file not found');

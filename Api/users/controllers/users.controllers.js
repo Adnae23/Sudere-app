@@ -36,6 +36,7 @@ class UserController {
     }
   }
 
+  // ********************************** Récupère la liste des centres la db
   async listCenters(req, res) {
     try {
       const result = await UserModel.getCenters();
@@ -47,6 +48,7 @@ class UserController {
     }
   }
 
+  // ********************************** Récupère la liste des profils la db
   async listProfiles(req, res) {
     try {
       const result = await UserModel.getProfiles();

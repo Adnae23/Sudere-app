@@ -6,6 +6,7 @@ const Joi = require('Joi');
 const { getUserById } = require('../../users/models/users.models');
 
 class TrainsMiddlewares {
+  // ******************************* verifie la présence d'un cookies
   checkCookie(req, res, next) {
     if (!req.cookies) {
       return res.status(404).send('error1');
@@ -16,6 +17,7 @@ class TrainsMiddlewares {
     return res.status(401).send('error2');
   }
 
+  // ******************************* verifie la présence d'un user_token dans le cookies
   verifyToken(req, res, next) {
     const token = req.cookies.user_token;
     try {
@@ -30,6 +32,7 @@ class TrainsMiddlewares {
     }
   }
 
+  // ******************************* verifie la présence de toutes les données pour une MaJ
   checkBody(req, res, next) {
     // eslint-disable-next-line max-len
     if (!req.body.date || !req.body.userId || !req.body.trailerId || !req.body.trainId || !req.body.oldDate || !req.body.oldUserId) {
@@ -40,6 +43,7 @@ class TrainsMiddlewares {
   }
 
   checkShapingForTrailers(req, res, next) {
+    // ******************************* verifie la conformité des données
     const {
       date, processingTime, userId, trailerId, trainId, oldDate, oldProcessingTime, oldUserId,
     } = req.body;
@@ -63,6 +67,7 @@ class TrainsMiddlewares {
   }
 
   async checkExistingUser(req, res, next) {
+    // ******************************* verifie l'existance du user dans la db'
     const { userId } = req.body;
     const existingUser = await getUserById(userId);
     if (existingUser.length === 0) {

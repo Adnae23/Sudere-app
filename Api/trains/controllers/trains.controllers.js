@@ -4,6 +4,7 @@
 const TrainsModels = require('../models/trains.models');
 
 class TrainsControllers {
+  // ******************************* recherche les info des trailers
   async infoTrailers(req, res) {
     try {
       const trailers = await TrainsModels.getTrailers();
@@ -13,6 +14,7 @@ class TrainsControllers {
     }
   }
 
+  // ******************************* recherche les info des trailers suivant l'ID
   async infoTrainById(req, res) {
     const { id } = req.params;
     try {
@@ -24,6 +26,7 @@ class TrainsControllers {
   }
 
   updateTrailer = (req, res) => {
+    // ******************************* récupere les données entrantes pour la MàJ
     const {
       date, processingTime, userId, trailerId, trainId, oldDate, oldProcessingTime, oldUserId,
     } = req.body;

@@ -7,15 +7,18 @@ const { hashPassword, decodeToken } = require('../../utils/helperUser');
 
 class UsersMiddlewares {
   checkCookie(req, res, next) {
+    // ******************************* verifie la présence d'un cookies
     if (!req.cookies) {
       return res.status(404).send('cookies not found');
     }
+    // ******************************* verifie la présence d'un user_token dans le cookies
     if (req.cookies.user_token) {
       return next();
     }
     return res.sendStatus(401);
   }
 
+  // ******************************* verifie l'autorisation du user'
   checkProfile(req, res, next) {
     const token = decodeToken(req.cookies.user_token);
     if (token.profile !== 'ADMIN' && token.profile !== 'REFERENT') {
@@ -25,6 +28,7 @@ class UsersMiddlewares {
   }
 
   verifyToken(req, res, next) {
+    // ******************************* verifie le contenu du user_token dans le cookies
     const token = req.cookies.user_token;
     try {
       const data = jwt.verify(token, process.env.PRIVATE_KEY);
@@ -39,6 +43,7 @@ class UsersMiddlewares {
   }
 
   checkBodyId(req, res, next) {
+    // ******************************* verifie la présence d'un ID'
     if (!req.body.id) {
       res.status(400).send('bad request1');
     } else {
@@ -46,6 +51,7 @@ class UsersMiddlewares {
     }
   }
 
+  // ******************************* verifie la présence de toutes les données
   checkBody(req, res, next) {
     req.body.password = 'defaultpassword';
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.center || !req.body.profile) {
@@ -55,6 +61,7 @@ class UsersMiddlewares {
     }
   }
 
+  // ******************************* verifie la présence de toutes les données avant la MàJ
   checkBodyForUpdate(req, res, next) {
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.profile) {
       res.status(400).send('bad request3');
@@ -63,6 +70,7 @@ class UsersMiddlewares {
     }
   }
 
+  // ******************************* verifie la cohérence des profils
   checkRequestProfile(req, res, next) {
     const { tokenProfile } = req.cookies.user_token;
     const { bodyProfile } = req.body;
@@ -73,6 +81,7 @@ class UsersMiddlewares {
     }
   }
 
+  // ******************************* verifie les données de changement de MDP
   checkBodyForPassword(req, res, next) {
     if (!req.body.previous || !req.body.new || !req.body.confirm) {
       res.status(400).send('bad request4');
