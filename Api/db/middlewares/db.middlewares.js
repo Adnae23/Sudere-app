@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable global-require */
@@ -54,7 +55,7 @@ class DbMiddlewares {
     const file = req.files.excelFile;
     const uploadPath = `./uploadedFiles/${file.name}`;
 
-    await file.mv(uploadPath, (error) => res.status(500).send(error));
+    await file.mv(uploadPath, (error) => console.log(error));
     // **********************************  Effacement de la copie du fichier Excel après son intégration dans req
     setTimeout(() => {
       req.xlsFile = XLSX.readFile('./uploadedFiles/Test.xlsm');

@@ -14,7 +14,7 @@ router.get('/users-list', [checkCookie, checkProfile, verifyToken, listUsers]);
 router.get('/centers-list', [checkCookie, checkProfile, verifyToken, listCenters]);
 router.get('/profiles-list', [checkCookie, checkProfile, verifyToken, listProfiles]);
 router.put('/', [checkCookie, checkProfile, verifyToken, checkBodyForUpdate, checkRequestProfile, checkShapingForUpdate, updateUser]);
-router.put('/updatePassword', [checkBodyForPassword, checkShapingForPassword, hash, updateUserPassword]);
+router.put('/updatePassword', [checkCookie, checkBodyForPassword, checkShapingForPassword, hash, updateUserPassword]);
 router.delete('/', [checkCookie, checkProfile, verifyToken, checkBodyId, checkExistingUser, deleteUser]);
 
 module.exports = router;
