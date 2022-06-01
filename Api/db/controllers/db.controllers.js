@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
@@ -12,7 +13,7 @@ class DbController {
         await DbModel.insertSerie(serie);
       });
     } catch (error) {
-      res.status(500).send('insert serie error');
+      return res.status(500).send('insert serie error');
     }
 
     // ********************************** Ajoute les nouvelles lines dans la db
@@ -22,7 +23,7 @@ class DbController {
         await DbModel.insertLine(line);
       });
     } catch (error) {
-      res.status(500).send('insert line error');
+      return res.status(500).send('insert line error');
     }
 
     // ********************************** Ajoute/màj les nouvelles rames dans la db et créé les remorque s'il le faut
@@ -31,7 +32,8 @@ class DbController {
         try {
           await DbModel.replaceTrain(train);
         } catch (error) {
-          res.status(500).send('error');
+          throw error;
+          // res.status(500).send('error');
         }
 
         for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer + 1) {
@@ -39,14 +41,15 @@ class DbController {
             try {
               await DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
             } catch (error) {
-              res.status(500).send('error');
+              throw error;
+              // res.status(500).send('error');
             }
           }
         }
       });
       // res.status(201).send('Insert successfully')
     } catch (error) {
-      res.status(500).send('replacing error');
+      return res.status(500).send('replacing error');
     }
 
     // ********************************** Supprime les rames dans la db
@@ -55,17 +58,20 @@ class DbController {
         try {
           await DbModel.deleteTrailers(train);
         } catch (error) {
-          res.status(500).send('error');
+          throw error;
+          // res.status(500).send('error');
         }
         try {
           await DbModel.deleteTrain(train);
         } catch (error) {
-          res.status(500).send('error');
+          throw error;
+          // res.status(500).send('error');
         }
       });
-      // res.sendStatus(200);
+      return res.sendStatus(200);
+      // return '';
     } catch (error) {
-      res.status(500).send('deleting error');
+      return res.status(500).send('deleting error');
     }
   }
 }

@@ -7,23 +7,19 @@ function UpdateDatabase() {
   const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
-    async function handleSubmit() {
+    function handleSubmit() {
       const formData = new FormData();
       formData.append('excelFile', selectedFile);
-      try {
-        await axios.post('http://localhost:5000/db', formData, {
-          withCredentials: true,
-          headers: { 'Content-Type': 'multipart/form-data' },
+      axios.post('http://localhost:5000/db', formData, {
+        withCredentials: true,
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+        .then((result) => {
+          console.log('Success:', result);
         })
-          .then((result) => {
-            console.log('Success:', result);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-      } catch (error) {
-        console.log(error);
-      }
+        .catch((error) => {
+          console.error(error);
+        });
     }
     if (submit === true) {
       handleSubmit();
