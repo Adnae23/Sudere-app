@@ -1,0 +1,27 @@
+.choice {
+    display: flex;
+    justify-content: center;
+
+    &__fieldset {
+        width: 90%;
+        margin-top: 1vh;
+        border: 1px solid gray;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+
+        &__legend {}
+
+        &__div {
+            &__input {}
+
+            &__label {
+                margin-left: 5px;
+
+                @media screen and (max-width: 1050px) {
+                    font-size: 9px;
+                }
+            }
+        }
+    }
+}

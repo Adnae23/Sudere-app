@@ -146,12 +146,19 @@
         }
 
         &__centerBloc {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
             height: 45%;
             width: 100%;
             font-family: $Avenir;
 
-            @media screen and (max-width: 520px) {
-                display: none;
+            &__div {
+                margin-top: 20px;
+                margin-bottom: 25px;
+                height: 2px;
+                width: 100%;
+                background-color: $warm_gray_3;
             }
 
             &__filters {
@@ -179,6 +186,10 @@
                         color: $orange;
                     }
                 }
+            }
+
+            @media screen and (max-width: 520px) {
+                display: none;
             }
         }
 

@@ -1,7 +1,7 @@
 @import "./_settings";
-@import "./header.scss";
-@import "./connexion.scss";
-@import "./choiceHome.scss";
+@import "./Home/header.scss";
+@import "./Home/connexion.scss";
+@import "./Home/choiceHome.scss";
 @import "./CommonPage/commonPage";
 @import "./CommonPage/leftPage";
 @import "./CommonPage/centerPage";
@@ -30,5 +30,5 @@
 @import "./Statistic/StatisticAxes.scss";
 @import "./Statistic/StatisticSeries.scss";
 @import "./Statistic/StatisticCenters.scss";
-@import "./Statistic/StatisticDate.scss";
-@import "./Statistic/StatisticDuration.scss";
+@import "./Statistic/StatisticChoice.scss";
+@import "./Statistic/switch.css"

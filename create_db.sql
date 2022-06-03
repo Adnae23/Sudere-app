@@ -77,5 +77,7 @@ INSERT INTO users (id, firstname, lastname, email, password, id_profile, id_cent
     VALUES
     ('8709168M', 'Anais', 'Roussy Renard', 'anais.renard@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$/WV5vIukFknAKKBR36nVhA$3nr6KYWBx58a3ZXB0omol3IRr09Uegasvb0atUH7KmQ', 1, 7),
     ('8902809S', 'Gael', 'Douence', 'gaeldouence@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$/WV5vIukFknAKKBR36nVhA$3nr6KYWBx58a3ZXB0omol3IRr09Uegasvb0atUH7KmQ', 1, 7),
+    ('8307933M', 'Ched', 'BECKMANN', 'charles-edouard.beckmann-brun@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$/WV5vIukFknAKKBR36nVhA$3nr6KYWBx58a3ZXB0omol3IRr09Uegasvb0atUH7KmQ', 1, 7);
+    ('7105978P', 'Michaël', 'MICHAUX', 'michael.michaux@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$/WV5vIukFknAKKBR36nVhA$3nr6KYWBx58a3ZXB0omol3IRr09Uegasvb0atUH7KmQ', 1, 7);
     ('0000000D', 'Default', 'Default', 'default@sncf.fr', '$argon2id$v=19$m=65536,t=5,p=1$/WV5vIukFknAKKBR36nVhA$3nr6KYWBx58a3ZXB0omol3IRr09Uegasvb0atUH7KmQ', 1, 7);
 

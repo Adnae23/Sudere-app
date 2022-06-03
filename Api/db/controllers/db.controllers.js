@@ -33,7 +33,6 @@ class DbController {
           await DbModel.replaceTrain(train);
         } catch (error) {
           throw error;
-          // res.status(500).send('error');
         }
 
         for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer + 1) {
@@ -42,12 +41,10 @@ class DbController {
               await DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
             } catch (error) {
               throw error;
-              // res.status(500).send('error');
             }
           }
         }
       });
-      // res.status(201).send('Insert successfully')
     } catch (error) {
       return res.status(500).send('replacing error');
     }
@@ -59,19 +56,43 @@ class DbController {
           await DbModel.deleteTrailers(train);
         } catch (error) {
           throw error;
-          // res.status(500).send('error');
         }
         try {
           await DbModel.deleteTrain(train);
         } catch (error) {
           throw error;
-          // res.status(500).send('error');
         }
       });
       return res.sendStatus(200);
-      // return '';
     } catch (error) {
       return res.status(500).send('deleting error');
+    }
+  }
+
+  async fetchLines(req, res) {
+    try {
+      const lines = await DbModel.getLines();
+      res.status(200).send(lines);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async fetchSeries(req, res) {
+    try {
+      const series = await DbModel.getSeries();
+      res.status(200).send(series);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async fetchCenters(req, res) {
+    try {
+      const centers = await DbModel.getCenters();
+      res.status(200).send(centers);
+    } catch (error) {
+      res.status(500).send(error);
     }
   }
 }

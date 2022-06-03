@@ -1,22 +1,21 @@
 import React, { useContext } from 'react';
 import {
-  Chart as ChartJS, BarElement, Tooltip, CategoryScale, LinearScale,
+  Chart as ChartJS, ArcElement, Tooltip, Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import DataStatsContext from '../../contexts/DataStatsContext';
 
 ChartJS.register(
-  BarElement,
-  CategoryScale,
-  LinearScale,
+  ArcElement,
   Tooltip,
+  Legend,
 );
 
 const options = {
   plugins: {
     legend: {
       position: 'bottom',
-      display: false,
+      display: true,
 
     },
     padding: {
@@ -30,17 +29,16 @@ const options = {
   },
 };
 
-function StatisticChartBar() {
+function StatisticChartDoughnut2() {
   const { data } = useContext(DataStatsContext);
-  let dataTrailers = '';
+  let dataTrains = '';
   if (data) {
-    dataTrailers = {
-      labels: ['Traitées', 'Bientot expirées', 'A traiter', 'Jamais réalisé'],
+    dataTrains = {
+      labels: ['Traitées', 'Bientot expirées', 'A réaliser'],
       datasets: [
         {
-        // data: [dataForTrailers.processed, dataForTrailers.soon, dataForTrailers.toDo],
-          data: [`${data.trailers.trailersV}`, `${data.trailers.trailersO}`, `${data.trailers.trailersR}`, `${data.trailers.trailersNt}`],
-          backgroundColor: ['#82be00', '#ffb612', '#cd0037', '#cd0037'],
+          data: [`${data.trains.rameV}`, `${data.trains.rameO}`, `${data.trains.rameNt}`],
+          backgroundColor: ['#82be00', '#ffb612', '#cd0037'],
           borderColor: ['#e0ded8'],
         },
       ],
@@ -52,8 +50,8 @@ function StatisticChartBar() {
         { data !== undefined
         && (
           <div className="container__doughnut">
-            <Bar
-              data={dataTrailers}
+            <Doughnut
+              data={dataTrains}
               options={options}
             />
           </div>
@@ -64,4 +62,4 @@ function StatisticChartBar() {
   );
 }
 
-export default StatisticChartBar;
+export default StatisticChartDoughnut2;

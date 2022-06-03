@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState, useContext } from 'react';
 import { MultiSelect } from 'react-multi-select-component';
-
-const options = [
-  { label: 'GRD', value: 'GRD' },
-  { label: 'Sud EST', value: 'Sud-Est' },
-  { label: 'Nord', value: 'Nord' },
-  { label: 'Atlantique', value: 'Atlantique' },
-  { label: 'Est', value: 'Est' },
-  { label: 'Bisheim', value: 'Bisheim' },
-  { label: 'FALBALA', value: 'FALBALA' },
-  { label: 'Forest', value: 'Forest' },
-];
+import SelectedLinesContext from '../../contexts/SelectedLinesContext';
 
 function StatisticAxes() {
-  const [selected, setSelected] = useState([]);
+  const { selectedLines, setSelectedLines } = useContext(SelectedLinesContext);
+  const [lines, setLines] = useState([]);
+
+  useEffect(() => {
+    const fetchLines = () => {
+      axios.get('http://localhost:5000/db/lines/', { withCredentials: true })
+        .then((response) => {
+          const options = response.data.map((option) => {
+            const line = { label: option.name, value: option.name };
+            return line;
+          });
+          setLines(options);
+          setSelectedLines(options);
+        });
+    };
+    fetchLines();
+  }, []);
 
   return (
     <div className="axe">
-      <fieldset className="axe__fieldset">
+      <div className="axe__fieldset">
         <legend className="axe__fieldset__legend">Axes</legend>
-        <MultiSelect className="axe__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="Select" />
-      </fieldset>
+        {lines
+          && <MultiSelect defaultValue="Select All" className="axe__fieldset__select" options={lines} value={selectedLines} onChange={setSelectedLines} labelledBy="Select" />}
+      </div>
     </div>
   );
 }

@@ -4,16 +4,40 @@
     width: 100%;
 
     &__fieldset {
-        margin-top: 5px;
         width: 90%;
+        margin-top: 1vh;
+        border: 1px solid gray;
+        padding: 5px;
 
-        &__legend {}
+        &__legend {
+            height: 2vh;
+        }
 
         &__select {
-            width: 17vw;
+            width: 20vh;
             text-overflow: ellipsis;
             white-space: nowrap;
             margin: 0;
+
         }
     }
+}
+
+.dropdown-container {
+    height: 4vh;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-heading {
+    height: 16px !important;
+}
+
+.dropdown-heading-dropdown-arrow {
+    height: 16px;
+}
+
+.axe__fieldset__select {
+    margin-top: 1vh;
+    width: 16vw;
 }

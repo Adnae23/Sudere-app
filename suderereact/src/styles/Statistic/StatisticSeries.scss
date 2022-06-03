@@ -5,15 +5,25 @@
 
     &__fieldset {
         width: 90%;
-        margin-top: 5px;
+        margin-top: 1vh;
+        border: 1px solid gray;
+        padding: 5px;
 
-        &__legend {}
+        &__legend {
+            height: 2vh;
+        }
 
         &__select {
-            width: 17vw;
+            width: 20vh;
             text-overflow: ellipsis;
             white-space: nowrap;
             margin: 0;
+
         }
     }
+}
+
+.serie__fieldset__select {
+    margin-top: 1vh;
+    width: 16vw;
 }

@@ -2,28 +2,36 @@
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import { MultiSelect } from 'react-multi-select-component';
-
-const options = [
-  { label: 'TSEE', value: 'TSEE' },
-  { label: 'TLG', value: 'TLG' },
-  { label: 'TLL', value: 'TLL' },
-  { label: 'NST', value: 'NST' },
-  { label: 'TALT', value: 'TALT' },
-  { label: 'TEE', value: 'TEE' },
-  { label: 'Aucun', value: 'Aucun' },
-];
+import SelectedCentersContext from '../../contexts/SelectedCentersContext';
 
 function StatisticCenters() {
-  const [selected, setSelected] = useState([]);
+  const [centers, setCenters] = useState([]);
+  const { selectedCenters, setSelectedCenters } = useContext(SelectedCentersContext);
+
+  useEffect(() => {
+    const fetchCenters = () => {
+      axios.get('http://localhost:5000/db/centers/', { withCredentials: true })
+        .then((response) => {
+          const options = response.data.map((option) => {
+            const center = { label: option.name, value: option.name };
+            return center;
+          });
+          setCenters(options);
+          setSelectedCenters(options);
+        });
+    };
+    fetchCenters();
+  }, []);
 
   return (
     <div className="center">
-      <fieldset className="center__fieldset">
-        <legend className="center__fieldset__legend">Centres</legend>
-        <MultiSelect className="center__fieldset__select" options={options} value={selected} onChange={setSelected} labelledBy="séries" />
-      </fieldset>
+      <div className="center__fieldset">
+        <legend className="center__fieldset__legend">Technicentres</legend>
+        <MultiSelect className="center__fieldset__select" options={centers} value={selectedCenters} onChange={setSelectedCenters} labelledBy="technicentres" />
+      </div>
     </div>
   );
 }

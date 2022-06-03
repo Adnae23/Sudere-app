@@ -5,40 +5,47 @@
     height: 68vh;
     width: 100%;
     justify-content: center;
+
     &__home {
         display: flex;
         height: 8vh;
         align-items: center;
         margin-left: 1vw;
+
         &__btn {
             height: 6vh;
             width: 6vh;
-            background-image: url("../../public/pictures/logo/flecheCarbone.jpg");
+            background-image: url("../../../public/pictures/logo/flecheCarbone.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-color: transparent;
             border: none;
         }
+
         &__btn:hover {
-            background-image: url("../../public/pictures/logo/flecheOrange.jpg");
+            background-image: url("../../../public/pictures/logo/flecheOrange.jpg");
         }
     }
+
     &__content {
         display: flex;
         width: 100%;
         height: 44vh;
         align-items: center;
+
         &__login {
             display: flex;
             flex-direction: column;
             text-align: end;
             width: 50%;
+
             &__id {
                 &__label {
                     color: $orange;
                     font-weight: bold;
                     font-size: large;
                 }
+
                 &__input {
                     text-align: center;
                     color: $carbone;
@@ -49,13 +56,16 @@
                     border: none;
                 }
             }
+
             &__password {
                 margin-top: 40px;
+
                 &__label {
                     color: $orange;
                     font-weight: bold;
                     font-size: large;
                 }
+
                 &__input {
                     text-align: center;
                     color: $carbone;
@@ -66,6 +76,7 @@
                     border: none;
                 }
             }
+
             &__lostpassword {
                 &__submit {
                     color: $carbone;
@@ -76,15 +87,19 @@
                 }
             }
         }
+
         &__picture {
             width: 50%;
+
             &__img {
                 max-width: 200px;
             }
         }
     }
+
     &__connexion {
         height: 16vh;
+
         &__submit {
             background-color: $orange;
             border: none;
@@ -93,6 +108,7 @@
             width: 200px;
             font-weight: bold;
         }
+
         &__submit:hover {
             transform: scale(1.01);
         }
