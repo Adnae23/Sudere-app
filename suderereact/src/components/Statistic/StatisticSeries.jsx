@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { MultiSelect } from 'react-multi-select-component';
+import SelectedSeriesContext from '../../contexts/SelectedSeriesContext';
 
 function StatisticSeries() {
-  const [selected, setSelected] = useState([]);
+  const { selectedSeries, setSelectedSeries } = useContext(SelectedSeriesContext);
   const [series, setSeries] = useState([]);
 
   useEffect(() => {
@@ -17,6 +18,7 @@ function StatisticSeries() {
             return serie;
           });
           setSeries(options);
+          setSelectedSeries(options);
         });
     };
     fetchSeries();
@@ -26,7 +28,7 @@ function StatisticSeries() {
     <div className="serie">
       <div className="serie__fieldset">
         <legend className="serie__fieldset__legend">Séries</legend>
-        <MultiSelect className="serie__fieldset__select" options={series} value={selected} onChange={setSelected} labelledBy="séries" />
+        <MultiSelect className="serie__fieldset__select" options={series} value={selectedSeries} onChange={setSelectedSeries} labelledBy="séries" />
       </div>
     </div>
   );
