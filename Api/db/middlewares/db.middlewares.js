@@ -55,7 +55,7 @@ class DbMiddlewares {
     const file = req.files.excelFile;
     const uploadPath = `./uploadedFiles/${file.name}`;
 
-    await file.mv(uploadPath, (error) => console.log(error));
+    await file.mv(uploadPath, (error) => console.log('test1', error));
     // **********************************  Effacement de la copie du fichier Excel après son intégration dans req
     setTimeout(() => {
       req.xlsFile = XLSX.readFile('./uploadedFiles/Test.xlsm');

@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-useless-catch */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-len */
@@ -28,20 +29,12 @@ class DbController {
 
     // ********************************** Ajoute/màj les nouvelles rames dans la db et créé les remorque s'il le faut
     try {
-      req.trainsReplace.map(async (train) => {
-        try {
-          await DbModel.replaceTrain(train);
-        } catch (error) {
-          throw error;
-        }
-
-        for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer + 1) {
+      req.trainsReplace.forEach(async (train) => {
+        await DbModel.replaceTrain(train);
+        for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer++) {
           if (trainsTrailer !== 3) {
-            try {
-              await DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
-            } catch (error) {
-              throw error;
-            }
+            const trailerNumber = `R${trainsTrailer + 1}`;
+            DbModel.replaceTrailer(trailerNumber, train.id);
           }
         }
       });

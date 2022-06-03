@@ -27,107 +27,111 @@ function StatisticSort() {
 
   useEffect(() => {
     const fetchTrailers = () => {
-      axios.get('http://localhost:5000/trains', { withCredentials: true })
-        .then((response) => {
-          setData('');
-          let read = 0;
-          const stats = {};
-          stats.trains = {};
-          stats.trailers = {};
-          stats.trains.rameNt = 0;
-          stats.trains.rameO = 0;
-          stats.trains.rameV = 0;
-          stats.trailers.trailersNt = 0;
-          stats.trailers.trailersO = 0;
-          stats.trailers.trailersR = 0;
-          stats.trailers.trailersV = 0;
+      if (selectedLines && selectedCenters && selectedSeries) {
+        axios.get('http://localhost:5000/trains', { withCredentials: true })
+          .then((response) => {
+            if (response.data) {
+              setData('');
+              let read = 0;
+              const stats = {};
+              stats.trains = {};
+              stats.trailers = {};
+              stats.trains.rameNt = 0;
+              stats.trains.rameO = 0;
+              stats.trains.rameV = 0;
+              stats.trailers.trailersNt = 0;
+              stats.trailers.trailersO = 0;
+              stats.trailers.trailersR = 0;
+              stats.trailers.trailersV = 0;
 
-          while (read < response.data.length) {
-            if (response.data[read].serie !== 'Atlantique') {
-              let trailersNt = 0;
-              let trailersV = 0;
-              for (let b = 0; b <= 6; b++) {
-                if (arraySeries.includes(response.data[read + b].serie)
+              while (read < response.data.length) {
+                if (response.data[read].serie !== 'Atlantique') {
+                  let trailersNt = 0;
+                  let trailersV = 0;
+                  for (let b = 0; b <= 6; b++) {
+                    if (arraySeries.includes(response.data[read + b].serie)
                 && arrayLines.includes(response.data[read + b].line)
                 && arrayCenter.includes(response.data[read + b].center)) {
-                  const tempo = Math.round((new Date() - new Date(response.data[read + b].date).getTime()) / 86400000);
-                  if (response.data[read + b].date < '1972-04-04') {
-                    trailersNt++;
-                    stats.trailers.trailersNt++;
-                  } else if (tempo > 1095) {
-                    stats.trailers.trailersR++;
-                  } else if (tempo > 900 && tempo < 1095) {
-                    stats.trailers.trailersO++;
-                  } else {
-                    trailersV++;
-                    stats.trailers.trailersV++;
+                      const tempo = Math.round((new Date() - new Date(response.data[read + b].date).getTime()) / 86400000);
+                      if (response.data[read + b].date < '1972-04-04') {
+                        trailersNt++;
+                        stats.trailers.trailersNt++;
+                      } else if (tempo > 1095) {
+                        stats.trailers.trailersR++;
+                      } else if (tempo > 900 && tempo < 1095) {
+                        stats.trailers.trailersO++;
+                      } else {
+                        trailersV++;
+                        stats.trailers.trailersV++;
+                      }
+                    }
                   }
-                }
-              }
-              if (arraySeries.includes(response.data[read].serie)
+                  if (arraySeries.includes(response.data[read].serie)
                 && arrayLines.includes(response.data[read].line)
                 && arrayCenter.includes(response.data[read].center)) {
-                if (trailersNt === 7) {
-                  stats.trains.rameNt++;
-                } else if (trailersV === 7) {
-                  stats.trains.rameV++;
+                    if (trailersNt === 7) {
+                      stats.trains.rameNt++;
+                    } else if (trailersV === 7) {
+                      stats.trains.rameV++;
+                    } else {
+                      stats.trains.rameO++;
+                    }
+                  }
                 } else {
-                  stats.trains.rameO++;
-                }
-              }
-            } else {
-              let trailersNt = 0;
-              let trailersV = 0;
-              for (let b = 0; b <= 8; b++) {
-                if (arraySeries.includes(response.data[read + b].serie)
+                  let trailersNt = 0;
+                  let trailersV = 0;
+                  for (let b = 0; b <= 8; b++) {
+                    if (arraySeries.includes(response.data[read + b].serie)
                 && arrayLines.includes(response.data[read + b].line)
                 && arrayCenter.includes(response.data[read + b].center)) {
-                  const tempo = Math.round((new Date() - new Date(response.data[read + b].date).getTime()) / 86400000);
-                  if (response.data[read + b].date < '1972-04-04') {
-                    trailersNt++;
-                    stats.trailers.trailersNt++;
-                  } else if (tempo > 1095) {
-                    stats.trailers.trailersR++;
-                  } else if (tempo > 900 && tempo < 1095) {
-                    stats.trailers.trailersO++;
-                  } else {
-                    trailersV++;
-                    stats.trailers.trailersV++;
+                      const tempo = Math.round((new Date() - new Date(response.data[read + b].date).getTime()) / 86400000);
+                      if (response.data[read + b].date < '1972-04-04') {
+                        trailersNt++;
+                        stats.trailers.trailersNt++;
+                      } else if (tempo > 1095) {
+                        stats.trailers.trailersR++;
+                      } else if (tempo > 900 && tempo < 1095) {
+                        stats.trailers.trailersO++;
+                      } else {
+                        trailersV++;
+                        stats.trailers.trailersV++;
+                      }
+                    }
                   }
-                }
-              }
-              if (arraySeries.includes(response.data[read].serie)
+                  if (arraySeries.includes(response.data[read].serie)
                 && arrayLines.includes(response.data[read].line)
                 && arrayCenter.includes(response.data[read].center)) {
-                if (trailersNt === 9) {
-                  stats.trains.rameNt++;
-                } else if (trailersV === 9) {
-                  stats.trains.rameV++;
+                    if (trailersNt === 9) {
+                      stats.trains.rameNt++;
+                    } else if (trailersV === 9) {
+                      stats.trains.rameV++;
+                    } else {
+                      stats.trains.rameO++;
+                    }
+                  }
+                }
+                if (response.data[read].serie !== 'Atlantique') {
+                  read += 7;
                 } else {
-                  stats.trains.rameO++;
+                  read += 9;
                 }
               }
+              const tmpSumTrailers = Object.values(stats.trailers).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+              const tmpSumTrains = Object.values(stats.trains).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+              stats.trailers.trailersNt = ((stats.trailers.trailersNt * 100) / tmpSumTrailers).toFixed(2);
+              stats.trailers.trailersV = ((stats.trailers.trailersV * 100) / tmpSumTrailers).toFixed(2);
+              stats.trailers.trailersO = ((stats.trailers.trailersO * 100) / tmpSumTrailers).toFixed(2);
+              stats.trailers.trailersR = ((stats.trailers.trailersR * 100) / tmpSumTrailers).toFixed(2);
+              stats.trains.rameNt = ((stats.trains.rameNt * 100) / tmpSumTrains).toFixed(2);
+              stats.trains.rameO = ((stats.trains.rameO * 100) / tmpSumTrains).toFixed(2);
+              stats.trains.rameV = ((stats.trains.rameV * 100) / tmpSumTrains).toFixed(2);
+              setData(stats);
             }
-            if (response.data[read].serie !== 'Atlantique') {
-              read += 7;
-            } else {
-              read += 9;
-            }
-          }
-          const tmpSumTrailers = Object.values(stats.trailers).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-          const tmpSumTrains = Object.values(stats.trains).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-          stats.trailers.trailersNt = ((stats.trailers.trailersNt * 100) / tmpSumTrailers).toFixed(2);
-          stats.trailers.trailersV = ((stats.trailers.trailersV * 100) / tmpSumTrailers).toFixed(2);
-          stats.trailers.trailersO = ((stats.trailers.trailersO * 100) / tmpSumTrailers).toFixed(2);
-          stats.trailers.trailersR = ((stats.trailers.trailersR * 100) / tmpSumTrailers).toFixed(2);
-          stats.trains.rameNt = ((stats.trains.rameNt * 100) / tmpSumTrains).toFixed(2);
-          stats.trains.rameO = ((stats.trains.rameO * 100) / tmpSumTrains).toFixed(2);
-          stats.trains.rameV = ((stats.trains.rameV * 100) / tmpSumTrains).toFixed(2);
-          setData(stats);
-        });
+          });
+      }
     };
     fetchTrailers();
-  }, [selectedCenters, selectedLines, selectedSeries]);
+  }, [selectedLines, selectedCenters, selectedSeries]);
 
   return (
     <SelectedLinesContext.Provider value={{ selectedLines, setSelectedLines }}>
