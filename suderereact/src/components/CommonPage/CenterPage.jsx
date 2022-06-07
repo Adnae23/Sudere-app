@@ -106,6 +106,14 @@ function CenterPage() {
     }
     return laClassName;
   }
+  // ********************************************* renomme la série pour correspondre aux dossiers images
+  function changeSerieName(serie) {
+    let newSerieName = serie;
+    if (serie === '2N2' || serie === 'POS') newSerieName = 'Duplex';
+    if (serie === 'PLT' || serie === 'RTRI' || serie === 'Réseau') newSerieName = 'Reseau';
+    if (serie === 'TGVFutur') newSerieName = 'M';
+    return newSerieName;
+  }
   // ********************************************* colorie le n° de remorque en fonction de la date de la derniere intervention
   function ColorSelect(date) {
     if (date > 1095) {
@@ -137,38 +145,38 @@ function CenterPage() {
 
         <div className="centerPage__carrousel__trailersPic">
           <div className={`centerPage__carrousel__trailersPic__R${result(remorque)}`}>
-            <img src={`../pictures/${train.serie}/R8.svg`} alt="R1" />
+            <img src={`../pictures/${changeSerieName(train.serie)}/R8.svg`} alt="R1" />
           </div>
           <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 1)}`}>
-            <img src={`../pictures/${train.serie}/R1.svg`} alt="R2" />
+            <img src={`../pictures/${changeSerieName(train.serie)}/R1.svg`} alt="R2" />
           </div>
           <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 2)}`}>
-            <img src={`../pictures/${train.serie}/R2.svg`} alt="R3" />
+            <img src={`../pictures/${changeSerieName(train.serie)}/R2.svg`} alt="R3" />
           </div>
           <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 3)}`}>
-            <img src={`../pictures/${train.serie}/R2.svg`} alt="R5" />
+            <img src={`../pictures/${changeSerieName(train.serie)}/R2.svg`} alt="R5" />
           </div>
           <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 4)}`}>
-            <img src={`../pictures/${train.serie}/R5.svg`} alt="R6" />
+            <img src={`../pictures/${changeSerieName(train.serie)}/R5.svg`} alt="R6" />
           </div>
           <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 5)}`}>
-            <img src={`../pictures/${train.serie}/R5.svg`} alt="R7" />
+            <img src={`../pictures/${changeSerieName(train.serie)}/R5.svg`} alt="R7" />
           </div>
           {
             train.serie === 'Atlantique'
             && (
               <>
                 <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 6)}`}>
-                  <img src={`../pictures/${train.serie}/R5.svg`} alt="R8" />
+                  <img src={`../pictures/${changeSerieName(train.serie)}/R5.svg`} alt="R8" />
                 </div>
                 <div className={`centerPage__carrousel__trailersPic__R${result(remorque + 7)}`}>
-                  <img src={`../pictures/${train.serie}/R5.svg`} alt="R9" />
+                  <img src={`../pictures/${changeSerieName(train.serie)}/R5.svg`} alt="R9" />
                 </div>
               </>
             )
           }
           <div className={train.serie === 'Atlantique' ? `centerPage__carrousel__trailersPic__R${result(remorque + 8)}` : `centerPage__carrousel__trailersPic__R${result(remorque + 6)}`}>
-            <img src={`../pictures/${train.serie}/R5.svg`} alt={train.serie === 'Atlantique' ? 'R10' : 'R8'} />
+            <img src={`../pictures/${changeSerieName(train.serie)}/R5.svg`} alt={train.serie === 'Atlantique' ? 'R10' : 'R8'} />
           </div>
         </div>
 

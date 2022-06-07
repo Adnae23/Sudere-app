@@ -109,7 +109,7 @@ function LeftPage() {
           <div className="leftPage__right__centerBloc__div" />
           <div className="leftPage__right__centerBloc__filters">
             <NavLink to="/commonPage/statistic">
-              <button className="leftPage__right__centerBloc__filters__button" type="button">Statistique</button>
+              <button className="leftPage__right__centerBloc__filters__button" type="button" onClick={() => setTrainNumber('')}>Statistique</button>
             </NavLink>
           </div>
           <div className="leftPage__right__centerBloc__div" />

@@ -8,13 +8,15 @@ function TrailersInfoConnect() {
   const { dataTrain } = useContext(DataTrainContext);
   const { trailerSelected } = useContext(TrailerSelected);
   const rem2 = trailerSelected - 1 > 3 ? trailerSelected - 2 : trailerSelected - 1;
+  const cureDate = new Date(dataTrain[rem2].date).getTime();
   let message;
   let messageTime;
   let cure = true;
   let noSure = '__none';
   // ********************************************* affiche ou pas les données remorque
   if (dataTrain.length > 0) {
-    if (dataTrain[rem2].firstname === 'default') {
+    console.log(cureDate);
+    if (cureDate === 71190000000) {
       cure = false;
       noSure = '';
       message = '-  -  -  -   ';
@@ -26,7 +28,7 @@ function TrailersInfoConnect() {
   }
   // ********************************** calcul le message en fonction de la derniere realisation
   function calculPastTime() {
-    const pastTime = Math.round((new Date() - new Date(dataTrain[rem2].date).getTime()) / 86400000);
+    const pastTime = Math.round((new Date() - cureDate) / 86400000);
     if (pastTime < 0) {
       messageTime = message;
     } else if (pastTime === 0) {

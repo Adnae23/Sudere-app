@@ -14,7 +14,7 @@ function TrailersInfoConsult() {
   let noSure = '__none';
   // ********************************************* prepare les donnees ou messages a afficher
   if (dataTrain.length > 0) {
-    if (dataTrain[rem2].firstname === 'default') {
+    if (dataTrain[rem2].date === '1972-04-04') {
       cure = false;
       noSure = '';
       message = '-  -  -  -   ';
