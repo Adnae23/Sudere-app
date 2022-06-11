@@ -29,13 +29,10 @@ function TrailersModifConnect() {
     event.preventDefault();
     if (dateInput !== undefined && processingTime !== '') {
       setWarning('__none');
-      console.log(dateTime);
-      console.log(dateInput);
       try {
         const response = await axios.put('http://localhost:5000/trains', dateTime, { withCredentials: true });
         console.log(response.data);
         setReloadTrailer(!reloadTrailer);
-        console.log(reloadTrailer);
       } catch (error) {
         console.log(error);
       }
@@ -58,7 +55,6 @@ function TrailersModifConnect() {
     object.oldUserId = dataTrain[rem2].CP;
     object.oldProcessingTime = dataTrain[rem2].processingTime;
     setDateTime({ ...dateTime, ...object });
-    console.log(dateTime);
     try {
       const response = await axios.put('http://localhost:5000/trains', object, { withCredentials: true });
       console.log(response);

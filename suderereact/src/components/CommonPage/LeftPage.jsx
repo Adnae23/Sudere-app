@@ -64,7 +64,6 @@ function LeftPage() {
         try {
           const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`, { withCredentials: true });
           setDataTrain(response.data);
-          console.log(reloadTrailer);
           // ********************************************* si reponse affiche le carousel
           if (response.data.length !== 0) {
             setDisplayCenter(true);
