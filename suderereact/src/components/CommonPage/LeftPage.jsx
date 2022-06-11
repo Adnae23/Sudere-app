@@ -60,11 +60,11 @@ function LeftPage() {
   useEffect(() => {
     localStorage.setItem('trains', JSON.stringify(trainNumber));
     async function searchTrain() {
-      console.log(reloadTrailer);
       if (trainNumber.length > 0) {
         try {
           const response = await axios.get(`http://localhost:5000/trains/${trainNumber}`, { withCredentials: true });
           setDataTrain(response.data);
+          console.log(reloadTrailer);
           // ********************************************* si reponse affiche le carousel
           if (response.data.length !== 0) {
             setDisplayCenter(true);

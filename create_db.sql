@@ -62,11 +62,11 @@ CREATE TABLE trailers(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 number VARCHAR(3) NOT NULL,
 date DATE DEFAULT '1972-04-04',
-processingTime INT,
+processingTime INT DEFAULT 0,
 id_train INT NOT NULL,
 id_user VARCHAR(8) DEFAULT '0000000D',
 oldDATE DATE DEFAULT '1972-04-04',
-oldProcessingTime INT,
+oldProcessingTime INT DEFAULT 0,
 oldId_user VARCHAR(8) DEFAULT '0000000D',
 CONSTRAINT fk_trailers_trains
     FOREIGN KEY (id_train) REFERENCES trains(id) ON UPDATE CASCADE ON DELETE CASCADE,

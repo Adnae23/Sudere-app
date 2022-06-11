@@ -15,7 +15,6 @@ function TrailersInfoConnect() {
   let noSure = '__none';
   // ********************************************* affiche ou pas les données remorque
   if (dataTrain.length > 0) {
-    console.log(cureDate);
     if (cureDate === 71190000000) {
       cure = false;
       noSure = '';

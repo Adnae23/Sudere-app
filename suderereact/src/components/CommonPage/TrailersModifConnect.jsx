@@ -17,7 +17,7 @@ function TrailersModifConnect() {
   const rem2 = trailerSelected - 1 > 3 ? trailerSelected - 2 : trailerSelected - 1;
   const toDay = new Date();
   const toDay2 = dateFormat(toDay, 'yyyy-mm-dd');
-  const [dateInput, setDateInput] = useState(toDay2);
+  const [dateInput, setDateInput] = useState();
   const [dateTime, setDateTime] = useState({ date: toDay2 });
   const [warning, setWarning] = useState('__none');
   const object = {};
@@ -27,16 +27,19 @@ function TrailersModifConnect() {
   // ********************************************* met a jour la base de donnée trailers
   async function updateTrailer(event) {
     event.preventDefault();
-    if (dateInput !== '' && processingTime !== '') {
+    if (dateInput !== undefined && processingTime !== '') {
       setWarning('__none');
+      console.log(dateTime);
+      console.log(dateInput);
       try {
         const response = await axios.put('http://localhost:5000/trains', dateTime, { withCredentials: true });
-        console.log(response);
+        console.log(response.data);
         setReloadTrailer(!reloadTrailer);
+        console.log(reloadTrailer);
       } catch (error) {
         console.log(error);
       }
-      setDateInput(toDay2);
+      setDateInput('');
       setProcessingTime('');
     } else {
       setWarning('');
@@ -46,16 +49,16 @@ function TrailersModifConnect() {
   async function canceledUpdateTrailer(event) {
     event.preventDefault();
     setWarning('__none');
-    console.log(dateTime);
     object.date = dateFormat(dataTrain[rem2].oldDate, 'yyyy-mm-dd');
     object.processingTime = dataTrain[rem2].oldProcessingTime;
     object.userId = dataTrain[rem2].oldUserId;
-    object.trailerId = trailerSelected;
+    object.trailerId = `R${trailerSelected}`;
     object.trainId = dataTrain[0].train;
     object.oldDate = dateFormat(dataTrain[rem2].date, 'yyyy-mm-dd');
     object.oldUserId = dataTrain[rem2].CP;
     object.oldProcessingTime = dataTrain[rem2].processingTime;
     setDateTime({ ...dateTime, ...object });
+    console.log(dateTime);
     try {
       const response = await axios.put('http://localhost:5000/trains', object, { withCredentials: true });
       console.log(response);
@@ -67,11 +70,11 @@ function TrailersModifConnect() {
   // ********************************************* met a jour les variables a chaque changement des inputs
   const handleChange = (event) => {
     const key = event.target.id;
-    setProcessingTime(key !== 'date' && +event.target.value);
-    setDateInput(key === 'date' && event.target.value);
+    setProcessingTime(key !== 'date' ? +event.target.value : processingTime);
+    setDateInput(key === 'date' ? event.target.value : dateInput);
     object[key] = key === 'date' ? event.target.value : +event.target.value;
     object.userId = user.cp;
-    object.trailerId = trailerSelected;
+    object.trailerId = `R${trailerSelected}`;
     object.trainId = dataTrain[0].train;
     object.oldDate = dateFormat(dataTrain[rem2].date, 'yyyy-mm-dd');
     object.oldUserId = dataTrain[rem2].id_user;

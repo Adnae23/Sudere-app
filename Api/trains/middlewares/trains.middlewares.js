@@ -50,11 +50,11 @@ class TrainsMiddlewares {
     const { error } = Joi.object({
       date: Joi.string().required(),
       oldDate: Joi.string().required(),
-      processingTime: Joi.number().required(),
-      oldProcessingTime: Joi.number().required(),
+      processingTime: Joi.number(),
+      oldProcessingTime: Joi.number(),
       userId: Joi.string().min(8).max(8).required(),
       oldUserId: Joi.string().min(8).max(8).required(),
-      trailerId: Joi.number().required(),
+      trailerId: Joi.string().max(3).required(),
       trainId: Joi.number().required(),
     }).validate({
       date, processingTime, userId, trailerId, trainId, oldDate, oldProcessingTime, oldUserId,
