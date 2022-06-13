@@ -20,7 +20,7 @@ function UserForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post('http://localhost:5000/users', dataToSend);
+    const response = await axios.post('http://localhost:5000/users', dataToSend, { withCredentials: true });
     console.log(response);
   };
   const handleChange = (event) => {

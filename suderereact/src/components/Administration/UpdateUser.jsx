@@ -24,7 +24,7 @@ function UpdateUser() {
     user.lastname = selectedUser.lastname;
     user.id = selectedUser.id;
     setUserToUpdate({ ...user, ...userToUpdate });
-    const response = await axios.put('http://localhost:5000/users/', { ...user, ...userToUpdate });
+    const response = await axios.put('http://localhost:5000/users/', { ...user, ...userToUpdate }, { withCredentials: true });
     console.log(response);
     setIsUpdated(!isUpdated);
   }
