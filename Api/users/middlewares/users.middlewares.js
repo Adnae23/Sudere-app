@@ -1,11 +1,49 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-len */
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const { getUserById } = require('../models/users.models');
-const { hashPassword } = require('../../utils/helperUser');
+const { hashPassword, decodeToken } = require('../../utils/helperUser');
 
 class UsersMiddlewares {
+  checkCookie(req, res, next) {
+    // ******************************* verifie la présence d'un cookies
+    if (!req.cookies) {
+      return res.status(404).send('cookies not found');
+    }
+    // ******************************* verifie la présence d'un user_token dans le cookies
+    if (req.cookies.user_token) {
+      return next();
+    }
+    return res.sendStatus(401);
+  }
+
+  // ******************************* verifie l'autorisation du user'
+  checkProfile(req, res, next) {
+    const token = decodeToken(req.cookies.user_token);
+    if (token.profile !== 'ADMIN' && token.profile !== 'REFERENT') {
+      return res.status(403).send('no authorized');
+    }
+    return next();
+  }
+
+  verifyToken(req, res, next) {
+    // ******************************* verifie le contenu du user_token dans le cookies
+    const token = req.cookies.user_token;
+    try {
+      const data = jwt.verify(token, process.env.PRIVATE_KEY);
+      if (data) {
+        next();
+      } else {
+        res.sendStatus(500);
+      }
+    } catch {
+      res.status(403).send('error3');
+    }
+  }
+
   checkBodyId(req, res, next) {
+    // ******************************* verifie la présence d'un ID'
     if (!req.body.id) {
       res.status(400).send('bad request1');
     } else {
@@ -13,7 +51,9 @@ class UsersMiddlewares {
     }
   }
 
+  // ******************************* verifie la présence de toutes les données
   checkBody(req, res, next) {
+    req.body.password = 'defaultpassword';
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.center || !req.body.profile) {
       res.status(400).send('bad request2');
     } else {
@@ -21,6 +61,7 @@ class UsersMiddlewares {
     }
   }
 
+  // ******************************* verifie la présence de toutes les données avant la MàJ
   checkBodyForUpdate(req, res, next) {
     if (!req.body.id || !req.body.firstname || !req.body.lastname || !req.body.center || !req.body.profile) {
       res.status(400).send('bad request3');
@@ -29,8 +70,20 @@ class UsersMiddlewares {
     }
   }
 
+  // ******************************* verifie la cohérence des profils
+  checkRequestProfile(req, res, next) {
+    const { tokenProfile } = req.cookies.user_token;
+    const { bodyProfile } = req.body;
+    if (bodyProfile === 'ADMIN' && tokenProfile !== 'ADMIN') {
+      res.sendStatus(401);
+    } else {
+      next();
+    }
+  }
+
+  // ******************************* verifie les données de changement de MDP
   checkBodyForPassword(req, res, next) {
-    if (!req.body.password) {
+    if (!req.body.previous || !req.body.new || !req.body.confirm) {
       res.status(400).send('bad request4');
     } else {
       next();
@@ -80,20 +133,22 @@ class UsersMiddlewares {
 
   // ********************************** vérifie les critères du password
   checkShapingForPassword(req, res, next) {
-    const {
-      password,
-    } = req.body;
+    const { newPassword, confirmPassword } = req.body;
 
-    const { error } = Joi.object({
-      password: Joi.string().min(8).max(255).required(),
-    }).validate({
-      password,
-    }, { abortEarly: false });
-
-    if (error) {
-      res.status(422).json({ validationErrors: error.details });
+    if (newPassword !== confirmPassword) {
+      res.sendStatus(422);
     } else {
-      next();
+      const { error } = Joi.object({
+        password: Joi.string().min(8).max(255).required(),
+      }).validate({
+        newPassword,
+      }, { abortEarly: false });
+
+      if (error) {
+        res.status(422).json({ validationErrors: error.details });
+      } else {
+        next();
+      }
     }
   }
 

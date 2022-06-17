@@ -10,12 +10,12 @@ class UserController {
       email,
       hashedPassword,
       center,
-      access,
+      profile,
     } = req.body;
 
     // ********************************** Ajoute utilisateur dans la db
     try {
-      await UserModel.createUser(id, firstname, lastname, center, hashedPassword, email, access);
+      await UserModel.createUser(id, firstname, lastname, center, hashedPassword, email, profile);
       res.status(201).send('User successfully created');
     } catch (error) {
       res.status(500).send({
@@ -36,6 +36,7 @@ class UserController {
     }
   }
 
+  // ********************************** Récupère la liste des centres la db
   async listCenters(req, res) {
     try {
       const result = await UserModel.getCenters();
@@ -47,6 +48,7 @@ class UserController {
     }
   }
 
+  // ********************************** Récupère la liste des profils la db
   async listProfiles(req, res) {
     try {
       const result = await UserModel.getProfiles();
@@ -75,9 +77,9 @@ class UserController {
   async updateUser(req, res) {
     try {
       const {
-        id, firstname, lastname, center, access,
+        id, firstname, lastname, center, profile,
       } = req.body;
-      await UserModel.updateUser(id, firstname, lastname, center, access);
+      await UserModel.updateUser(id, firstname, lastname, center, profile);
       res.status(200).send('');
     } catch (error) {
       res.status(500).send({ error: error.message });

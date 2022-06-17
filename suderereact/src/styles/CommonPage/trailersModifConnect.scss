@@ -1,0 +1,82 @@
+.formConnect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__alerte {
+        color: $orange;
+        font-size: 2vh;
+        text-align: center;
+
+        & p {
+            margin: 0 0 10px;
+        }
+    }
+
+    &__alerte__none {
+        color: $carbone;
+        font-size: 2vh;
+        text-align: center;
+
+        & p {
+            margin: 0 0 10px;
+        }
+    }
+
+    &__date,
+    &__delai {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 12px;
+        align-items: center;
+
+        &__label {
+            font-size: 2vh;
+            color: $warm_gray_1;
+        }
+
+        &__valeur {
+            width: 30%;
+            border: none;
+            color: $carbone;
+            font-size: 2vh;
+            padding: 10px;
+            text-align: right;
+
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+        }
+    }
+
+    &__valid {
+        display: flex;
+        justify-content: space-between;
+        margin: 12px;
+
+        &__button {
+            background-color: $orange;
+            border: none;
+            color: $warm_gray_1;
+            font-size: 2vh;
+            padding: 10px;
+        }
+
+        &__backup {
+            height: 52px;
+            background-color: $carbone;
+            color: $warm_gray_3;
+            border: none;
+            font-size: 1.3vh;
+            font-weight: bolder;
+
+            &:hover {
+                font-size: 1.4vh;
+                text-decoration: underline;
+            }
+        }
+    }
+}

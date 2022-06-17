@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import DashboardLeft from './DashboardLeft';
 import DashboardRight from './DashboardRight';

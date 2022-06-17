@@ -97,10 +97,11 @@ class DbModel {
   async replaceTrailer(trailer, id) {
     // ********************************** Ajoute/màj les trailes dans la db
     try {
-      const sql = 'REPLACE INTO trailers (number, id_train) VALUES (?, (SELECT id FROM trains WHERE id = ?))';
+      const sql = 'REPLACE INTO trailers (number, id_train) VALUES (?, ?)';
       const result = await connection.promise().query(sql, [trailer, id]);
       return result[0];
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }

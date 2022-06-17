@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-useless-catch */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
@@ -12,7 +14,7 @@ class DbController {
         await DbModel.insertSerie(serie);
       });
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      return res.status(500).send('insert serie error');
     }
 
     // ********************************** Ajoute les nouvelles lines dans la db
@@ -22,33 +24,68 @@ class DbController {
         await DbModel.insertLine(line);
       });
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      return res.status(500).send('insert line error');
     }
 
     // ********************************** Ajoute/màj les nouvelles rames dans la db et créé les remorque s'il le faut
     try {
-      req.trainsReplace.map(async (train) => {
+      req.trainsReplace.forEach(async (train) => {
         await DbModel.replaceTrain(train);
-        for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer + 1) {
+        for (let trainsTrailer = 0; trainsTrailer <= train.trailers; trainsTrailer++) {
           if (trainsTrailer !== 3) {
-            await DbModel.replaceTrailer(`R${trainsTrailer + 1}`, train.id);
+            const trailerNumber = `R${trainsTrailer + 1}`;
+            DbModel.replaceTrailer(trailerNumber, train.id);
           }
         }
       });
-      // res.status(201).send('Insert successfully')
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      return res.status(500).send('replacing error');
     }
 
     // ********************************** Supprime les rames dans la db
     try {
       req.trainsDelete.map(async (train) => {
-        await DbModel.deleteTrailers(train);
-        await DbModel.deleteTrain(train);
+        try {
+          await DbModel.deleteTrailers(train);
+        } catch (error) {
+          throw error;
+        }
+        try {
+          await DbModel.deleteTrain(train);
+        } catch (error) {
+          throw error;
+        }
       });
-      res.sendStatus(200);
+      return res.sendStatus(200);
     } catch (error) {
-      res.status(500).send({ error: error.message });
+      return res.status(500).send('deleting error');
+    }
+  }
+
+  async fetchLines(req, res) {
+    try {
+      const lines = await DbModel.getLines();
+      res.status(200).send(lines);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async fetchSeries(req, res) {
+    try {
+      const series = await DbModel.getSeries();
+      res.status(200).send(series);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  }
+
+  async fetchCenters(req, res) {
+    try {
+      const centers = await DbModel.getCenters();
+      res.status(200).send(centers);
+    } catch (error) {
+      res.status(500).send(error);
     }
   }
 }

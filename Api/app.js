@@ -4,6 +4,7 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const fileUpload = require('express-fileupload');
@@ -12,9 +13,10 @@ const trainsRouter = require('./trains/trains.routes');
 const usersRouter = require('./users/users.route');
 const authRouter = require('./auth/auth.route');
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());
 app.use(fileUpload());
+app.use(cookieParser());
 
 const port = process.env.PORT ?? 5000;
 

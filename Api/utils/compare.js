@@ -62,6 +62,7 @@ const createArray = (excelFile) => {
 };
 
 const compare = (req, trainsFromDb) => {
+  // ******************************* compare les données du xls aux données de la db
   const data = createArray(req.xlsFile);
   req.lines = [...data[1]];
   req.series = [...data[2]];

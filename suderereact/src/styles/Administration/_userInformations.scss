@@ -1,35 +1,52 @@
-.userInformations{
+.userInformations {
     width: 90%;
     margin-top: 0;
     padding: 5%;
     font-size: 1vw;
-    &__list{
+    &__list {
         display: block;
         list-style: none;
         padding: 0;
         margin: 0;
-        &__item{
+        &__item {
             width: 100%;
             display: flex;
             flex-direction: row;
             margin: 10px;
-            &--left{
+            &--left {
                 margin: 0;
                 width: 40%;
             }
-            &--right{
+            &--right {
                 margin: 0 auto;
                 width: 40%;
                 padding: 1px;
-                &--input{
+                &--input {
                     font-size: 1vw;
                     padding: 5px;
                 }
-                &--option{
+                &--option {
                     font-size: 1vw;
                     padding: 5px;
                 }
             }
+        }
+    }
+    &__notSelected {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        &__img {
+            width: 50%;
+        }
+        &__info {
+            display: block;
+            font-size: 1.2vw;
+            margin-top: 0;
         }
     }
 }

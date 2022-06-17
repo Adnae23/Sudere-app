@@ -1,0 +1,316 @@
+:root {
+    --scale-a: 1;
+    --scale-b: 1;
+    --scale-c: 1;
+    --scale-d: 1;
+    --font-pic-a: 1em;
+    --font-pic-b: 1em;
+    --font-pic-c: 1em;
+    --font-pic-d: 1em;
+    --marge-a: 50px;
+    --marge-b: 120px;
+    --marge-c: 200px;
+    --marge-d: 300px;
+    --marge-e: 410px;
+    --marge-f: 500px;
+    --marge-g: 580px;
+}
+
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(9),
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(9)~div[class^="centerPage__carrousel__trailersPic__R"] {
+    --scale-a: 1;
+    --scale-b: 1.3;
+    --scale-c: 1.6;
+    --scale-d: 1.3;
+    --font-pic-a: 1em;
+    --font-pic-b: 1.5em;
+    --font-pic-c: 2em;
+    --font-pic-d: 1.5em;
+    --index_z-r3: -5;
+    --index_z-r8: 2;
+    --marge-b: 16vh;
+    --marge-c: 26vh;
+    --marge-d: 37vh;
+    --marge-e: 48vh;
+    --marge-f: 58vh;
+}
+
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(7),
+div[class^="centerPage__carrousel__trailersPic__R"]:first-child:nth-last-child(7)~div[class^="centerPage__carrousel__trailersPic__R"] {
+    --scale-a: 1.3;
+    --scale-b: 1.6;
+    --scale-c: 1.3;
+    --scale-d: 1;
+    --font-pic-a: 1.5em;
+    --font-pic-b: 2em;
+    --font-pic-c: 1.5em;
+    --font-pic-d: 1em;
+    --index_z-r3: 2;
+    --index_z-r8: -5;
+    --marge-a: 16vh;
+    --marge-b: 26vh;
+    --marge-c: 37vh;
+    --marge-d: 48vh;
+    --marge-e: 58vh;
+}
+
+[class^="centerPage__carrousel__trailersPic__R"] {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 12vw;
+}
+
+[class^="centerPage__carrousel__trailersPic__R"] img {
+    height: auto;
+    width: 100%;
+}
+
+[class^="centerPage__carrousel__trailersNum__color__R"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+}
+
+[class^="centerPage__carrousel__trailersNum__color__R__big__"] {
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+    font-weight: bolder;
+
+    @media screen and (max-width: 520px) {
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
+[class^="centerPage__carrousel__trailersNum__color__R__small__"] {
+    width: 30px;
+    height: 30px;
+    font-size: 1em;
+
+    @media screen and (max-width: 520px) {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+    }
+}
+
+.centerPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__infoRame {
+        width: 100%;
+        height: 13%;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: #e0ded8;
+        color: $orange;
+        text-align: center;
+
+        & h4 {
+            margin: auto 0;
+            font-size: 2.5vh;
+
+            & span {
+                color: $carbone;
+            }
+        }
+
+        @media screen and (max-width: 520px) {
+            display: none;
+        }
+    }
+
+    &__carrousel {
+        width: 100%;
+        height: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #e0ded8;
+
+        @media screen and (max-width: 520px) {
+            height: 100%;
+        }
+
+
+        &__trailersPic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            height: 80vh;
+            position: relative;
+
+            &__R1 {
+                transition-delay: 1ms;
+                transform: scale(1);
+                transition: all 0.5s;
+                z-index: -5;
+            }
+
+            &__R2 {
+                transition-delay: 3ms;
+                transform: scale(1);
+                transition: all 0.9s;
+                z-index: -5;
+            }
+
+            &__R3 {
+                transition-delay: 3ms;
+                margin: var(--marge-a) auto 0;
+                transform: scale(1);
+                transition: all 0.9s;
+                z-index: var(--index_z-r3);
+            }
+
+            &__R4 {
+                transition-delay: 4ms;
+                margin: var(--marge-b) auto 0;
+                transform: scale(var(--scale-a));
+                transition: all 1s;
+                z-index: 2;
+            }
+
+            &__R5 {
+                transition-delay: 5ms;
+                margin: var(--marge-c) auto 0;
+                transform: scale(var(--scale-b));
+                transition: all 0.9s;
+                z-index: 2;
+            }
+
+            &__R6 {
+                transition-delay: 6ms;
+                margin: var(--marge-d) auto 0;
+                transform: scale(var(--scale-c));
+                transition: all 0.9s;
+                z-index: 2;
+            }
+
+            &__R7 {
+                transition: all 0.5s;
+                transition-delay: 7ms;
+                margin: var(--marge-e) auto 0;
+                transform: scale(var(--scale-d));
+                font-size: 1em;
+                z-index: 2;
+            }
+
+            &__R8 {
+                transition: all 0.5s;
+                transition-delay: 8ms;
+                margin: var(--marge-f) auto 0;
+                transform: scale(1);
+                z-index: var(--index_z-r8);
+            }
+
+            &__R9 {
+                transition: all 0.5s;
+                transition-delay: 9ms;
+                transform: scale(1);
+                z-index: -51;
+            }
+
+            @media screen and (max-width: 520px) {
+                display: none;
+            }
+        }
+
+        &__trailersNum {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 100%;
+            width: 20%;
+
+            &__bar {
+                display: flex;
+                width: 5px;
+                height: 90%;
+                position: absolute;
+                background-color: white;
+            }
+
+            &__buttom {
+                z-index: 1;
+
+                &__Up {
+                    width: 47px;
+                    height: 47px;
+                    background-image: url(../../../public/pictures/logo/flecheUpBlanche.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: $orange;
+                    margin-top: 2px;
+                    z-index: 2;
+                    border-radius: 10px;
+                    border: none;
+                }
+
+                &__Down {
+                    width: 47px;
+                    height: 47px;
+                    background-image: url(../../../public/pictures/logo/flecheDownBlanche.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-color: $orange;
+                    margin-bottom: 2px;
+                    z-index: 2;
+                    border-radius: 10px;
+                    border: none;
+                }
+            }
+
+            &__color {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                align-items: center;
+                justify-content: space-evenly;
+                height: 60px;
+                width: 60px;
+                color: white;
+
+                &__R__small__red {
+                    background-color: $raspberry;
+                }
+
+                &__R__small__orange {
+                    background-color: $safran;
+                }
+
+                &__R__small__green {
+                    background-color: $vert_pomme;
+                }
+
+                &__R__big__red {
+                    background-color: $raspberry;
+                }
+
+                &__R__big__orange {
+                    background-color: $safran;
+                }
+
+                &__R__big__green {
+                    background-color: $vert_pomme;
+                }
+
+                @media screen and (max-width: 520px) {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+}
