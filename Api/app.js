@@ -4,6 +4,7 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
+// eslint-disable-next-line import/no-unresolved
 const cookieParser = require('cookie-parser');
 
 const app = express();

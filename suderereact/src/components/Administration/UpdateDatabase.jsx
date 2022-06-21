@@ -34,10 +34,10 @@ function UpdateDatabase() {
     setSubmit(true);
   };
   return (
-    <div>
-      <form onSubmit={backUp}>
-        <input type="file" name="excelFile" onChange={handleFileSelect} />
-        <input type="submit" value="Upload File" />
+    <div className="formDatabase">
+      <form className="formDatabase__form" onSubmit={backUp}>
+        <input className="formDatabase__form__file" type="file" name="excelFile" onChange={handleFileSelect} />
+        <input className="formDatabase__form__submit" type="submit" value="Upload File" />
       </form>
     </div>
   );

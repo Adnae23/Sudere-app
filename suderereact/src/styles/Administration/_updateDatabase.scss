@@ -1,0 +1,28 @@
+.formDatabase{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 400px;
+    height: 200px;
+    background-color: $warm_gray_1;
+    border: solid 2px $carbone;
+    border-radius: 10px;
+      &__form{
+         
+        &__file{
+            
+        }
+        &__submit{
+            border-radius: 5px;
+            background-color: $warm_gray_3;
+            border: none;
+            color: $warm_gray_1;
+
+            &:hover{
+                background-color: $orange;
+                color: $carbone;
+            }
+        }
+    }
+    }
