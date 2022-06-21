@@ -63,7 +63,7 @@ class UserController {
   // ********************************** efface un utilisateur de la db
   async deleteUser(req, res) {
     try {
-      const { id } = req.body;
+      const { id } = req.params;
       await UserModel.deleteUser(id);
       res.status(200).send('User successfully deleted');
     } catch (error) {

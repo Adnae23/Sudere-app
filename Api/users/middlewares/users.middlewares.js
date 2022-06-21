@@ -96,16 +96,6 @@ class UsersMiddlewares {
     if (existingUser.length !== 0) { res.status(409).send('Failed to create user'); } else { next(); }
   }
 
-  // ********************************** vérifie si user bien présent dans la db
-  async checkExistingUser(req, res, next) {
-    const existingUser = await getUserById(req.body.id);
-    if (existingUser.length === 0) {
-      res.status(404).send('User not found');
-    } else {
-      next();
-    }
-  }
-
   // ********************************** vérifie les critères de validation
   checkShaping(req, res, next) {
     const {

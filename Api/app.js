@@ -13,7 +13,7 @@ const trainsRouter = require('./trains/trains.routes');
 const usersRouter = require('./users/users.route');
 const authRouter = require('./auth/auth.route');
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://localhost:3000', methods: ['GET', 'PUT', 'POST', 'DELETE'], credentials: true }));
 app.use(express.json());
 app.use(fileUpload());
 app.use(cookieParser());
