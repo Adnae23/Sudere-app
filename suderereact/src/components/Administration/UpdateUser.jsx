@@ -28,6 +28,19 @@ function UpdateUser() {
     console.log(response);
     setIsUpdated(!isUpdated);
   }
+
+  async function handleClickDelete() {
+    const user = {};
+    user.profile = selectedUser.profile;
+    user.center = selectedUser.center;
+    user.firstname = selectedUser.firstname;
+    user.lastname = selectedUser.lastname;
+    user.id = selectedUser.id;
+    setUserToUpdate({ ...user, ...userToUpdate });
+    const response = await axios.delete(`http://localhost:5000/users/${selectedUser.id}`, { withCredentials: true });
+    console.log(response);
+    setIsUpdated(!isUpdated);
+  }
   return (
     <SelectedUserContext.Provider value={{ selectedUser, setSelectedUser }}>
       <UpdateUserModifyButtonContext.Provider value={{ unlockUpdate, setUnlockUpdate }}>
@@ -47,7 +60,7 @@ function UpdateUser() {
                   {unlockUpdate && (
                     <div className="updateUser__userInformations__right__top__buttons">
                       <button onClick={handleClickUpdate} className="updateUser__userInformations__right__top__buttons__validate" type="submit">Valider les modifications</button>
-                      <button className="updateUser__userInformations__right__top__buttons__delete" type="button">{'Supprimer l\'utilisateur'}</button>
+                      <button onClick={handleClickDelete} className="updateUser__userInformations__right__top__buttons__delete" type="button">{'Supprimer l\'utilisateur'}</button>
                     </div>
                   )}
                 </div>

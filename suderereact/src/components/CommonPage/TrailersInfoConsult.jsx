@@ -8,13 +8,14 @@ function TrailersInfoConsult() {
   const { dataTrain } = useContext(DataTrainContext);
   const { trailerSelected } = useContext(TrailerSelected);
   const rem2 = trailerSelected - 1 > 3 ? trailerSelected - 2 : trailerSelected - 1;
+  const cureDate = new Date(dataTrain[rem2].date).getTime();
   let message;
   let messageTime;
   let cure = true;
   let noSure = '__none';
   // ********************************************* prepare les donnees ou messages a afficher
   if (dataTrain.length > 0) {
-    if (dataTrain[rem2].date === '1972-04-04') {
+    if (cureDate === 71190000000) {
       cure = false;
       noSure = '';
       message = '-  -  -  -   ';
