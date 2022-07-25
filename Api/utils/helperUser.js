@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
+// eslint-disable-next-line camelcase
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
-// eslint-disable-next-line camelcase
+
 const jwt_decode = require('jwt-decode');
 
 const maxAge = 60000;
@@ -14,18 +15,18 @@ const hashingOptions = {
   parallelism: 1,
 };
 
-// ******************************* hashage du MDP
+// Hashage du mot de passe
 const hashPassword = (plainPassword) => argon2.hash(plainPassword, hashingOptions);
 
-// ******************************* verification du MDP
+// Vérification du mot de passe
 const verifyPassword = (plainPassword, hashedPassword) => argon2.verify(hashedPassword, plainPassword, hashingOptions);
 
-// ******************************* calcul du token
+// Calcul du token
 const calculateToken = (userId, userFirstname, userLastname, userEmail, userCenter, userProfile) => jwt.sign({
   cp: userId, firstname: userFirstname, lastname: userLastname, email: userEmail, center: userCenter, profile: userProfile,
 }, process.env.PRIVATE_KEY, { expiresIn: maxAge });
 
-// ******************************* décode le token
+// Décode le token
 const decodeToken = (token) => jwt_decode(token);
 
 const expireToken = () => jwt.sign({ foo: 'bar' }, process.env.PRIVATE_KEY, { expiresIn: minAge });
