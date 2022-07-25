@@ -13,7 +13,7 @@ class AuthMiddlewares {
     }
   }
 
-  // ********************************** vérifie si user bien présent dans la db
+  // vérifie si user bien présent dans la db
   async checkExistingUser(req, res, next) {
     const { password, login } = req.body;
     let existingUser = '';
@@ -32,6 +32,7 @@ class AuthMiddlewares {
     return next();
   }
 
+  // Vérifie s'il existe ou non un cookie issu d'une potientielle précédente connexion
   checkCookie(req, res, next) {
     if (!req.cookies) {
       return res.status(403).send('error1');
@@ -42,6 +43,7 @@ class AuthMiddlewares {
     return res.status(403).send('error2');
   }
 
+  // Vérifie si le token contenu dans le cookie est valide et non expiré
   verifyToken(req, res, next) {
     const token = req.cookies.user_token;
     try {
